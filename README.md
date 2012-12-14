@@ -1,4 +1,4 @@
 infinityfiction
 ===============
 
-Infinity Engine Modding Frameworj
+Infinity Engine Modding Framework
