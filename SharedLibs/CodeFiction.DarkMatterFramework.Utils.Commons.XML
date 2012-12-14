@@ -1,0 +1,491 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CodeFiction.DarkMatterFramework.Utils.Commons</name>
+    </assembly>
+    <members>
+        <member name="T:CodeFiction.DarkMatterFramework.Utils.Commons.ArrayUtils">
+            <summary>
+            Array işlemlerinde kullanılabilecek yardımcı methodları
+            içeren class.
+            </summary>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Utils.Commons.ArrayUtils.AddToArray``1(``0[],``0[])">
+            <summary>
+            Verilen Arrayin Sonuna Girilen Itemları Ekler.
+            </summary>
+            <typeparam name="T">Arrayin tipi.</typeparam>
+            <param name="array">Arrayin kendisi.</param>
+            <param name="items">Arraye eklenecek itemlar.</param>
+            <returns>Elemanların eklendiği array.</returns>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Utils.Commons.ArrayUtils.Contains``1(``0[],``0)">
+            <summary>
+            Arrayin itemı içerip içermediğini kontrol eder.
+            </summary>
+            <typeparam name="T">Arrayın tipi.</typeparam>
+            <param name="array">Arrayin kendisi.</param>
+            <param name="item">Arrayde aranacak item.</param>
+            <returns>Varmı yokmu sonucu.</returns>
+        </member>
+        <member name="T:System.ArrayExtensions">
+            <summary>
+            Array işlemlerinde kullanılan yardımcı extension methodlar.
+            </summary>
+        </member>
+        <member name="M:System.ArrayExtensions.JoinToString``1(``0[],System.String)">
+            <summary>
+            Verilen arrayi, verilen seperator ile birleştirir.
+            </summary>
+            <typeparam name="T">Arrayin tipi.</typeparam>
+            <param name="array">Arrayin kendisi.</param>
+            <param name="seperator">Kullanılacak seperator.</param>
+            <returns>Seperator ile ayrılmış liste.</returns>
+        </member>
+        <member name="M:System.ArrayExtensions.Contains``1(``0[],``0)">
+            <summary>
+            Arrayin itemı içerip içermediğini kontrol eder.
+            </summary>
+            <typeparam name="T">Arrayın tipi.</typeparam>
+            <param name="array">Arrayin kendisi.</param>
+            <param name="item">Arrayde aranacak item.</param>
+            <returns>Varmı yokmu sonucu.</returns>
+        </member>
+        <member name="T:CodeFiction.DarkMatterFramework.Utils.Commons.Exceptions.CommonsException">
+            <summary>
+            Common Util işlemleri sırasında fırlatılacak Exception.
+            </summary>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Utils.Commons.Exceptions.CommonsException.#ctor(System.String,System.Exception)">
+            <summary>
+            <see cref="T:CodeFiction.DarkMatterFramework.Utils.Commons.Exceptions.CommonsException">
+            CommonsException</see>'ı mesaj ve hataya sebep olan Inner exception ile
+            initialize eder.
+            </summary>
+            <param name="exceptionMessage">Exception'ın mesajı.</param>
+            <param name="exp">Hataya sebep olan Inner exception.</param>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Utils.Commons.Exceptions.CommonsException.#ctor(System.Exception)">
+            <summary>
+            <see cref="T:CodeFiction.DarkMatterFramework.Utils.Commons.Exceptions.CommonsException">
+            CommonsException</see>'ı hataya sebep olan Inner exception ile initialize
+            eder.
+            </summary>
+            <param name="exp">Hataya sebep olan Inner exception</param>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Utils.Commons.Exceptions.CommonsException.#ctor(System.String)">
+            <summary>
+            <see cref="T:CodeFiction.DarkMatterFramework.Utils.Commons.Exceptions.CommonsException">
+            CommonsException</see>'ı mesaj ile initialize eder.
+            </summary>
+            <param name="exceptionMessage">Exception'ın mesajı.</param>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Utils.Commons.Exceptions.CommonsException.#ctor">
+            <summary>
+            <see cref="T:CodeFiction.DarkMatterFramework.Utils.Commons.Exceptions.CommonsException">
+            CommonsException</see>'ı initialize eder.
+            </summary>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Utils.Commons.Exceptions.CommonsException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            <see cref="T:CodeFiction.DarkMatterFramework.Utils.Commons.Exceptions.CommonsException">
+            CommonsException</see>'ı serileştirilmiş data ile initialize eder.
+            </summary>
+            <param name="serializationInfo">Serileştirilmiş obje bilgisini tutar.</param>
+            <param name="context">Kaynak veya hedef hakkındaki ilişkisel bilgi.</param>
+        </member>
+        <member name="T:CodeFiction.DarkMatterFramework.Utils.Commons.EnumUtils">
+            <summary>
+            Enum işlemlerinde kullanılabilecek yardımcı methodları
+            içeren class.
+            </summary>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Utils.Commons.EnumUtils.GetNamesAndValues``1">
+            <summary>
+            Verilen Enum tipin adını ve değerlerini Dictionary olarak döndürür.
+            </summary>
+            <typeparam name="T">
+            Enumın tipi.
+            </typeparam>
+            <returns>
+            Dictionary haline getirilmiş enum.
+            </returns>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Utils.Commons.EnumUtils.GetNamesAndValues``2">
+            <summary>
+            Verilen Enum tipin adını ve değerlerini Dictionary olarak döndürür.
+            </summary>
+            <typeparam name="TEnum">
+            Enumın tipi.
+            </typeparam>
+            <typeparam name="TUnderlyingType">
+            Enum elemanlarının valuelarının dictionarydeki valueları. 
+            </typeparam>
+            <returns>
+            Dictionary haline getirilmiş enum.
+            </returns>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Utils.Commons.EnumUtils.GetNamesAndValues``1(System.Type)">
+            <summary>
+            Verilen Enum tipin adını ve değerlerini Dictionary olarak döndürür.
+            </summary>
+            <typeparam name="TUnderlyingType">
+            Enum elemanlarının valuelarının dictionarydeki valueları. 
+            </typeparam>
+            <param name="enumType">
+            Enum tipi.
+            </param>
+            <returns>
+            Dictionary haline getirilmiş enum.
+            </returns>
+        </member>
+        <member name="T:CodeFiction.DarkMatterFramework.Utils.Commons.CollectionUtils">
+            <summary>
+            Collection işlemlerinde kullanılabilecek yardımcı methodları
+            içeren class.
+            </summary>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Utils.Commons.CollectionUtils.CreateList``1(``0[])">
+            <summary>
+            Verilen elemanlarıyla beraber liste oluşturur.
+            </summary>
+            <param name="values">Listenin elemanlar.</param>
+            <typeparam name="T">Liste tipi.</typeparam>
+            <returns>Oluşturulmuş liste.</returns>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Utils.Commons.CollectionUtils.CreateList``1(System.String,System.Char)">
+            <summary>
+            Verilen stringi, seperatorüne göre ayırıp, T tipinden
+            generic liste oluşturur.
+            </summary>
+            <typeparam name="T">Listenin tipi</typeparam>
+            <param name="text">Listeye dönüştürülücek string.</param>
+            <param name="seperator">Listenin elemanlarının ayrlıacağı seperator.</param>
+            <returns>Generic liste.</returns>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Utils.Commons.CollectionUtils.IsNullOrEmpty(System.Collections.ICollection)">
+            <summary>
+            Collectionın boş veya null olup olmadığını söyler.
+            </summary>
+            <param name="collection">Kontrol edilecek collection.</param>
+            <returns>
+            Eğer collection boş veya null is <c>true</c> değilse, <c>false</c> döner.
+            </returns>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Utils.Commons.CollectionUtils.IsNullOrEmpty``1(System.Collections.Generic.ICollection{``0})">
+            <summary>
+            Collectionın boş veya null olup olmadığını söyler.
+            </summary>
+            <typeparam name="T">Yaratılacak listenin tipi.</typeparam>
+            <param name="collection">Kontrol edilecek collection.</param>
+            <returns>
+            Eğer collection boş veya null is <c>true</c> değilse, <c>false</c> döner.
+            </returns>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Utils.Commons.CollectionUtils.ListEquals``1(System.Collections.Generic.IList{``0},System.Collections.Generic.IList{``0})">
+            <summary>
+            Listelerin eşitliğini döndürür.
+            </summary>
+            <param name="a">Birinci liste.</param>
+            <param name="b">İkinci liste.</param>
+            <typeparam name="T">Listelerin tipi.</typeparam>
+            <returns>Eşitmi değilmi.</returns>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Utils.Commons.CollectionUtils.Divide``1(System.Collections.Generic.IList{``0},System.Collections.Generic.IList{``0})">
+            <summary>
+            Birinci listenin ikinci listeden farkını döndürür.
+            </summary>
+            <typeparam name="T">Listelerin tipi.</typeparam>
+            <param name="list">Karşılaştırılıcak liste.</param>
+            <param name="divisor">Karşılaştırılacağı liste.</param>
+            <returns>Fark liste.</returns>
+        </member>
+        <member name="T:System.StringExtensions">
+            <summary>
+            String işlemlerinde kullanılan yardımcı extension methodlar.
+            </summary>
+        </member>
+        <member name="M:System.StringExtensions.IsNullOrEmpty(System.String)">
+            <summary>
+            Stringin boş veya null olup olmadığını kontrol eder.
+            </summary>
+            <param name="text">Kontrol edilecek string.</param>
+            <returns>Kontrol sonucu.</returns>
+        </member>
+        <member name="M:System.StringExtensions.ConvertToDelimetedText(System.String[],System.Char)">
+            <summary>
+            String arrayi seperator ile birlikte birleştirir.
+            </summary>
+            <param name="text">Birleştirilecek string.</param>
+            <param name="seperator">Kullanılacak seperator.</param>
+            <returns>Birleştirilmiş string.</returns>
+        </member>
+        <member name="M:System.StringExtensions.IsMatch(System.String,System.String,System.Boolean)">
+            <summary>
+            Girilen stringde verilen Expression'ı arar
+            </summary>
+            <param name="value">Arama yapılacak string.</param>
+            <param name="regularExpression">Arama kriterini içeren expression.</param>
+            <param name="matchEntirely">Tümünü Ara.</param>
+            <returns>Arama sonucu.</returns>
+        </member>
+        <member name="M:System.StringExtensions.Join(System.String[],System.String)">
+            <summary>
+            Verilen string arrayini seperator ile join eder.
+            </summary>
+            <param name="values">String arrayi.</param>
+            <param name="seperator">Join işleminde kullanılacak seperator.</param>
+            <returns>Joinlenmiş string.</returns>
+        </member>
+        <member name="M:System.StringExtensions.ToGenericList``1(System.String,System.Char)">
+            <summary>
+            Verilen stringi, seperatorüne göre ayırıp, T tipinden
+            generic liste oluşturur.
+            </summary>
+            <typeparam name="T">Listenin tipi</typeparam>
+            <param name="text">Listeye dönüştürülücek string.</param>
+            <param name="seperator">Listenin elemanlarının ayrlıacağı seperator.</param>
+            <returns>Generic liste.</returns>
+        </member>
+        <member name="T:CodeFiction.DarkMatterFramework.Utils.Commons.EnumerableUtils">
+            <summary>
+            IEnumerable'dan türemiş collection işlemlerinde 
+            kullanılabilecek yardımcı methodları içeren class.
+            </summary>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Utils.Commons.EnumerableUtils.TrueForAll``1(System.Collections.Generic.IEnumerable{``0},System.Predicate{``0})">
+            <summary>
+            Predicate i listenin bütün elemanlar için doğrular.
+            </summary>
+            <typeparam name="T">Listenin tipi.</typeparam>
+            <param name="list">Listenin kendisi.</param>
+            <param name="predicate">Criterleri içeren predicate</param>
+            <returns>Doğrulama sonucu.</returns>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Utils.Commons.EnumerableUtils.JoinToString``1(System.Collections.Generic.IEnumerable{``0},System.String,System.Func{``0,System.String})">
+            <summary>
+            Verilen listeyi, verilen seperator ile birleştirir.
+            </summary>
+            <typeparam name="T">Listenin tipi.</typeparam>
+            <param name="list">Listenin kendisi.</param>
+            <param name="seperator">Kullanılacak seperator</param>
+            <param name="func">String işleminde kullanılacak function. T tipinde item alıp string döner.</param>
+            <returns>Seperator ile ayrılmış liste.</returns>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Utils.Commons.EnumerableUtils.JoinToString``1(System.Collections.Generic.IEnumerable{``0},System.String)">
+            <summary>
+            Verilen listeyi, verilen seperator ile birleştirir.
+            </summary>
+            <typeparam name="T">Listenin tipi.</typeparam>
+            <param name="list">Listenin kendisi.</param>
+            <param name="seperator">Kullanılacak seperator</param>
+            <returns>Seperator ile ayrılmış liste.</returns>
+        </member>
+        <member name="T:System.Collections.Generic.EnumerableExtensions">
+            <summary>
+            Enumerable işlemlerinde kullanılan yardımcı extension methodlar.
+            </summary>
+        </member>
+        <member name="M:System.Collections.Generic.EnumerableExtensions.JoinToString``1(System.Collections.Generic.IEnumerable{``0},System.String,System.Func{``0,System.String})">
+            <summary>
+            Verilen listeyi, verilen seperator ile birleştirir.
+            </summary>
+            <typeparam name="T">Listenin tipi.</typeparam>
+            <param name="list">Listenin kendisi.</param>
+            <param name="seperator">Kullanılacak seperator.</param>
+            <param name="func">String işleminde kullanılacak function. T tipinde item alıp string döner.</param>
+            <returns> Seperator ile ayrılmış liste.</returns>
+        </member>
+        <member name="M:System.Collections.Generic.EnumerableExtensions.JoinToString``1(System.Collections.Generic.IEnumerable{``0},System.String)">
+            <summary>
+            Verilen listeyi, verilen seperator ile birleştirir.
+            </summary>
+            <typeparam name="T">Listenin tipi.</typeparam>
+            <param name="list">Listenin kendisi.</param>
+            <param name="seperator">Kullanılacak seperator</param>
+            <returns>Seperator ile ayrılmış liste.</returns>
+        </member>
+        <member name="M:System.Collections.Generic.EnumerableExtensions.IsNullOrEmpty``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Listenin null veya boş olup olmadığını kontrol eder.
+            </summary>
+            <typeparam name="T">Liste tipi.</typeparam>
+            <param name="list">Kontrol edilecek liste.</param>
+            <returns>Kontrol sonucu.</returns>
+        </member>
+        <member name="T:CodeFiction.DarkMatterFramework.Utils.Commons.StringUtils">
+            <summary>
+            String işlemlerinde kullanılabilecek yardımcı methodları
+            içeren class.
+            </summary>
+        </member>
+        <member name="F:CodeFiction.DarkMatterFramework.Utils.Commons.StringUtils.HtmlTagPattern">
+            <summary>
+            Html taglarını içeren pattern.
+            </summary>
+        </member>
+        <member name="F:CodeFiction.DarkMatterFramework.Utils.Commons.StringUtils.MultipleSpaces">
+            <summary>
+            Çoklu boşlukları içeren pattern.
+            </summary>
+        </member>
+        <member name="F:CodeFiction.DarkMatterFramework.Utils.Commons.StringUtils.EmailPattern">
+            <summary>
+            Email formatını içeren pattern.
+            </summary>
+        </member>
+        <member name="F:CodeFiction.DarkMatterFramework.Utils.Commons.StringUtils.WordsRegex">
+            <summary>
+            Kelime formatını içeren patternç
+            </summary>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Utils.Commons.StringUtils.GetWords(System.String)">
+            <summary>
+            Verilen stringteki kelimeleri liste halinde döndürür.
+            </summary>
+            <param name="source">Kelime listesi yapılacak string.</param>
+            <returns>Kelime listesi yapılmış string.</returns>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Utils.Commons.StringUtils.WordCount(System.String)">
+            <summary>
+            Verilen stringteki kelimeleri sayısını döndürür.
+            </summary>
+            <param name="source">Kelime sayısı döndürülücek string.</param>
+            <returns>Verilen stringin kelime sayısı.</returns>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Utils.Commons.StringUtils.Reverse(System.String)">
+            <summary>
+            Harf sırasını tersine çevirir.
+            </summary>
+            <param name="value">Çevirilicek string.</param>
+            <returns>Çevirilmiş string.</returns>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Utils.Commons.StringUtils.Format(System.String,System.Object[])">
+            <summary>
+            Girilen argümanlarla Format uygular.
+            </summary>
+            <param name="value">Argümanların uygulanacağı string.</param>
+            <param name="args">Uygulanacak argümanlar.</param>
+            <returns>Formatlanmış string</returns>   
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Utils.Commons.StringUtils.CapitalizeFirstLetter(System.String)">
+            <summary>
+            İlk harfi büyük harfe çevirir.
+            </summary>
+            <param name="value">İlk harfi büyütülecek string.</param>
+            <returns>İlk harfi büyütülmüş string.</returns>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Utils.Commons.StringUtils.CapitalizeFirstLetterAndLowerOthers(System.String)">
+            <summary>
+            İlk harfi büyük harfe diğerlerini küçük harfe çevirir.
+            </summary>
+            <param name="value">İşlemin uygulnacağı string.</param>
+            <returns>İşlemden geçirilimiş string.</returns>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Utils.Commons.StringUtils.CapitalizeFirstLetters(System.String)">
+            <summary>
+            İlk harfleri büyük harfe diğerlerini küçük harfe çevirir.
+            </summary>
+            <param name="value">İşlemin uygulnacağı string.</param>
+            <returns>İşlemden geçirilimiş string.</returns>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Utils.Commons.StringUtils.Right(System.String,System.Int32)">
+            <summary>
+            Stringin verilen uzunluk doğrultusunda sağ tarafını döndürür.
+            </summary>
+            <param name="value">Döndürülücek string.</param>
+            <param name="length">Döndürme uzunluğu.</param>
+            <returns>Döndürülmüş string.</returns>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Utils.Commons.StringUtils.Left(System.String,System.Int32)">
+            <summary>
+            Stringin verilen uzunluk doğrultusunda sol tarafını döndürür
+            </summary>
+            <param name="value">Döndürülücek string.</param>
+            <param name="length">Döndürme uzunluğu.</param>
+            <returns>Döndürülmüş string.</returns>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Utils.Commons.StringUtils.StripHtml(System.String)">
+            <summary>
+            Verilen stringin html taglarını temizler.
+            </summary>
+            <param name="html">Temizlenecek html.</param>
+            <returns>Temizlenmiş html.</returns>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Utils.Commons.StringUtils.StripWhiteSpace(System.String)">
+            <summary>
+            Ekstra White Spaceleri kaldırır.
+            </summary>
+            <param name="value">White Spaceleri kaldırılacak string.</param>
+            <returns>White Spaceleri kaldırılmış string.</returns>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Utils.Commons.StringUtils.ConvertToDelimetedText(System.String[],System.Char)">
+            <summary>
+            Verilen string dizisini birleştirir.
+            </summary>
+            <param name="strList">Strting Dizisi.</param>
+            <param name="seperator">Birleştirme Karakteri.</param>
+            <returns>Birleştirilimiş string.</returns>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Utils.Commons.StringUtils.IsMatch(System.String,System.String,System.Boolean)">
+            <summary>
+            Girinelen stringde verilen Expression'ı arar.
+            </summary>
+            <param name="value">Arama yapılacak string.</param>
+            <param name="regularExpression">Arama kriterini içeren expression.</param>
+            <param name="matchEntirely">Tümünü Ara.</param>
+            <returns>Arama sonucu.</returns>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Utils.Commons.StringUtils.FileSizeToStringKB(System.Int64)">
+            <summary>
+            Converts a number value into a string that represents the number
+            expressed in whole kilobytes. This is a format similar to the
+            Windows Explorer "Size" column.
+            </summary>
+            <param name="fileSize">
+            The file Size.
+            </param>
+            <returns>
+            The file size to string kb.
+            </returns>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Utils.Commons.StringUtils.FileSizeToString(System.Int64)">
+            <summary>
+            Converts a numeric value into a string that represents the number
+            expressed as a size value in bytes, kilobytes, megabytes, gigabytes,
+            or terabytes depending on the size. Output is identical to
+            StrFormatByteSize() in shlwapi.dll. This is a format similar to
+            the Windows Explorer file Properties page. For example:
+                 532 -&gt;  532 bytes
+                1240 -&gt; 1.21 KB
+              235606 -&gt;  230 KB
+             5400016 -&gt; 5.14 MB
+            </summary>
+            <param name="fileSize">
+            The file Size.
+            </param>
+            <remarks>
+            It was surprisingly difficult to emulate the StrFormatByteSize() function
+            due to a few quirks. First, the function only displays three digits:
+             - displays 2 decimal places for values under 10            (e.g. 2.12 KB)
+             - displays 1 decimal place for values under 100            (e.g. 88.2 KB)
+             - displays 0 decimal places for values under 1000         (e.g. 532 KB)
+             - jumps to the next unit of measure for values over 1000    (e.g. 0.97 MB)
+            The second quirk: insiginificant digits are truncated rather than
+            rounded. The original function likely uses integer math.
+            This implementation was tested to 100 TB.
+            </remarks>
+            <returns>
+            The file size to string.
+            </returns>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Utils.Commons.StringUtils.Join(System.String[],System.String)">
+            <summary>
+            Verilen string arrayini seperator ile join eder.
+            </summary>
+            <param name="values">String arrayi.</param>
+            <param name="seperator">Join işleminde kullanılacak seperator.</param>
+            <returns>Joinlenmiş string.</returns>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,477 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CodeFiction.DarkMatterFramework.Libraries.ConversionLibrary</name>
+    </assembly>
+    <members>
+        <member name="T:CodeFiction.DarkMatterFramework.Libraries.ConversionLibrary.ConversionHelper">
+            <summary>
+            Convert işlemlerine yardımcı olan sınıf.
+            </summary>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.ConversionLibrary.ConversionHelper.CastDBValue``1(System.Object,``0)">
+            <summary>
+            Databaseden gelen değeri istenen tipe cast eder, edemezse defaultValueyu döner.
+            </summary>
+            <typeparam name="T">Cast edilmek istenilen tip.</typeparam>
+            <param name="o">Cast edilmek istenilen değer.</param>
+            <param name="defaultValue">Cast edilememesi durumunda döndürülecek
+            değer.</param>
+            <returns>
+            Cast edilmiş değer.
+            </returns>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.ConversionLibrary.ConversionHelper.CastDBValue``1(System.Object)">
+            <summary>
+            Databaseden gelen value'yu istenen tipe cast eder.
+            </summary>
+            <typeparam name="T">Cast edilmek istenilen tip.</typeparam>
+            <param name="o">Cast edilmek istenilen value.</param>
+            <returns>
+            Cast edilmiş value.
+            </returns>
+            <exception cref="!:CodeFiction.DarkMatterFramework.Libraries.ConversionLibrary.Exceptions.ConversionException">
+            Conversion işlemi sırasında bir hata oluşursa fırlatılacak olan
+            <see cref="!:CodeFiction.DarkMatterFramework.Libraries.ConversionLibrary.Exceptions.ConversionException">ConversionException.</see>
+            </exception>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.ConversionLibrary.ConversionHelper.ConvertTo``1(System.Object,``0)">
+            <summary>
+            Verilen değer'in tipini istenilen tipe çevirir, çevirilemesi halinde
+            defaultValueyu döner.
+            </summary>
+            <typeparam name="T">Çevrilmek istenilen tip.</typeparam>
+            <param name="value">Çevrilmek istenilen değer.</param>
+            <param name="defaultValue">Çevrilememesi durumunda döndürülecek değer.</param>
+            <returns>
+            Çevrilmiş değer.
+            </returns>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.ConversionLibrary.ConversionHelper.ConvertTo``1(System.Object)">
+            <summary>
+            Verilen değer'in tipini istenilen tipe çevirir.
+            </summary>
+            <typeparam name="T">Çevrilmek istenilen tip.</typeparam>
+            <param name="value">Çevrilmek istenilen değer.</param>
+            <returns>
+            Çevrilmiş değer.
+            </returns>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.ConversionLibrary.ConversionHelper.ConvertTo``1(System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Value'nun tipini istenilen tipe verilen CultureInfo'ya göre çevirir.
+            </summary>
+            <typeparam name="T">Çevrilmek istenilen tip.</typeparam>
+            <param name="value">Çevrilmek istenilen değer.</param>
+            <param name="culture">Culture bilgisi.</param>
+            <returns>
+            Çevrilmiş değer.
+            </returns>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.ConversionLibrary.ConversionHelper.ConvertTo(System.Type,System.Object)">
+            <summary>
+            Value'nun tipini istenilen tipe çevirir object olarak döner. Cast işlemi
+            kullanıcaya bırakılmıştır.
+            </summary>
+            <param name="t">Çevrilmek istenilen tip.</param>
+            <param name="value">Çevrilmek istenilen değer.</param>
+            <returns>
+            Çevrilmiş değer.
+            </returns>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.ConversionLibrary.ConversionHelper.ConvertTo(System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Value'nun tipini istenilen tipe CultureInfo'ya göre çevirir object olarak döner.
+            Cast işlemi kullanıcaya bırakılmıştır.
+            </summary>
+            <param name="t">Çevrilmek istenilen tip.</param>
+            <param name="value">Çevrilmek istenilen değer.</param>
+            <param name="culture">Culture Tipi</param>
+            <returns>
+            Çevrilmiş değer.
+            </returns>
+            <exception cref="!:CodeFiction.DarkMatterFramework.Libraries.ConversionLibrary.Exceptions.ConversionException">
+            Conversion işlemi sırasında bir hata oluşursa fırlatılacak olan
+            <see cref="!:CodeFiction.DarkMatterFramework.Libraries.ConversionLibrary.Exceptions.ConversionException">ConversionException.</see>
+            </exception>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.ConversionLibrary.ConversionHelper.ChangeType``1(System.Object,``0)">
+            <summary>
+            Verilen değer'in tipini istenilen tipe çevirir, çevirilemesi halinde
+            defaultValueyu döner.
+            </summary>
+            <typeparam name="T">Çevrilmek istenilen tip.</typeparam>
+            <param name="value">Çevrilmek istenilen değer.</param>
+            <param name="defaultValue">Çevrilememesi durumunda döndürülecek değer.</param>
+            <returns>
+            Çevrilmiş değer.
+            </returns>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.ConversionLibrary.ConversionHelper.ChangeType``1(System.Object)">
+            <summary>
+            Verilen değer'in tipini istenilen tipe çevirir.
+            </summary>
+            <typeparam name="T">Çevrilmek istenilen tip.</typeparam>
+            <param name="value">Çevrilmek istenilen değer.</param>
+            <returns>
+            Çevrilmiş değer.
+            </returns>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.ConversionLibrary.ConversionHelper.ChangeType``1(System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Value'nun tipini istenilen tipe verilen CultureInfo'ya göre çevirir.
+            </summary>
+            <typeparam name="T">Çevrilmek istenilen tip.</typeparam>
+            <param name="value">Çevrilmek istenilen değer.</param>
+            <param name="culture">Culture bilgisi.</param>
+            <returns>
+            Çevrilmiş değer.
+            </returns>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.ConversionLibrary.ConversionHelper.ChangeType(System.Type,System.Object)">
+            <summary>
+            Value'nun tipini istenilen tipe çevirir object olarak döner. Cast işlemi
+            kullanıcaya bırakılmıştır.
+            </summary>
+            <param name="t">Çevrilmek istenilen tip.</param>
+            <param name="value">Çevrilmek istenilen değer.</param>
+            <returns>
+            Çevrilmiş değer.
+            </returns>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.ConversionLibrary.ConversionHelper.ChangeType(System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Value'nun tipini istenilen tipe CultureInfo'ya göre çevirir object olarak döner.
+            Cast işlemi kullanıcaya bırakılmıştır.
+            </summary>
+            <param name="t">Çevrilmek istenilen tip.</param>
+            <param name="value">Çevrilmek istenilen değer.</param>
+            <param name="culture">Culture Tipi</param>
+            <returns>
+            Çevrilmiş değer.
+            </returns>
+            <exception cref="!:CodeFiction.DarkMatterFramework.Libraries.ConversionLibrary.Exceptions.ConversionException">
+            Conversion işlemi sırasında bir hata oluşursa fırlatılacak olan
+            <see cref="!:CodeFiction.DarkMatterFramework.Libraries.ConversionLibrary.Exceptions.ConversionException">ConversionException.</see>
+            </exception>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.ConversionLibrary.ConversionHelper.CommonConvertOperation(System.Type,System.Object,System.Globalization.CultureInfo,System.Boolean)">
+            <summary>
+            Value'nun tipini istenilen tipe CultureInfo'ya göre çevirir object olarak döner.
+            Cast işlemi kullanıcaya bırakılmıştır.
+            </summary>
+            <param name="t">Çevrilmek istenilen tip.</param>
+            <param name="value">Çevrilmek istenilen değer.</param>
+            <param name="culture">Culture Tipi</param>
+            <param name="safeConvert">Çevirme işleminin güvenli olup olmayacağını belirler</param>
+            <returns>
+            Çevrilmiş değer.
+            </returns>
+            <exception cref="!:CodeFiction.DarkMatterFramework.Libraries.ConversionLibrary.Exceptions.ConversionException">
+            Conversion işlemi sırasında bir hata oluşursa fırlatılacak olan
+            <see cref="!:CodeFiction.DarkMatterFramework.Libraries.ConversionLibrary.Exceptions.ConversionException">ConversionException.</see>
+            </exception>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.ConversionLibrary.ConversionHelper.Parse``1(System.String,``0)">
+            <summary>
+            Verilen stringi istenilen tipe parse eder.
+            </summary>
+            <param name="value">Parse edilmek istenilen değer.</param>
+            <param name="defualtValue">
+            Parse işleminin başarısız olması helinde dönücek değer.
+            </param>
+            <typeparam name="T">Parse edilmek istenilen tip.</typeparam>
+            <returns>
+            Parse edilmiş değer.
+            </returns>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.ConversionLibrary.ConversionHelper.Parse``1(System.String)">
+            <summary>
+            Verilen stringi istenilen tipe parse eder.
+            </summary>
+            <typeparam name="T">Parse edilmek istenilen tip.</typeparam>
+            <param name="value">Parse edilmek istenilen değer.</param>
+            <returns>
+            Parse edilmiş değer.
+            </returns>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.ConversionLibrary.ConversionHelper.Parse``1(System.String,System.Globalization.CultureInfo)">
+            <summary>
+            Verilen stringi istenilen tipe CultureInfo'ya göre parse eder.
+            </summary>
+            <typeparam name="T">Parse edilmek istenilen tip.</typeparam>
+            <param name="value">Parse edilmek istenilen değer.</param>
+            <param name="cultureInfo">Culture Tipi.</param>
+            <returns>
+            Parse edilmiş değer.
+            </returns>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.ConversionLibrary.ConversionHelper.Parse(System.Type,System.String)">
+            <summary>
+            Value'nun tipini istenilen tipe çevirir object olarak döner. Cast işlemi
+            kullanıcaya bırakılmıştır.
+            </summary>
+            <param name="t">Parse edilmek istenilen tip.</param>
+            <param name="value">Parse edilmek istenilen value.</param>
+            <returns>
+            Parse edilmiş değer.
+            </returns>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.ConversionLibrary.ConversionHelper.Parse(System.Type,System.String,System.Globalization.CultureInfo)">
+            <summary>
+            Value'nun tipini istenilen tipe çevirir object olarak döner. Cast işlemi
+            kullanıcaya bırakılmıştır.
+            </summary>
+            <param name="t">Parse edilmek istenilen tip.</param>
+            <param name="value">Parse edilmek istenilen value.</param>
+            <param name="culture">Culture Tipi.</param>
+            <returns>
+            Parse edilmiş değer.
+            </returns>
+            <exception cref="!:CodeFiction.DarkMatterFramework.Libraries.ConversionLibrary.Exceptions.ConversionException">
+            Conversion işlemi sırasında bir hata oluşursa fırlatılacak olan
+            <see cref="!:CodeFiction.DarkMatterFramework.Libraries.ConversionLibrary.Exceptions.ConversionException">ConversionException.</see>
+            </exception>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.ConversionLibrary.ConversionHelper.RegisterTypeConverter``2">
+            <summary>
+            Custom objelerin diğer tiplere dönüştürme işlemleri için, tanımların register
+            edildiği method.
+            </summary>
+            <typeparam name="T">Dönüştürülmek istenilen tip.</typeparam>
+            <typeparam name="TC">TypeConverter sınıfından türemiş Converter
+            sınıfı.</typeparam>
+        </member>
+        <member name="T:CodeFiction.DarkMatterFramework.Libraries.ConversionLibrary.Exceptions.ConversionException">
+            <summary>
+            Convert hatalarında fırlatılacak exception.
+            </summary>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.ConversionLibrary.Exceptions.ConversionException.#ctor(System.String,System.Exception)">
+            <summary>
+            <see cref="T:CodeFiction.DarkMatterFramework.Libraries.ConversionLibrary.Exceptions.ConversionException">
+            ConversionException</see>'ı mesaj ve hataya sebep olan Inner exception ile
+            initialize eder.
+            </summary>
+            <param name="exceptionMessage">Exception'ın mesajı.</param>
+            <param name="exp">Hataya sebep olan Inner exception.</param>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.ConversionLibrary.Exceptions.ConversionException.#ctor(System.Exception)">
+            <summary>
+            <see cref="T:CodeFiction.DarkMatterFramework.Libraries.ConversionLibrary.Exceptions.ConversionException">
+            ConversionException</see>'ı hataya sebep olan Inner exception ile initialize
+            eder.
+            </summary>
+            <param name="exp">Hataya sebep olan Inner exception</param>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.ConversionLibrary.Exceptions.ConversionException.#ctor(System.String)">
+            <summary>
+            <see cref="T:CodeFiction.DarkMatterFramework.Libraries.ConversionLibrary.Exceptions.ConversionException">
+            ConversionException</see>'ı mesaj ile initialize eder.
+            </summary>
+            <param name="exceptionMessage">Exception'ın mesajı.</param>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.ConversionLibrary.Exceptions.ConversionException.#ctor">
+            <summary>
+            <see cref="T:CodeFiction.DarkMatterFramework.Libraries.ConversionLibrary.Exceptions.ConversionException">
+            ConversionException</see>'ı initialize eder.
+            </summary>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.ConversionLibrary.Exceptions.ConversionException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            <see cref="T:CodeFiction.DarkMatterFramework.Libraries.ConversionLibrary.Exceptions.ConversionException">
+            ConversionException</see>'ı serileştirilmiş data ile initialize eder.
+            </summary>
+            <param name="serializationInfo">Serileştirilmiş obje bilgisini tutar.</param>
+            <param name="context">Kaynak veya hedef hakkındaki ilişkisel bilgi.</param>
+        </member>
+        <member name="T:System.StringExtensions">
+            <summary>
+            Stringi bir tipi parse etmede kullanılacak extension methodlar.
+            </summary>
+        </member>
+        <member name="M:System.StringExtensions.ToNullableDouble(System.String)">
+            <summary>
+            Stringi Nullable Double a çevirir.
+            </summary>
+            <param name="text">Çevirilecek string</param>
+            <returns>Çevrilmiş double.</returns>
+        </member>
+        <member name="M:System.StringExtensions.ToDouble(System.String)">
+            <summary>
+            Stringi Double a çevirir.
+            </summary>
+            <param name="text">Çevirilecek string.</param>
+            <returns>Çevrilmiş double.</returns>
+        </member>
+        <member name="M:System.StringExtensions.ToDouble(System.String,System.Double)">
+            <summary>
+            Stringi Double a çevirir. Çevirememesi halinde
+            default valueyu döner.
+            </summary>
+            <param name="text">Çevirilecek string.</param>
+            <param name="defaultValue">
+             Çevrilme işleminin başarısız olması helinde dönücek değer.
+            </param>
+            <returns>Çevrilmiş double. </returns>
+        </member>
+        <member name="M:System.StringExtensions.ToNullableFloat(System.String)">
+            <summary>
+            Stringi Nullable Float a çevirir.
+            </summary>
+            <param name="text">Çevirilecek string</param>
+            <returns>Çevrilmiş float.</returns>
+        </member>
+        <member name="M:System.StringExtensions.ToFloat(System.String)">
+            <summary>
+            Stringi Float a çevirir.
+            </summary>
+            <param name="text">Çevirilecek string.</param>
+            <returns>Çevrilmiş float.</returns>
+        </member>
+        <member name="M:System.StringExtensions.ToFloat(System.String,System.Single)">
+            <summary>
+            Stringi Float a çevirir. Çevirememesi halinde
+            default valueyu döner.
+            </summary>
+            <param name="text">Çevirilecek string.</param>
+            <param name="defaultValue">
+             Çevrilme işleminin başarısız olması helinde dönücek değer.
+            </param>
+            <returns>Çevrilmiş float.</returns>
+        </member>
+        <member name="M:System.StringExtensions.ToNullableInt64(System.String)">
+            <summary>
+            Stringi Nullable Int64 e çevirir.
+            </summary>
+            <param name="text">Çevirilecek string.</param>
+            <returns>Çevrilmiş long.</returns>
+        </member>
+        <member name="M:System.StringExtensions.ToInt64(System.String)">
+            <summary>
+            Stringi Int64 e çevirir.
+            </summary>
+            <param name="text">Çevirilecek string.</param>
+            <returns>Çevrilmiş long.</returns>
+        </member>
+        <member name="M:System.StringExtensions.ToInt64(System.String,System.Int64)">
+            <summary>
+            Stringi Int64 e çevirir.
+            </summary>
+            <param name="text">Çevirilecek string.</param>
+            <param name="defaultValue">
+             Çevrilme işleminin başarısız olması helinde dönücek değer.
+            </param>
+            <returns>Çevrilmiş long.</returns>
+        </member>
+        <member name="M:System.StringExtensions.ToNullableInt32(System.String)">
+            <summary>
+            Stringi Nullable Int32 ye çevirir.
+            </summary>
+            <param name="text">Çevirilecek string.</param>
+            <returns>Çevrilmiş int.</returns>
+        </member>
+        <member name="M:System.StringExtensions.ToInt32(System.String)">
+            <summary>
+            Stringi Int32 ye çevirir.
+            </summary>
+            <param name="text">Çevirilecek string.</param>
+            <returns>Çevrilmiş int.</returns>
+        </member>
+        <member name="M:System.StringExtensions.ToInt32(System.String,System.Int32)">
+            <summary>
+            Stringi Int32 e çevirir.
+            </summary>
+            <param name="text">Çevirilecek string.</param>
+            <param name="defaultValue">
+             Çevrilme işleminin başarısız olması helinde dönücek değer.
+            </param>
+            <returns>Çevrilmiş int.</returns>
+        </member>
+        <member name="M:System.StringExtensions.ToNullableInt16(System.String)">
+            <summary>
+            Stringi Nullable Int16 ye çevirir.
+            </summary>
+            <param name="text">Çevirilecek string.</param>
+            <returns>Çevrilmiş short.</returns>
+        </member>
+        <member name="M:System.StringExtensions.ToInt16(System.String)">
+            <summary>
+            Stringi Int16 ye çevirir.
+            </summary>
+            <param name="text">Çevirilecek string.</param>
+            <returns>Çevrilmiş short.</returns>
+        </member>
+        <member name="M:System.StringExtensions.ToInt16(System.String,System.Int16)">
+            <summary>
+            Stringi Int16 e çevirir.
+            </summary>
+            <param name="text">Çevirilecek string.</param>
+            <param name="defaultValue">
+             Çevrilme işleminin başarısız olması helinde dönücek değer.
+            </param>
+            <returns>Çevrilmiş short.</returns>
+        </member>
+        <member name="M:System.StringExtensions.ToNullableByte(System.String)">
+            <summary>
+            Stringi Nullable Byte a çevirir.
+            </summary>
+            <param name="text">Çevirilecek string.</param>
+            <returns>Çevrilmiş byte.</returns>
+        </member>
+        <member name="M:System.StringExtensions.ToByte(System.String)">
+            <summary>
+            Stringi Byte a çevirir.
+            </summary>
+            <param name="text">Çevirilecek string.</param>
+            <returns>Çevrilmiş short.</returns>
+        </member>
+        <member name="M:System.StringExtensions.ToByte(System.String,System.Byte)">
+            <summary>
+            Stringi Byte a çevirir.
+            </summary>
+            <param name="text">Çevirilecek string.</param>
+            <param name="defaultValue">
+             Çevrilme işleminin başarısız olması helinde dönücek değer.
+            </param>
+            <returns>Çevrilmiş byte.</returns>
+        </member>
+        <member name="M:System.StringExtensions.ToNullableDateTime(System.String)">
+            <summary>
+            Stringi Nullable DateTime a çevirir.
+            </summary>
+            <param name="text">String İfade.</param>
+            <returns>Çevirilen DateTime.</returns>
+        </member>
+        <member name="M:System.StringExtensions.ToDateTime(System.String)">
+            <summary>
+            Stringi DateTime a çevirir.
+            </summary>
+            <param name="text">String İfade.</param>
+            <returns>Çevirilen DateTime.</returns>
+        </member>
+        <member name="M:System.StringExtensions.ToDateTime(System.String,System.DateTime)">
+            <summary>
+            Stringi DateTime a çevirir.
+            </summary>
+            <param name="text">String İfade.</param>
+            <param name="defaultValue">Çevirilime halinde geri dönüş değeri.</param>
+            <returns>Çevirilen DateTime.</returns>
+        </member>
+        <member name="M:System.StringExtensions.ConvertTo``1(System.String)">
+            <summary>
+            Stringi T tipine çevirir.
+            </summary>
+            <typeparam name="T">Çevirilmek istenilen tip.</typeparam>
+            <param name="text">Çevirilecek string.</param>
+            <returns>Çevrilmiş string.</returns>
+        </member>
+        <member name="M:System.StringExtensions.ConvertTo``1(System.String,``0)">
+            <summary>Stringi T tipine çevirir.</summary>
+            <typeparam name="T">Çevirilmek istenilen tip.</typeparam>
+            <param name="text">Çevirilecek string.</param>
+            <param name="defaultValue">Çevirilime halinde geri dönüş değeri.</param>
+            <returns>Çevrilmiş string.</returns>
+        </member>
+    </members>
+</doc>

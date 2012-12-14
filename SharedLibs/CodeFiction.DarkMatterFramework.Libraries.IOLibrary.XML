@@ -1,0 +1,207 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CodeFiction.DarkMatterFramework.Libraries.IOLibrary</name>
+    </assembly>
+    <members>
+        <member name="T:CodeFiction.DarkMatterFramework.Libraries.IOLibrary.Exceptions.IOLibException">
+            <summary>
+            IO işlemlerinde hata oluşursa fırlatılacak exception.
+            </summary>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.IOLibrary.Exceptions.IOLibException.#ctor(System.String,System.Exception)">
+            <summary>
+            <see cref="T:CodeFiction.DarkMatterFramework.Libraries.IOLibrary.Exceptions.IOLibException">
+            IOLibException</see>'ı mesaj ve hataya sebep olan Inner exception ile
+            initialize eder.
+            </summary>
+            <param name="exceptionMessage">Exception'ın mesajı.</param>
+            <param name="exp">Hataya sebep olan Inner exception.</param>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.IOLibrary.Exceptions.IOLibException.#ctor(System.Exception)">
+            <summary>
+            <see cref="T:CodeFiction.DarkMatterFramework.Libraries.IOLibrary.Exceptions.IOLibException">
+            IOLibException</see>'ı hataya sebep olan Inner exception ile
+            initialize eder.
+            </summary>
+            <param name="exp">Hataya sebep olan Inner exception</param>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.IOLibrary.Exceptions.IOLibException.#ctor(System.String)">
+            <summary>
+            <see cref="T:CodeFiction.DarkMatterFramework.Libraries.IOLibrary.Exceptions.IOLibException">
+            IOLibException</see>'ı mesaj initialize eder.
+            </summary>
+            <param name="exceptionMessage">Exception'ın mesajı.</param>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.IOLibrary.Exceptions.IOLibException.#ctor">
+            <summary>
+            <see cref="T:CodeFiction.DarkMatterFramework.Libraries.IOLibrary.Exceptions.IOLibException">
+            IOLibException</see>'ı initialize eder.
+            </summary>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.IOLibrary.Exceptions.IOLibException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            <see cref="T:CodeFiction.DarkMatterFramework.Libraries.IOLibrary.Exceptions.IOLibException">
+            IOLibException</see>'ı serileştirilmiş data ile initialize eder.
+            </summary>
+            <param name="serializationInfo">Serileştirilmiş obje bilgisini tutar.</param>
+            <param name="context">Kaynak veya hedef hakkındaki ilişkisel bilgi.</param>
+        </member>
+        <member name="T:CodeFiction.DarkMatterFramework.Libraries.IOLibrary.BinaryHelper">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.IOLibrary.BinaryHelper.GetBytes(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            </summary>
+            <param name="bytes"></param>
+            <param name="startIndex"></param>
+            <param name="count"></param>
+            <returns></returns>
+            <exception cref="T:CodeFiction.DarkMatterFramework.Libraries.IOLibrary.Exceptions.IOLibException"></exception>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.IOLibrary.BinaryHelper.WriteToBytes(System.Byte[],System.Byte[],System.Int32)">
+            <summary>
+            </summary>
+            <param name="source"></param>
+            <param name="to"></param>
+            <param name="toStartIndex"></param>
+            <exception cref="T:CodeFiction.DarkMatterFramework.Libraries.IOLibrary.Exceptions.IOLibException"></exception>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.IOLibrary.IoHelper.CreateFile(System.String,System.String)">
+            <summary>
+            İçeriği verilen dosya yoluna kaydeder
+            </summary>
+            <param name="filePath">Dosya yolu</param>
+            <param name="content">String içerik</param>
+            <exception cref="T:CodeFiction.DarkMatterFramework.Libraries.IOLibrary.Exceptions.IOLibException">İçerik
+            kaydedilirken bir hata oluşursa fırlatılacak <see cref="T:CodeFiction.DarkMatterFramework.Libraries.IOLibrary.Exceptions.IOLibException">IOLibException.</see></exception>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.IOLibrary.IoHelper.CreateFile(System.String,System.IO.Stream)">
+            <summary>
+            Streami verilen dosya yoluna kaydeder
+            </summary>
+            <param name="filePath">Dosya yolu</param>
+            <param name="content">Stream içerik</param>
+            <exception cref="T:CodeFiction.DarkMatterFramework.Libraries.IOLibrary.Exceptions.IOLibException">İçerik
+            kaydedilirken bir hata oluşursa fırlatılacak <see cref="T:CodeFiction.DarkMatterFramework.Libraries.IOLibrary.Exceptions.IOLibException">IOLibException.</see></exception>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.IOLibrary.IoHelper.CreateFile(System.String,System.Byte[])">
+            <summary>
+            Byte[] içeriği verilen dosya yoluna kaydeder
+            </summary>
+            <param name="filePath">Dosya yolu</param>
+            <param name="content">Byte içerik</param>
+            <exception cref="T:CodeFiction.DarkMatterFramework.Libraries.IOLibrary.Exceptions.IOLibException">İçerik
+            kaydedilirken bir hata oluşursa fırlatılacak <see cref="T:CodeFiction.DarkMatterFramework.Libraries.IOLibrary.Exceptions.IOLibException">IOLibException.</see></exception>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.IOLibrary.IoHelper.ReadFile(System.String)">
+            <summary>
+            Verilen dosya yolundaki dosyayı string olarak döndürür
+            </summary>
+            <param name="filePath">Dosya yolu</param>
+            <returns>Dosya içeriği</returns>
+            <exception cref="T:CodeFiction.DarkMatterFramework.Libraries.IOLibrary.Exceptions.IOLibException">Dosya 
+            okunurken bir hata oluşursa fıraltılacak <see cref="T:CodeFiction.DarkMatterFramework.Libraries.IOLibrary.Exceptions.IOLibException">IOLibException.</see></exception>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.IOLibrary.IoHelper.ReadBinaryFile(System.String)">
+            <summary>
+            Verilen dosya yolundaki dosyayı binary olarak döndürür
+            </summary>
+            <param name="filePath">Dosya yolu</param>
+            <returns>Dosya içeriği</returns>
+            <exception cref="T:CodeFiction.DarkMatterFramework.Libraries.IOLibrary.Exceptions.IOLibException">Dosya 
+            okunurken bir hata oluşursa fıraltılacak <see cref="T:CodeFiction.DarkMatterFramework.Libraries.IOLibrary.Exceptions.IOLibException">IOLibException.</see></exception>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.IOLibrary.IoHelper.GetFileSystemInfo(System.String)">
+            <summary>
+            Verilen dizinin FileSystem bilgisini döndürür
+            </summary>
+            <param name="path">Dizin</param>
+            <returns></returns>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.IOLibrary.IoHelper.GetFileInfos(System.String,System.String[])">
+            <summary>
+            Verilen dizindeki dosyanaların bilgilerini döndürür
+            </summary>
+            <param name="path">Dizin</param>
+            <param name="searchPatterns">Arama Patterni</param>
+            <returns></returns>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.IOLibrary.IoHelper.GetFileInfos(System.String,System.String[],System.IO.SearchOption)">
+            <summary>
+            Verilen dizindeki dosyanaların bilgilerini döndürür
+            </summary>
+            <param name="path">Dizin</param>
+            <param name="searchPatterns">Arama Patterni</param>
+            <param name="searchOption">Arama Seçeneği</param>
+            <returns></returns>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.IOLibrary.IoHelper.CheckAndCreateDirectory(System.String)">
+            <summary>
+            Directory varmı yokmu diye kontrol eder, yoksa yaratır.
+            </summary>
+            <param name="directoryPath">
+            Directory pathi.
+            </param>
+        </member>
+        <member name="T:CodeFiction.DarkMatterFramework.Libraries.IOLibrary.StreamHelper">
+            <summary>
+            This class represents a Stream Helper.
+            </summary>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.IOLibrary.StreamHelper.WriteByteOrderMark(System.IO.StreamWriter)">
+            <summary>
+            Write Byte Order Mark(BOM) of streamWriter's Encoding
+            to streamWriter's underlying stream.
+            </summary>
+            <param name="streamWriter">The stream writer.</param>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.IOLibrary.StreamHelper.WriteBytes(System.IO.Stream,System.Byte[])">
+            <summary>
+            Writes the bytes.
+            </summary>
+            <param name="stream">The stream.</param>
+            <param name="bytes">The bytes.</param>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.IOLibrary.StreamHelper.ReadBytes(System.IO.Stream,System.Int32)">
+            <summary>
+            Reads the bytes.
+            </summary>
+            <param name="stream">The stream.</param>
+            <param name="count">The count.</param>
+            <returns>Readed Bytes</returns>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.IOLibrary.StreamHelper.ReadBytes(System.IO.Stream,System.Byte[])">
+            <summary>
+            Reads the bytes.
+            </summary>
+            <param name="stream">The stream.</param>
+            <param name="buffer">The buffer.</param>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.IOLibrary.StreamHelper.ReadToEnd(System.IO.Stream)">
+            <summary>
+            Reads to end.
+            </summary>
+            <param name="stream">The stream.</param>
+            <returns>Readed Bytes</returns>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.IOLibrary.StreamHelper.SearchStream(System.IO.Stream,System.Byte[])">
+            <summary>
+            Search the first occurance of values from current position in stream
+            </summary>
+            <param name="stream">The stream</param>
+            <param name="values">Byte values</param>
+            <returns>the stream position after values or -1 if not fount</returns>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.IOLibrary.StreamHelper.SearchStream(System.IO.Stream,System.Byte[],System.Int32)">
+            <summary>
+            Search the first occurance of values from current position in stream within start range
+            </summary>
+            <param name="stream">The stream</param>
+            <param name="values">Byte values</param>
+            <param name="maxlength">Maximum bytes to seach</param>
+            <returns>Search result.</returns>
+        </member>
+    </members>
+</doc>

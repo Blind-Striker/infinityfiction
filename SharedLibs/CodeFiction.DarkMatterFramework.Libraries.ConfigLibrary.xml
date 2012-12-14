@@ -1,0 +1,355 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary</name>
+    </assembly>
+    <members>
+        <member name="T:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.CodeFictionElements.NameTypeConfigurationElementCollection`1">
+            <summary>
+            Tip ve isim alan <see cref="T:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.CodeFictionElements.NameTypeConfigurationElement">
+            CodeFictionNameTypeConfigurationElement</see> için
+            <see cref="T:System.Configuration.ConfigurationElementCollection">ConfigurationElementCollection</see>
+            </summary>
+            <typeparam name="T">
+            ConfiguratioElement tipi.
+            </typeparam>
+        </member>
+        <member name="F:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.CodeFictionElements.NameTypeConfigurationElementCollection`1.ORDER_PROPERTY_NAME">
+            <summary>
+            The XML name of the <see cref="P:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.CodeFictionElements.NameTypeConfigurationElementCollection`1.Order"/> property.
+            </summary>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.CodeFictionElements.NameTypeConfigurationElementCollection`1.GetItemAt(System.Int32)">
+            <summary>
+            Elementi indexiyle al.
+            </summary>
+            <param name="index">Elementin indexi</param>
+            <returns>İndexine göre element.</returns>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.CodeFictionElements.NameTypeConfigurationElementCollection`1.Add(`0)">
+            <summary>
+            Element collectiona element ekler.
+            </summary>
+            <param name="element">Eklenecek element.</param>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.CodeFictionElements.NameTypeConfigurationElementCollection`1.GetItemByKey(System.String)">
+            <summary>
+            String isme göre elementi alır.
+            </summary>
+            <param name="name">Elementin string ismi.</param>
+            <returns>İsme göre element.</returns>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.CodeFictionElements.NameTypeConfigurationElementCollection`1.Contains(System.String)">
+            <summary>
+            Element varmı yok mu kontrolünü yapar.
+            </summary>
+            <param name="name">Element ismi.</param>
+            <returns>Element varmı yokmu.</returns>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.CodeFictionElements.NameTypeConfigurationElementCollection`1.Remove(System.String)">
+            <summary>
+            Elementi collectiondan çıkarır.
+            </summary>
+            <param name="name">Çıkarılacak elementin ismi.</param>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.CodeFictionElements.NameTypeConfigurationElementCollection`1.Clear">
+            <summary>
+            Element Collection ı temizler.
+            </summary>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.CodeFictionElements.NameTypeConfigurationElementCollection`1.System#Collections#Generic#IEnumerable{T}#GetEnumerator">
+            <summary>
+            Elementin Enumeratorünü alır.
+            </summary>
+            <returns>Elementin enumeratorü.</returns>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.CodeFictionElements.NameTypeConfigurationElementCollection`1.CreateNewElement">
+            <summary>
+            Creates a new <see cref="T:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.CodeFictionElements.NameTypeConfigurationElement">
+            CodeFictionNameTypeConfigurationElement</see>.
+            </summary>
+            <returns>
+            A new <see cref="T:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.CodeFictionElements.NameTypeConfigurationElement">
+            CodeFictionNameTypeConfigurationElement</see>.
+            </returns>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.CodeFictionElements.NameTypeConfigurationElementCollection`1.GetElementKey(System.Configuration.ConfigurationElement)">
+            <summary>
+            Gets the element key for the specified configuration element.
+            </summary>
+            <param name="element">The <see cref="T:System.Configuration.ConfigurationElement"/> to return the key for.</param>
+            <returns>
+            An <see cref="T:System.Object"/> that acts as the key for the specified <see cref="T:System.Configuration.ConfigurationElement"/>.
+            </returns>
+        </member>
+        <member name="P:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.CodeFictionElements.NameTypeConfigurationElementCollection`1.Order">
+            <summary>
+            Gets or sets the Order.
+            </summary>
+        </member>
+        <member name="P:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.CodeFictionElements.NameTypeConfigurationElementCollection`1.Item(System.Int32)">
+            <summary>
+            Gets the <see cref="T:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.CodeFictionElements.NameTypeConfigurationElement">
+            CodeFictionNameTypeConfigurationElement</see>
+            at the specified index.
+            </summary>
+            <param name="index">The index of the <see cref="T:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.CodeFictionElements.NameTypeConfigurationElement">
+            CodeFictionNameTypeConfigurationElement</see> to retrieve.</param>
+        </member>
+        <member name="P:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.CodeFictionElements.NameTypeConfigurationElementCollection`1.Item(System.Object)">
+            <summary>
+            Gets the <see cref="T:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.CodeFictionElements.NameTypeConfigurationElement">
+            CodeFictionNameTypeConfigurationElement</see> with the specified key.
+            </summary>
+            <param name="key">The key of the <see cref="T:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.CodeFictionElements.NameTypeConfigurationElement">
+            CodeFictionNameTypeConfigurationElement</see> to retrieve.</param>
+        </member>
+        <member name="T:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.Managers.ConfigManager">
+            <summary>
+            Standart .Net Framework config dosyası işlemlerinin yapıldığı class. <see cref="T:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.BaseConfig">
+            BaseConfig</see> sınıfından türemiştir.
+            </summary>
+        </member>
+        <member name="T:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.BaseConfig">
+            <summary>
+            Config Manager sınıflarına Base olan sınıf.
+            </summary>
+        </member>
+        <member name="F:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.BaseConfig.Cache">
+            <summary>
+            Cache için yaratılan Dictionary. 
+            </summary>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.BaseConfig.GetConfigValue(System.String)">
+            <summary>
+            Configden ilgili keyi okuyup,cachleyip object olarak döndürür.
+            </summary>
+            <param name="parameterName">Configdeki key ismi.</param>
+            <returns>
+            Object olarak keydeki value.
+            </returns>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.BaseConfig.GetValue(System.String)">
+            <summary>
+            Configden ilgili keyi okuyup object olarak döndürür.
+            </summary>
+            <param name="parameterName">Configdeki key ismi.</param>
+            <returns>
+            Object olarak keydeki value.
+            </returns>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.Managers.ConfigManager.GetValue(System.String)">
+            <summary>
+            Configden ilgili keyi okuyup object olarak döndürür. Base : <see cref="M:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.BaseConfig.GetValue(System.String)">CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.BaseConfig.GetValue(System.String)</see>
+            </summary>
+            <param name="parameterName">Configdeki key ismi.</param>
+            <returns>
+            Object olarak keydeki value.
+            </returns>
+            <exception cref="T:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.Exceptions.ConfigException">Configde
+            ilgili key bulunamazsa fırlatılacak olan <see cref="T:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.Exceptions.ConfigException">ConfigException.</see></exception>
+        </member>
+        <member name="T:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.ConfigHelper">
+            <summary>
+            Config işlemlerinde kullanılan yardımcı sınıf.
+            </summary>
+        </member>
+        <member name="F:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.ConfigHelper.SynchObject">
+            <summary>
+            Thread safety için kullanılan obje.
+            </summary>
+        </member>
+        <member name="F:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.ConfigHelper.configManager">
+            <summary>
+            Config Manager değişkeni
+            </summary>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.ConfigHelper.GetValue``1(System.String)">
+            <summary>
+            Configden ilgili keyi okuyup istenilen tipe döndürür.
+            </summary>
+            <typeparam name="T">Döndürülmek istenilen tip.</typeparam>
+            <param name="parameterName">Configdeki key ismi.</param>
+            <returns>
+            Döndürülmek istenilen tipdeki value.
+            </returns>
+            <exception cref="T:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.Exceptions.ConfigException">Configden
+            gelen değer okunurken bir hata oluşursa fırlatılacak olan <see cref="T:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.Exceptions.ConfigException">ConfigException.</see></exception>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.ConfigHelper.GetManager">
+            <summary>
+            Config Manager sınıflarının yaratıldığı Factory Methodunun çağrıldığı method.
+            </summary>
+            <returns>
+            Yaratılan Config Manager.
+            </returns>
+        </member>
+        <member name="T:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.Exceptions.ConfigException">
+            <summary>
+            Config işlemlerinde fırlatılacak exception.
+            </summary>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.Exceptions.ConfigException.#ctor(System.String,System.Exception)">
+            <summary>
+            <see cref="T:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.Exceptions.ConfigException">
+            ConfigException</see>'ı mesaj ve hataya sebep olan Inner exception ile
+            initialize eder.
+            </summary>
+            <param name="exceptionMessage">Exception'ın mesajı.</param>
+            <param name="exp">Hataya sebep olan Inner exception.</param>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.Exceptions.ConfigException.#ctor(System.Exception)">
+            <summary>
+            <see cref="T:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.Exceptions.ConfigException">
+            ConfigException</see>'ı hataya sebep olan Inner exception ile initialze eder.
+            </summary>
+            <param name="exp">Hataya sebep olan Inner exception</param>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.Exceptions.ConfigException.#ctor(System.String)">
+            <summary>
+            <see cref="T:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.Exceptions.ConfigException">
+            ConfigException</see>'ı mesaj ile initialize eder.
+            </summary>
+            <param name="exceptionMessage">Exception'ın mesajı.</param>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.Exceptions.ConfigException.#ctor">
+            <summary>
+            <see cref="T:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.Exceptions.ConfigException">
+            ConfigException</see>'ı initialze eder.
+            </summary>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.Exceptions.ConfigException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            <see cref="T:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.Exceptions.ConfigException">
+            ConfigException</see>'ı serileştirilmiş data ile initialize eder.
+            </summary>
+            <param name="serializationInfo">Serileştirilmiş obje bilgisini tutar.</param>
+            <param name="context">Kaynak veya hedef hakkındaki ilişkisel bilgi.</param>
+        </member>
+        <member name="T:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.ConfigFactory">
+            <summary>
+            Config Managerları Initialize etmekten sorumlu class.
+            </summary>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.ConfigFactory.GetManager">
+            <summary>
+            Configden okunan değere göre <see cref="T:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.BaseConfig">BaseConfig</see>den
+            türemiş olan Config Managerı döndüren method.
+            </summary>
+            <returns>
+            <see cref="T:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.BaseConfig">BaseConfig</see>
+            türünden Config Manager.
+            </returns>
+            <exception cref="T:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.Exceptions.ConfigException">Config Manager
+            configde bulunamazsa veya Config Manager oluşturulurken bir hata oluşursa fırlatılacak <see cref="T:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.Exceptions.ConfigException">ConfigException.</see></exception>
+        </member>
+        <member name="T:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.Managers.TextConfigManager">
+            <summary>
+            Txt uzantılı config dosyalarıyla ilgili işlemlerin yapıldığı class. <see cref="T:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.BaseConfig">
+            BaseConfig</see> sınıfından türemiştir.
+            </summary>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.Managers.TextConfigManager.GetValue(System.String)">
+            <summary>
+            Configden ilgili keyi okuyup object olarak döndürür. Base : <see cref="M:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.BaseConfig.GetValue(System.String)">GetValue</see>
+            </summary>
+            <param name="parameterName">Configdeki key ismi.</param>
+            <returns>
+            Object olarak keydeki value.
+            </returns>
+            <exception></exception>
+        </member>
+        <member name="T:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.SectionHelper">
+            <summary>
+            Config Section işlemlerinde kullanılan yardımcı sınıf.
+            </summary>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.SectionHelper.GetSection``1(System.String)">
+            <summary>
+            Verilen Section name'i config dosyasında arar ve <see cref="!:http://msdn.microsoft.com/en-us/library/system.configuration.configurationsection.aspx">ConfigurationSection</see>
+            tipinden türemiş istenilen tipe cast edip döndürür.
+            </summary>
+            <typeparam name="T">ConfigurationSection tipinden türemiş custom section
+            tipi.</typeparam>
+            <param name="sectionName">Config dosyasında aranıcak section ismi</param>
+            <returns>
+            ConfigurationSection tipinden türemiş custom section.
+            </returns>
+            <exception cref="T:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.Exceptions.ConfigException">Configde
+            section bulunamazsa <see cref="T:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.Exceptions.ConfigException">ConfigException.</see></exception>
+        </member>
+        <member name="T:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.CodeFictionElements.NameTypeConfigurationElement">
+            <summary>
+            Tip ve isim alan <see cref="T:System.Configuration.ConfigurationElement">ConfigurationElement</see>
+            </summary>
+        </member>
+        <member name="F:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.CodeFictionElements.NameTypeConfigurationElement.NAME_PROPERTY_NAME">
+            <summary>
+            The XML name of the <see cref="P:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.CodeFictionElements.NameTypeConfigurationElement.Name"/> property.
+            </summary>
+        </member>
+        <member name="F:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.CodeFictionElements.NameTypeConfigurationElement.TYPE_PROPERTY_NAME">
+            <summary>
+            The XML name of the <see cref="P:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.CodeFictionElements.NameTypeConfigurationElement.TypeName"/> property.
+            </summary>
+        </member>
+        <member name="F:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.CodeFictionElements.NameTypeConfigurationElement.ORDER_PROPERTY_NAME">
+            <summary>
+            The XML name of the <see cref="P:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.CodeFictionElements.NameTypeConfigurationElement.Order"/> property.
+            </summary>
+        </member>
+        <member name="P:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.CodeFictionElements.NameTypeConfigurationElement.Type">
+            <summary>
+            Gets or sets the <see cref="P:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.CodeFictionElements.NameTypeConfigurationElement.Type"/> the element is the configuration for.
+            </summary>
+            <value>
+            The <see cref="P:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.CodeFictionElements.NameTypeConfigurationElement.Type"/> the element is the configuration for.
+            </value>
+        </member>
+        <member name="P:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.CodeFictionElements.NameTypeConfigurationElement.Name">
+            <summary>
+            Gets or sets the name of the element.
+            </summary>
+            <value>
+            The name of the element.
+            </value>
+        </member>
+        <member name="P:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.CodeFictionElements.NameTypeConfigurationElement.TypeName">
+            <summary>
+            Gets or sets the fully qualified name of the <see cref="P:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.CodeFictionElements.NameTypeConfigurationElement.Type"/> the element is the configuration for.
+            </summary>
+            <value>
+            the fully qualified name of the <see cref="P:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.CodeFictionElements.NameTypeConfigurationElement.Type"/> the element is the configuration for.
+            </value>
+        </member>
+        <member name="P:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.CodeFictionElements.NameTypeConfigurationElement.Order">
+            <summary>
+            Gets or sets the Order.
+            </summary>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.IniManager.IniFileReader.GetIniFileString(System.String,System.String,System.String,System.String)">
+            <summary>
+            Gets the content.
+            </summary>
+            <param name="iniFile">The ini file.</param>
+            <param name="category">The category.</param>
+            <param name="key">The key.</param>
+            <param name="defaultValue">The default value.</param>
+            <returns></returns>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.IniManager.IniFileReader.GetKeys(System.String,System.String)">
+            <summary>
+            Gets the keys.
+            </summary>
+            <param name="iniFile">The ini file.</param>
+            <param name="category">The category.</param>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.IniManager.IniFileReader.GetCategories(System.String)">
+            <summary>
+            Gets the categories.
+            </summary>
+            <param name="iniFile">The ini file.</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,274 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CodeFiction.DarkMatterFramework.CoreExceptions</name>
+    </assembly>
+    <members>
+        <member name="T:CodeFiction.DarkMatterFramework.CoreExceptions.BaseUserLevelException">
+            <summary>
+            User Level Exceptionlara Base olucak class.
+            </summary>
+        </member>
+        <member name="T:CodeFiction.DarkMatterFramework.CoreExceptions.BaseException">
+            <summary>
+            Base Exception. Custom Exceptionların türetileceği base class.
+            </summary>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.CoreExceptions.BaseException.#ctor(System.String,System.Exception)">
+            <summary>
+            <see cref="T:CodeFiction.DarkMatterFramework.CoreExceptions.BaseException">
+            BaseException</see>'ı mesaj ve hataya sebep olan Inner exception ile
+            initialize eder.
+            </summary>
+            <param name="exceptionMessage">Exception'ın mesajı.</param>
+            <param name="exp">Hataya sebep olan Inner exception.</param>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.CoreExceptions.BaseException.#ctor(System.Exception)">
+            <summary>
+            <see cref="T:CodeFiction.DarkMatterFramework.CoreExceptions.BaseException">
+            BaseException</see>'ı hataya sebep olan Inner exception ile
+            initialize eder.
+            </summary>
+            <param name="exp">Hataya sebep olan Inner exception.</param>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.CoreExceptions.BaseException.#ctor(System.String)">
+            <summary>
+            <see cref="T:CodeFiction.DarkMatterFramework.CoreExceptions.BaseException">
+            BaseException</see>'ı mesaj ve ile initialize eder.
+            </summary>
+            <param name="exceptionMessage">Exception'ın mesajı.</param>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.CoreExceptions.BaseException.#ctor">
+            <summary>
+            <see cref="T:CodeFiction.DarkMatterFramework.CoreExceptions.BaseException">
+            BaseException</see>'ı ile initialize eder.
+            </summary>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.CoreExceptions.BaseException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            <see cref="T:CodeFiction.DarkMatterFramework.CoreExceptions.BaseException">
+            BaseException</see>'ı serileştirilmiş data ile initialize eder.
+            </summary>
+            <param name="serializationInfo">Serileştirilmiş obje bilgisini tutar.</param>
+            <param name="context">Kaynak veya hedef hakkındaki ilişkisel bilgi.</param>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.CoreExceptions.BaseException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            <see cref="T:CodeFiction.DarkMatterFramework.CoreExceptions.BaseException">
+            BaseException</see> hakkındaki serileştirme bilgisini verir.
+            </summary>
+            <param name="info">Fırlatılmak üzere olan exceptionın serileştirmiş datasını tutar.</param>
+            <param name="context">Kaynak veya hedef hakkındaki ilişkisel bilgi.</param>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.CoreExceptions.BaseUserLevelException.#ctor(System.String,System.Exception)">
+            <summary>
+            <see cref="T:CodeFiction.DarkMatterFramework.CoreExceptions.BaseUserLevelException">
+            BaseUserLevelException</see>'ı mesaj ve hataya sebep olan Inner exception ile
+            initialize eder.
+            </summary>
+            <param name="exceptionMessage">Exception'ın mesajı.</param>
+            <param name="exp">Hataya sebep olan Inner exception.</param>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.CoreExceptions.BaseUserLevelException.#ctor(System.Exception)">
+            <summary>
+            <see cref="T:CodeFiction.DarkMatterFramework.CoreExceptions.BaseUserLevelException">
+            BaseUserLevelException</see>'ı hataya sebep olan Inner exception ile
+            initialize eder.
+            </summary>
+            <param name="exp">Hataya sebep olan Inner exception.</param>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.CoreExceptions.BaseUserLevelException.#ctor(System.String)">
+            <summary>
+            <see cref="T:CodeFiction.DarkMatterFramework.CoreExceptions.BaseUserLevelException">
+            BaseUserLevelException</see>'ı mesaj ile initialize eder.
+            </summary>
+            <param name="exceptionMessage">Exception'ın mesajı.</param>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.CoreExceptions.BaseUserLevelException.#ctor">
+            <summary>
+            <see cref="T:CodeFiction.DarkMatterFramework.CoreExceptions.BaseUserLevelException">
+            BaseUserLevelException</see>'ı initialize eder.
+            </summary>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.CoreExceptions.BaseUserLevelException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            <see cref="T:CodeFiction.DarkMatterFramework.CoreExceptions.BaseUserLevelException">
+            BaseUserLevelException</see>'ı serileştirilmiş data ile initialize eder.
+            </summary>
+            <param name="serializationInfo">Serileştirilmiş obje bilgisini tutar.</param>
+            <param name="context">Kaynak veya hedef hakkındaki ilişkisel bilgi.</param>
+        </member>
+        <member name="T:CodeFiction.DarkMatterFramework.CoreExceptions.UserLevelException">
+            <summary>
+            User'a gösterilecek ama loglanmayacak exception.
+            </summary>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.CoreExceptions.UserLevelException.#ctor(System.String,System.Exception)">
+            <summary>
+            <see cref="T:CodeFiction.DarkMatterFramework.CoreExceptions.UserLevelException">
+            UserLevelException</see>'ı mesaj ve hataya sebep olan Inner exception ile
+            initialize eder.
+            </summary>
+            <param name="exceptionMessage">Exception'ın mesajı ile ilişkili mesaj.</param>
+            <param name="exp">Hataya sebep olan Inner exception.</param>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.CoreExceptions.UserLevelException.#ctor(System.Exception)">
+            <summary>
+            <see cref="T:CodeFiction.DarkMatterFramework.CoreExceptions.UserLevelException">
+            UserLevelException</see>'ı hataya sebep olan Inner exception ile
+            initialize eder.
+            </summary>
+            <param name="exp">Hataya sebep olan Inner exception.</param>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.CoreExceptions.UserLevelException.#ctor(System.String)">
+            <summary>
+            <see cref="T:CodeFiction.DarkMatterFramework.CoreExceptions.UserLevelException">
+            UserLevelException</see>'ı mesaj ile initialize eder.
+            </summary>
+            <param name="exceptionMessage">Exception'ın mesajı.</param>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.CoreExceptions.UserLevelException.#ctor">
+            <summary>
+            <see cref="T:CodeFiction.DarkMatterFramework.CoreExceptions.UserLevelException">
+            UserLevelException</see>'ı initialize eder.
+            </summary>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.CoreExceptions.UserLevelException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            <see cref="T:CodeFiction.DarkMatterFramework.CoreExceptions.UserLevelException">
+            UserLevelException</see>'ı serileştirilmiş data ile initialize eder.
+            </summary>
+            <param name="serializationInfo">Serileştirilmiş obje bilgisini tutar.</param>
+            <param name="context">Kaynak veya hedef hakkındaki ilişkisel bilgi.</param>
+        </member>
+        <member name="T:CodeFiction.DarkMatterFramework.CoreExceptions.BusinessLayerException">
+            <summary>
+            Business Layer hatalarında fırlatılacak exception.
+            </summary>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.CoreExceptions.BusinessLayerException.#ctor(System.String,System.Exception)">
+            <summary>
+            <see cref="T:CodeFiction.DarkMatterFramework.CoreExceptions.BusinessLayerException">
+            BusinessLayerException</see>'ı mesaj ve hataya sebep olan Inner exception ile
+            initialize eder.
+            </summary>
+            <param name="exceptionMessage">Exception'ın mesajı.</param>
+            <param name="exp">Hataya sebep olan Inner exception.</param>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.CoreExceptions.BusinessLayerException.#ctor(System.Exception)">
+            <summary>
+            <see cref="T:CodeFiction.DarkMatterFramework.CoreExceptions.BusinessLayerException">
+            BusinessLayerException</see>'ı hataya sebep olan Inner exception ile
+            initialize eder.
+            </summary>
+            <param name="exp">Hataya sebep olan Inner exception.</param>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.CoreExceptions.BusinessLayerException.#ctor(System.String)">
+            <summary>
+            <see cref="T:CodeFiction.DarkMatterFramework.CoreExceptions.BusinessLayerException">
+            BusinessLayerException</see>'ı mesaj ile initialize eder.
+            </summary>
+            <param name="exceptionMessage">Exception'ın mesajı.</param>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.CoreExceptions.BusinessLayerException.#ctor">
+            <summary>
+            <see cref="T:CodeFiction.DarkMatterFramework.CoreExceptions.BusinessLayerException">
+            BusinessLayerException</see>'ı initialize eder.
+            </summary>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.CoreExceptions.BusinessLayerException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            <see cref="T:CodeFiction.DarkMatterFramework.CoreExceptions.BusinessLayerException">
+            BusinessLayerException</see>'ı serileştirilmiş data ile initialize eder.
+            </summary>
+            <param name="serializationInfo">Serileştirilmiş obje bilgisini tutar.</param>
+            <param name="context">Kaynak veya hedef hakkındaki ilişkisel bilgi.</param>
+        </member>
+        <member name="T:CodeFiction.DarkMatterFramework.CoreExceptions.CoreLevelException">
+            <summary>
+            Loglanacak kritik seviyeli exception.
+            </summary>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.CoreExceptions.CoreLevelException.#ctor(System.String,System.Exception)">
+            <summary>
+            <see cref="T:CodeFiction.DarkMatterFramework.CoreExceptions.CoreLevelException">
+            CoreLevelException</see>'ı mesaj ve hataya sebep olan Inner exception ile
+            initialize eder.
+            </summary>
+            <param name="exceptionMessage">Exception'ın mesajı.</param>
+            <param name="exp">Hataya sebep olan Inner exception.</param>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.CoreExceptions.CoreLevelException.#ctor(System.Exception)">
+            <summary>
+            <see cref="T:CodeFiction.DarkMatterFramework.CoreExceptions.CoreLevelException">
+            CoreLevelException</see>'ı hataya sebep olan Inner exception ile
+            initialize eder.
+            </summary>
+            <param name="exp">Hataya sebep olan Inner exception.</param>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.CoreExceptions.CoreLevelException.#ctor(System.String)">
+            <summary>
+            <see cref="T:CodeFiction.DarkMatterFramework.CoreExceptions.CoreLevelException">
+            CoreLevelException</see>'ı mesaj ile initialize eder.
+            </summary>
+            <param name="exceptionMessage">Exception'ın mesajı.</param>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.CoreExceptions.CoreLevelException.#ctor">
+            <summary>
+            <see cref="T:CodeFiction.DarkMatterFramework.CoreExceptions.CoreLevelException">
+            CoreLevelException</see>'ı initialize eder.
+            </summary>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.CoreExceptions.CoreLevelException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            <see cref="T:CodeFiction.DarkMatterFramework.CoreExceptions.CoreLevelException">
+            CoreLevelException</see>'ı serileştirilmiş data ile initialize eder.
+            </summary>
+            <param name="serializationInfo">Serileştirilmiş obje bilgisini tutar.</param>
+            <param name="context">Kaynak veya hedef hakkındaki ilişkisel bilgi.</param>
+        </member>
+        <member name="T:CodeFiction.DarkMatterFramework.CoreExceptions.CriticalUserLevelException">
+            <summary>
+            User'a hem gösterilecek hem de loglanacak exception.
+            </summary>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.CoreExceptions.CriticalUserLevelException.#ctor(System.String,System.Exception)">
+            <summary>
+            <see cref="T:CodeFiction.DarkMatterFramework.CoreExceptions.CriticalUserLevelException">
+            CriticalUserLevelException</see>'ı mesaj ve hataya sebep olan Inner exception ile
+            initialize eder.
+            </summary>
+            <param name="exceptionMessage">Exception'ın mesajı.</param>
+            <param name="exp">Hataya sebep olan Inner exception.</param>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.CoreExceptions.CriticalUserLevelException.#ctor(System.Exception)">
+            <summary>
+            <see cref="T:CodeFiction.DarkMatterFramework.CoreExceptions.CriticalUserLevelException">
+            CriticalUserLevelException</see>'ı hataya sebep olan Inner exception ile
+            initialize eder.
+            </summary>
+            <param name="exp">Hataya sebep olan Inner exception.</param>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.CoreExceptions.CriticalUserLevelException.#ctor(System.String)">
+            <summary>
+            <see cref="T:CodeFiction.DarkMatterFramework.CoreExceptions.CriticalUserLevelException">
+            CriticalUserLevelException</see>'ı mesaj ile initialize eder.
+            </summary>
+            <param name="exceptionMessage">Exception'ın mesajı.</param>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.CoreExceptions.CriticalUserLevelException.#ctor">
+            <summary>
+            <see cref="T:CodeFiction.DarkMatterFramework.CoreExceptions.CriticalUserLevelException">
+            CriticalUserLevelException</see>'ı initialize eder.
+            </summary>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.CoreExceptions.CriticalUserLevelException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            <see cref="T:CodeFiction.DarkMatterFramework.CoreExceptions.CriticalUserLevelException">
+            CriticalUserLevelException</see>'ı serileştirilmiş data ile initialize eder.
+            </summary>
+            <param name="serializationInfo">Serileştirilmiş obje bilgisini tutar.</param>
+            <param name="context">Kaynak veya hedef hakkındaki ilişkisel bilgi.</param>
+        </member>
+    </members>
+</doc>

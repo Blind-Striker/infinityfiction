@@ -1,0 +1,117 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CodeFiction.DarkMatterFramework.Libraries.XMLibrary</name>
+    </assembly>
+    <members>
+        <member name="T:CodeFiction.DarkMatterFramework.Libraries.XMLibrary.Exceptions.XmlLibException">
+            <summary>
+            XML işlemleri sırasında oluşucak hatalarda fırlatılacak exception.
+            </summary>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.XMLibrary.Exceptions.XmlLibException.#ctor(System.String,System.Exception)">
+            <summary>
+            <see cref="T:CodeFiction.DarkMatterFramework.Libraries.XMLibrary.Exceptions.XmlLibException">
+            XmlLibException</see>'ı mesaj ve hataya sebep olan Inner exception ile
+            initialize eder.
+            </summary>
+            <param name="exceptionMessage">Exception'ın mesajı.</param>
+            <param name="exp">Hataya sebep olan Inner exception.</param>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.XMLibrary.Exceptions.XmlLibException.#ctor(System.Exception)">
+            <summary>
+            <see cref="T:CodeFiction.DarkMatterFramework.Libraries.XMLibrary.Exceptions.XmlLibException">
+            XmlLibException</see>'ı hataya sebep olan Inner exception ile
+            initialize eder.
+            </summary>
+            <param name="exp">Hataya sebep olan Inner exception.</param>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.XMLibrary.Exceptions.XmlLibException.#ctor(System.String)">
+            <summary>
+            <see cref="T:CodeFiction.DarkMatterFramework.Libraries.XMLibrary.Exceptions.XmlLibException">
+            XmlLibException</see>'ı mesaj initialize eder.
+            </summary>
+            <param name="exceptionMessage">Exception'ın mesajı.</param>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.XMLibrary.Exceptions.XmlLibException.#ctor">
+            <summary>
+            <see cref="T:CodeFiction.DarkMatterFramework.Libraries.XMLibrary.Exceptions.XmlLibException">
+            XmlLibException</see>'ı initialize eder.
+            </summary>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.XMLibrary.Exceptions.XmlLibException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            <see cref="T:CodeFiction.DarkMatterFramework.Libraries.XMLibrary.Exceptions.XmlLibException">
+            XmlLibException</see>'ı serileştirilmiş data ile initialize eder.
+            </summary>
+            <param name="serializationInfo">Serileştirilmiş obje bilgisini tutar.</param>
+            <param name="context">Kaynak veya hedef hakkındaki ilişkisel bilgi.</param>
+        </member>
+        <member name="T:CodeFiction.DarkMatterFramework.Libraries.XMLibrary.XmlSerializationUtil`1">
+            <summary>
+            XML serileşitirme ve geri serileştirme işlemlerinin yapıldığı class.
+            </summary>
+            <typeparam name="T">Serileştirme ve Geri Serileştirme işlemlerinin yapılacağı nesne tipi</typeparam>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.XMLibrary.XmlSerializationUtil`1.SerializeObject(`0)">
+            <summary>
+            Method to convert a custom Object to XML string
+            </summary>
+            <param name="obj">Object that is to be serialized to XML</param>
+            <returns>XML string</returns>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.XMLibrary.XmlSerializationUtil`1.DeserializeObject(System.String)">
+            <summary>
+            Method to reconstruct an Object from XML string
+            </summary>
+            <typeparam name="T">Object type to deserialize</typeparam>
+            <param name="xmlizedString">Serialized Xml string</param>
+            <returns>T Type Object</returns>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.XMLibrary.XmlSerializationUtil`1.Load(System.String)">
+            <summary>
+            Xml dosyasını Load eder.
+            </summary>
+            <param name="xmlfile">Xml dosyası</param>
+            <returns>Load edilmiş tip</returns>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.XMLibrary.XmlSerializationUtil`1.Load(System.IO.Stream)">
+            <summary>
+            Loads the specified xmldata.
+            </summary>
+            <param name="xmldata">The xmldata.</param>
+            <returns>Loaded Type</returns>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.XMLibrary.XmlSerializationUtil`1.Load(System.String,System.String)">
+            <summary>
+            Loads the specified xmlfile.
+            </summary>
+            <param name="xmlfile">The xmlfile.</param>
+            <param name="root">The root path.</param>
+            <returns>Loaded Type</returns>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.XMLibrary.XmlSerializationUtil`1.Save(System.String,`0)">
+            <summary>
+            Saves the specified xmlfile.
+            </summary>
+            <param name="xmlfile">The xmlfile.</param>
+            <param name="data">The data to serialize</param>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.XMLibrary.XmlSerializationUtil`1.StringToUtf8ByteArray(System.String)">
+            <summary>
+            Converts the String to UTF8 Byte array and is used in De serialization
+            </summary>
+            <param name="xmlString">The xml String.</param>
+            <returns>
+            byte result.
+            </returns>
+        </member>
+        <member name="M:CodeFiction.DarkMatterFramework.Libraries.XMLibrary.XmlSerializationUtil`1.Utf8ByteArrayToString(System.Byte[])">
+            <summary>
+            To convert a Byte Array of Unicode values (UTF-8 encoded) to a complete String.
+            </summary>
+            <param name="characters">Unicode Byte Array to be converted to String</param>
+            <returns>String converted from Unicode Byte Array</returns>
+        </member>
+    </members>
+</doc>
