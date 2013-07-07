@@ -49,12 +49,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Are\AreService.cs" />
+    <Compile Include="InfinityFictionConfigService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Structure\StructConverterContracts\StructConverterContracts.csproj">
       <Project>{8850582A-A002-4CE2-B45D-DF55AEDBDFE0}</Project>
       <Name>StructConverterContracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CommonTypes\CommonTypes.csproj">
+      <Project>{95e826ab-e4bf-484f-b763-43180f0ebb6b}</Project>
+      <Name>CommonTypes</Name>
     </ProjectReference>
     <ProjectReference Include="..\Resources\Resources.csproj">
       <Project>{81D21E71-0196-4767-BE6A-149247459E23}</Project>

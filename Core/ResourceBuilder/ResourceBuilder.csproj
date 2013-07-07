@@ -39,6 +39,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CodeFiction.DarkMatterFramework.Libraries.IOLibrary">
+      <HintPath>..\..\SharedLibs\CodeFiction.DarkMatterFramework.Libraries.IOLibrary.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -48,7 +51,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IoHelper.cs" />
+    <Compile Include="KeyResourceBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Structure\StructConverterContracts\StructConverterContracts.csproj">
+      <Project>{8850582a-a002-4ce2-b45d-df55aedbdfe0}</Project>
+      <Name>StructConverterContracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Structure\Structures\Structures.csproj">
+      <Project>{9d7750b3-c5be-4b06-81b0-0a409ca9fe7b}</Project>
+      <Name>Structures</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Resources\Resources.csproj">
+      <Project>{81d21e71-0196-4767-be6a-149247459e23}</Project>
+      <Name>Resources</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

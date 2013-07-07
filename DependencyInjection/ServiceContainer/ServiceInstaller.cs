@@ -8,7 +8,7 @@ namespace CodeFiction.InfinityFiction.Core.ServiceContainer
     {
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
-            
+            //container.Register(Component.For<IAreService>().ImplementedBy<AreService>());
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{5D1A6D37-8CB3-4401-8D6D-92F9A0D478AF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Structure", "Structure", "{92EFF8CC-118D-49ED-A71A-073018F8005C}"
@@ -34,6 +34,23 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResourceContainer", "DependencyInjection\ResourceContainer\ResourceContainer.csproj", "{B6869A90-7C50-4B31-A3BE-1EB333107274}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceContainer", "DependencyInjection\ServiceContainer\ServiceContainer.csproj", "{106F53F1-BBE8-4108-AB59-C55897A33E41}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{40648F55-6FAE-4AB7-8BA1-330EA2AE2644}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfinityFictionEditor", "UI\InfinityFictionEditor\InfinityFictionEditor.csproj", "{DD114B56-8097-412A-8FC5-8F5A64D4ADDB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfinityFictionEditor.Core", "UI\InfinityFictionEditor.Core\InfinityFictionEditor.Core.csproj", "{13FFF767-0863-435A-8E35-06D63CAD13F6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{7837A17B-502E-4B62-AA3B-2AFD98581688}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sandbox", "Sandbox", "{91F6E7F0-2CDD-474C-AEF8-485A71415B88}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResourceBuilderSandbox", "Tests\Sandbox\ResourceBuilderSandbox\ResourceBuilderSandbox.csproj", "{02B65AD0-1C06-45C0-A631-0C7036A1E77C}"
 EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
@@ -178,6 +195,36 @@ Global
 		{106F53F1-BBE8-4108-AB59-C55897A33E41}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{106F53F1-BBE8-4108-AB59-C55897A33E41}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{106F53F1-BBE8-4108-AB59-C55897A33E41}.Release|x86.ActiveCfg = Release|Any CPU
+		{DD114B56-8097-412A-8FC5-8F5A64D4ADDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD114B56-8097-412A-8FC5-8F5A64D4ADDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD114B56-8097-412A-8FC5-8F5A64D4ADDB}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{DD114B56-8097-412A-8FC5-8F5A64D4ADDB}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{DD114B56-8097-412A-8FC5-8F5A64D4ADDB}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{DD114B56-8097-412A-8FC5-8F5A64D4ADDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD114B56-8097-412A-8FC5-8F5A64D4ADDB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD114B56-8097-412A-8FC5-8F5A64D4ADDB}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{DD114B56-8097-412A-8FC5-8F5A64D4ADDB}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{DD114B56-8097-412A-8FC5-8F5A64D4ADDB}.Release|x86.ActiveCfg = Release|Any CPU
+		{13FFF767-0863-435A-8E35-06D63CAD13F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13FFF767-0863-435A-8E35-06D63CAD13F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13FFF767-0863-435A-8E35-06D63CAD13F6}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{13FFF767-0863-435A-8E35-06D63CAD13F6}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{13FFF767-0863-435A-8E35-06D63CAD13F6}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{13FFF767-0863-435A-8E35-06D63CAD13F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13FFF767-0863-435A-8E35-06D63CAD13F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13FFF767-0863-435A-8E35-06D63CAD13F6}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{13FFF767-0863-435A-8E35-06D63CAD13F6}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{13FFF767-0863-435A-8E35-06D63CAD13F6}.Release|x86.ActiveCfg = Release|Any CPU
+		{02B65AD0-1C06-45C0-A631-0C7036A1E77C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02B65AD0-1C06-45C0-A631-0C7036A1E77C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02B65AD0-1C06-45C0-A631-0C7036A1E77C}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{02B65AD0-1C06-45C0-A631-0C7036A1E77C}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{02B65AD0-1C06-45C0-A631-0C7036A1E77C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{02B65AD0-1C06-45C0-A631-0C7036A1E77C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02B65AD0-1C06-45C0-A631-0C7036A1E77C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02B65AD0-1C06-45C0-A631-0C7036A1E77C}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{02B65AD0-1C06-45C0-A631-0C7036A1E77C}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{02B65AD0-1C06-45C0-A631-0C7036A1E77C}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -192,9 +239,13 @@ Global
 		{9D7750B3-C5BE-4B06-81B0-0A409CA9FE7B} = {92EFF8CC-118D-49ED-A71A-073018F8005C}
 		{5F315ED5-010F-43C6-8D8B-60191BC4BF9F} = {92EFF8CC-118D-49ED-A71A-073018F8005C}
 		{8850582A-A002-4CE2-B45D-DF55AEDBDFE0} = {92EFF8CC-118D-49ED-A71A-073018F8005C}
+		{91F6E7F0-2CDD-474C-AEF8-485A71415B88} = {4403D823-CEF9-47BA-9C3E-B4E9E0195DCB}
 		{B7EFDE8F-FF0C-4091-B870-32D21DAC853B} = {A59843C7-0188-4CAF-8EB7-B73F1EDF4D57}
 		{3630FD4B-5770-4261-8F27-D9B208CD4F0F} = {A59843C7-0188-4CAF-8EB7-B73F1EDF4D57}
 		{B6869A90-7C50-4B31-A3BE-1EB333107274} = {A59843C7-0188-4CAF-8EB7-B73F1EDF4D57}
 		{106F53F1-BBE8-4108-AB59-C55897A33E41} = {A59843C7-0188-4CAF-8EB7-B73F1EDF4D57}
+		{DD114B56-8097-412A-8FC5-8F5A64D4ADDB} = {40648F55-6FAE-4AB7-8BA1-330EA2AE2644}
+		{13FFF767-0863-435A-8E35-06D63CAD13F6} = {40648F55-6FAE-4AB7-8BA1-330EA2AE2644}
+		{02B65AD0-1C06-45C0-A631-0C7036A1E77C} = {91F6E7F0-2CDD-474C-AEF8-485A71415B88}
 	EndGlobalSection
 EndGlobal

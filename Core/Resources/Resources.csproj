@@ -52,7 +52,18 @@
     <Compile Include="Are\Header.cs" />
     <Compile Include="BaseModel.cs" />
     <Compile Include="DataTypes\BaseDataType.cs" />
+    <Compile Include="DataTypes\SimpleDataType.cs" />
+    <Compile Include="Key\BiffEntryResource.cs" />
+    <Compile Include="Key\HeaderResource.cs" />
+    <Compile Include="Key\KeyResource.cs" />
+    <Compile Include="Key\ResourceEntryResource.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Structure\Structures\Structures.csproj">
+      <Project>{9d7750b3-c5be-4b06-81b0-0a409ca9fe7b}</Project>
+      <Name>Structures</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
