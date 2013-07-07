@@ -86,6 +86,7 @@ namespace CodeFiction.InfinityFiction.Core.ResourceBuilder
             for (int i = 0; i < biffEntryResources.Length; i++)
             {
                 BiffEntry biffEntry = biffEntryResources[i];
+                keyResource.BiffEntries[i] = new BiffEntryResource();
 
                 for (int j = 0; j < fields.Length; j++)
                 {
