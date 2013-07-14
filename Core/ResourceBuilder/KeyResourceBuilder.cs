@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+using System;
 using System.IO;
-using System.Linq;
-using System.Linq.Expressions;
 using System.Reflection;
-using System.Reflection.Emit;
-using System.Runtime.InteropServices;
-using System.Text;
+
 using CodeFiction.DarkMatterFramework.Libraries.IOLibrary;
 using CodeFiction.InfinityFiction.Core.Resources.DataTypes;
 using CodeFiction.InfinityFiction.Core.Resources.Key;
+using CodeFiction.InfinityFiction.Core.Utilities;
 using CodeFiction.InfinityFiction.Structure.StructConverterContracts;
 using CodeFiction.InfinityFiction.Structure.Structures.Key;
 
@@ -26,74 +22,74 @@ namespace CodeFiction.InfinityFiction.Core.ResourceBuilder
 
         public KeyResource GetKeyResource()
         {
-            KeyResource keyResource = new KeyResource();
+            var keyResource = new KeyResource();
 
             string savefile = Path.Combine(@"G:\Games\BGOrg\BGII - SoA", "CHITIN.KEY");
             byte[] content = IoHelper.ReadBinaryFile(savefile);
 
-            Header header = _genericStructConverter.ConvertToStruct<Header>(content, 0);
+            var header = _genericStructConverter.ConvertToStruct<Header>(content, 0);
 
             uint biffEntriesCount = header.BiffEntriesCount;
             uint resourceEntriesCount = header.ResourceEntriesCount;
             uint biffEntriesOffset = header.BiffEntriesOffset;
             uint resourceEntriesOffset = header.ResourceEntriesOffset;
 
+            var biffEntryResources = new BiffEntry[biffEntriesCount];
+            var resourceEntries = new ResourceEntry[resourceEntriesCount];
             keyResource.BiffEntries = new BiffEntryResource[biffEntriesCount];
             keyResource.ResourceEntries = new ResourceEntryResource[resourceEntriesOffset];
 
-
             for (int i = 0; i < biffEntriesCount; i++)
             {
-                int sizeOfBiffEntry;
-                unsafe
-                {
-                    sizeOfBiffEntry = sizeof (BiffEntry);
-                }
+                byte[] biffEntryContent = BinaryHelper.GetBytes(content, (int)biffEntriesOffset, 12);
 
-                byte[] biffEntryContent = BinaryHelper.GetBytes(content, (int) biffEntriesOffset, sizeOfBiffEntry);
-                BiffEntry biffEntry = _genericStructConverter.ConvertToStruct<BiffEntry>(biffEntryContent, 0);
-                keyResource.BiffEntries[i] = new BiffEntryResource();
+                var biffEntry = _genericStructConverter.ConvertToStruct<BiffEntry>(biffEntryContent, 0);
 
-                FieldInfo[] biffEntryFields = biffEntry.GetType().GetFields();
+                biffEntryResources[i] = biffEntry;
 
-                for (int j = 0; j < biffEntryFields.Length; j++)
-                {
-                    FieldInfo fieldInfo = biffEntryFields[j];
-                    Delegate getter = CreateGetter(fieldInfo);
-                    object value = getter.DynamicInvoke(biffEntry);
+                biffEntriesOffset += 12;
+            }
 
-                    keyResource.BiffEntries[i].Properties.Add(new SimpleDataType {Name = fieldInfo.Name, Value = value});
-                }
+            for (int i = 0; i < resourceEntriesCount; i++)
+            {
+                byte[] resourceEntryContent = BinaryHelper.GetBytes(content, (int)resourceEntriesOffset, 14);
 
-                biffEntriesOffset += (uint) sizeOfBiffEntry;
+                var resourceEntry = _genericStructConverter.ConvertToStruct<ResourceEntry>(resourceEntryContent, 0);
+
+                resourceEntries[i] = resourceEntry;
+
+                resourceEntriesOffset += 14;
             }
 
             keyResource.Header = new HeaderResource();
 
-            ResourceConverterHelper.Convert<Header, HeaderResource>(_genericStructConverter, header, keyResource.Header);
+            FieldInfo[] fieldInfos = header.GetType().GetFields();
+
+            foreach (FieldInfo fieldInfo in fieldInfos)
+            {
+                Delegate getter = DelegateHelper.CreateGetter(fieldInfo);
+                object value = getter.DynamicInvoke(header);
+
+                keyResource.Header.Properties.Add(new SimpleDataType { Name = fieldInfo.Name, Value = value });
+            }
+
+            FieldInfo[] fields = typeof(BiffEntry).GetFields();
+
+            for (int i = 0; i < biffEntryResources.Length; i++)
+            {
+                BiffEntry biffEntry = biffEntryResources[i];
+                keyResource.BiffEntries[i] = new BiffEntryResource();
+
+                foreach (FieldInfo fieldInfo in fields)
+                {
+                    Delegate getter = DelegateHelper.CreateGetter(fieldInfo);
+                    object value = getter.DynamicInvoke(biffEntry);
+
+                    keyResource.BiffEntries[i].Properties.Add(new SimpleDataType { Name = fieldInfo.Name, Value = value });
+                }
+            }
 
             return keyResource;
-        }
-
-        static Delegate CreateGetter(FieldInfo field)
-        {
-            Type fieldType = field.FieldType;
-            Type memberType = field.ReflectedType;
-            string methodName = field.ReflectedType.FullName + ".get_" + field.Name;
-            DynamicMethod setterMethod = new DynamicMethod(methodName, fieldType, new Type[1] { memberType }, true);
-            ILGenerator gen = setterMethod.GetILGenerator();
-            if (field.IsStatic)
-            {
-                gen.Emit(OpCodes.Ldsfld, field);
-            }
-            else
-            {
-                gen.Emit(OpCodes.Ldarg_0);
-                gen.Emit(OpCodes.Ldfld, field);
-            }
-            gen.Emit(OpCodes.Ret);
-            Type funcType = Expression.GetFuncType(memberType, fieldType);
-            return setterMethod.CreateDelegate(funcType);
         }
     }
 }

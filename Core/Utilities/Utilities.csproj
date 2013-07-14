@@ -1,25 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{970E73E5-93E3-4334-92D2-EA6CB18F877C}</ProjectGuid>
+    <ProjectGuid>{A00ACFC6-975F-4DE8-9AA3-C44BF04700F5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CodeFiction.InfinityFiction.Core.ResourceBuilder</RootNamespace>
-    <AssemblyName>CodeFiction.InfinityFiction.Core.ResourceBuilder</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <RootNamespace>CodeFiction.InfinityFiction.Core.Utilities</RootNamespace>
+    <AssemblyName>CodeFiction.InfinityFiction.Core.Utilities</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <SccProjectName>
-    </SccProjectName>
-    <SccLocalPath>
-    </SccLocalPath>
-    <SccAuxPath>
-    </SccAuxPath>
-    <SccProvider>
-    </SccProvider>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -29,7 +20,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -40,9 +30,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CodeFiction.DarkMatterFramework.Libraries.IOLibrary">
-      <HintPath>..\..\SharedLibs\CodeFiction.DarkMatterFramework.Libraries.IOLibrary.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -52,27 +39,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="KeyResourceBuilder.cs" />
+    <Compile Include="DelegateHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ResourceConverterHelper.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Structure\StructConverterContracts\StructConverterContracts.csproj">
-      <Project>{8850582a-a002-4ce2-b45d-df55aedbdfe0}</Project>
-      <Name>StructConverterContracts</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Structure\Structures\Structures.csproj">
-      <Project>{9d7750b3-c5be-4b06-81b0-0a409ca9fe7b}</Project>
-      <Name>Structures</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Resources\Resources.csproj">
-      <Project>{81d21e71-0196-4767-be6a-149247459e23}</Project>
-      <Name>Resources</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Utilities\Utilities.csproj">
-      <Project>{a00acfc6-975f-4de8-9aa3-c44bf04700f5}</Project>
-      <Name>Utilities</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
