@@ -4,39 +4,61 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using CodeFiction.InfinityFiction.Core.CommonTypes;
+using CodeFiction.InfinityFiction.Core.ResourceBuilderContracts;
+using CodeFiction.InfinityFiction.Core.Resources.Key;
 using CodeFiction.InfinityFiction.Core.ServiceContracts;
 
 namespace CodeFiction.InfinityFiction.Core.Services
 {
     public class InfinityFictionConfigService : IInfinityFictionConfigService
     {
+        private readonly IKeyResourceBuilder _keyResourceBuilder;
+
         private string _rootPath;
         private readonly string[] _bgdirs =
             {
                 "Characters", "MPSave", "Music", "Portraits", "Save", "Screenshots",
                 "Scripts", "ScrnShot", "Sounds", "Temp", "TempSave"
             };
+
+        private string _keyFilePath;
+        private string _dialogFilePath;
         private const string DialogFilename = "dialog.tlk";
         private const string OverrideFolder = "Override";
         private readonly GameConfig[] _games;
         private GameEnum _gameEnum;
+        private List<string> _extraDirs;
+        private List<ResourceFile> _resourceFiles;
 
-        public InfinityFictionConfigService()
+        private KeyResource _keyResource;
+
+        public InfinityFictionConfigService(IKeyResourceBuilder keyResourceBuilder)
         {
+            _keyResourceBuilder = keyResourceBuilder;
+            _extraDirs= new List<string>();
+            _resourceFiles = new List<ResourceFile>();
             _games = new GameConfig[16];
             BuildGames();
         }
 
+        public KeyResource KeyResource
+        {
+            get
+            {
+                return _keyResource;
+            }
+        }
+
         public GameConfig BuildResourceFile(string keyFilePath)
         {
-            string fullPath = Path.GetFullPath(keyFilePath);
+            _keyFilePath = Path.GetFullPath(keyFilePath);
             bool exists = File.Exists(keyFilePath);
             if (!exists)
             {
                 // TODO : exception fırlat;
             }
 
-            _rootPath = Path.GetDirectoryName(fullPath);
+            _rootPath = Path.GetDirectoryName(_keyFilePath);
             _gameEnum = GetGameEnum();
            // GameConfig gameConfig = GetGameConfig(_gameEnum);
 //            ResourceFile file = new ResourceFile { GameConfig = gameConfig, GameEnum = _gameEnum, RootPath = RootPath };
@@ -121,21 +143,67 @@ namespace CodeFiction.InfinityFiction.Core.Services
             }
             else if (File.Exists(Path.Combine(_rootPath, "bg1tutu.exe")))
             {
-                gameEnum = GameEnum.Kotor2;
+                gameEnum = GameEnum.BaldursGateTutu;
             }
             else if (File.Exists(Path.Combine(_rootPath, "baldur.exe")) && File.Exists(Path.Combine(_rootPath, "chitin.ini")))
             {
-                gameEnum = GameEnum.Kotor2;
+                gameEnum = GameEnum.BaldursGateDemo;
             }
 
-            // TODO : Expansion packleri kontrol et
+            LoadResources();
 
             return gameEnum;
         }
 
         private void LoadResources()
         {
-            
+            _keyResource = _keyResourceBuilder.GetKeyResource(_gameEnum, _keyFilePath);
+
+            string[] currentExtraDirs = _games.Where(config => config.GameEnum == _gameEnum).Select(config => config.ExtraDirs).FirstOrDefault();
+
+            if (currentExtraDirs == null)
+            {
+                //TODO: throw Exception
+            }
+
+            foreach (var extraDir in currentExtraDirs)
+            {
+                string fullPath = Path.Combine(_rootPath, extraDir);
+                if (Directory.Exists(fullPath))
+                {
+                    _extraDirs.Add(fullPath);
+                    LoadResourceFiles(fullPath);
+                }
+            }
+        }
+
+        private void LoadResourceFiles(string directory)
+        {
+            string[] filePaths = Directory.GetFiles(directory);
+            string[] directoryPaths = Directory.GetDirectories(directory);
+
+            List<string> filesAndDirectories = new List<string>();
+            filesAndDirectories.AddRange(filePaths);
+            filesAndDirectories.AddRange(directoryPaths);
+
+            foreach (var file in filesAndDirectories)
+            {
+                FileAttributes attr = File.GetAttributes(file);
+
+                if ((attr & FileAttributes.Directory) == FileAttributes.Directory)
+                {
+                    LoadResourceFiles(file);
+                    continue;
+                }
+
+                ResourceFile resourceFile = new ResourceFile();
+                string fileName = Path.GetFileNameWithoutExtension(file);
+                resourceFile.File = fileName;
+                resourceFile.FullPath = file;
+                resourceFile.Folder = directory;
+                
+                _resourceFiles.Add(resourceFile);
+            }
         }
     }
 }

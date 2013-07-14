@@ -1,11 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CodeFiction.InfinityFiction.Core.ResourceBuilder;
+﻿using System.IO;
+
+using CodeFiction.InfinityFiction.Core.CommonTypes;
+using CodeFiction.InfinityFiction.Core.Container;
+using CodeFiction.InfinityFiction.Core.ResourceBuilderContracts;
+using CodeFiction.InfinityFiction.Core.ResourceContainer;
+using CodeFiction.InfinityFiction.Core.Resources.Dlg;
 using CodeFiction.InfinityFiction.Core.Resources.Key;
-using CodeFiction.InfinityFiction.Structure.StructConverters;
+using CodeFiction.InfinityFiction.Core.StructContainer;
+
+using IWshRuntimeLibrary;
 
 namespace ResourceBuilderSandbox
 {
@@ -13,9 +16,27 @@ namespace ResourceBuilderSandbox
     {
         static void Main(string[] args)
         {
-            KeyResourceBuilder keyResourceBuilder = new KeyResourceBuilder(new GenericStructConverter());
+            Bootstrapper bootstrapper = Bootstrapper.Create()
+                .RegisterInstaller(new ResourceBuilderInstaller())
+                .RegisterInstaller(new StructInstaller());
 
-            KeyResource keyResource = keyResourceBuilder.GetKeyResource();
+            string chittinKeyPath = Path.Combine(@"G:\Games\BGOrg\BGII - SoA", "CHITIN.KEY");
+            string dialogPath = Path.Combine(@"C:\Program Files (x86)\Baldur's Gate Enhanced Edition\Data\data\lang\en_US", "dialog.tlk");
+
+            //if (System.IO.File.Exists(dialogPath))
+            //{
+            //    // WshShellClass shell = new WshShellClass();
+            //    WshShell shell = new WshShell(); //Create a new WshShell Interface
+            //    IWshShortcut link = (IWshShortcut)shell.CreateShortcut(dialogPath); //Link the interface to our shortcut
+
+            //    dialogPath = link.TargetPath;
+            //}
+
+            IKeyResourceBuilder keyResourceBuilder = bootstrapper.WindsorContainer.Resolve<IKeyResourceBuilder>();
+            IDlgResourceBuilder dlgResourceBuilder = bootstrapper.WindsorContainer.Resolve<IDlgResourceBuilder>();
+            
+            //KeyResource keyResource = keyResourceBuilder.GetKeyResource(GameEnum.BaldursGateTob, chittinKeyPath);
+            DlgResource dlgResource = dlgResourceBuilder.GetDlgResource(dialogPath);
         }
     }
 }

@@ -53,8 +53,14 @@
     <Compile Include="BaseModel.cs" />
     <Compile Include="DataTypes\BaseDataType.cs" />
     <Compile Include="DataTypes\SimpleDataType.cs" />
+    <Compile Include="Dlg\ActionTableResource.cs" />
+    <Compile Include="Dlg\DlgResource.cs" />
+    <Compile Include="Dlg\StateTableResource.cs" />
+    <Compile Include="Dlg\StateTriggerResource.cs" />
+    <Compile Include="Dlg\TransitionTableResource.cs" />
+    <Compile Include="Dlg\TransitionTriggerResource.cs" />
     <Compile Include="Key\BiffEntryResource.cs" />
-    <Compile Include="Key\HeaderResource.cs" />
+    <Compile Include="Dlg\HeaderResource.cs" />
     <Compile Include="Key\KeyResource.cs" />
     <Compile Include="Key\ResourceEntryResource.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

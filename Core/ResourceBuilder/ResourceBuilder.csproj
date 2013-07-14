@@ -52,9 +52,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DelegateHelper.cs" />
+    <Compile Include="DlgResourceBuilder.cs" />
     <Compile Include="KeyResourceBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ResourceConverterHelper.cs" />
+    <Compile Include="ResourceConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Structure\StructConverterContracts\StructConverterContracts.csproj">
@@ -65,13 +67,17 @@
       <Project>{9d7750b3-c5be-4b06-81b0-0a409ca9fe7b}</Project>
       <Name>Structures</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CommonTypes\CommonTypes.csproj">
+      <Project>{95e826ab-e4bf-484f-b763-43180f0ebb6b}</Project>
+      <Name>CommonTypes</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ResourceBuilderContracts\ResourceBuilderContracts.csproj">
+      <Project>{8e652c75-f015-4b7f-b7bc-93cdc8f07bee}</Project>
+      <Name>ResourceBuilderContracts</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Resources\Resources.csproj">
       <Project>{81d21e71-0196-4767-be6a-149247459e23}</Project>
       <Name>Resources</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Utilities\Utilities.csproj">
-      <Project>{a00acfc6-975f-4de8-9aa3-c44bf04700f5}</Project>
-      <Name>Utilities</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

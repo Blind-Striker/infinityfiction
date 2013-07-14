@@ -48,6 +48,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dlg\ActionTable.cs" />
+    <Compile Include="Dlg\Header.cs" />
+    <Compile Include="Dlg\StateTable.cs" />
+    <Compile Include="Dlg\StateTrigger.cs" />
+    <Compile Include="Dlg\TransitionTrigger.cs" />
+    <Compile Include="Dlg\TransitionTable.cs" />
     <Compile Include="Key\BiffEntry.cs" />
     <Compile Include="Key\Header.cs" />
     <Compile Include="Key\ResourceEntry.cs" />

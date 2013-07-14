@@ -92,9 +92,25 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Core\ResourceBuilderContracts\ResourceBuilderContracts.csproj">
+      <Project>{8e652c75-f015-4b7f-b7bc-93cdc8f07bee}</Project>
+      <Name>ResourceBuilderContracts</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\DependencyInjection\Container\Container.csproj">
       <Project>{b7efde8f-ff0c-4091-b870-32d21dac853b}</Project>
       <Name>Container</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\DependencyInjection\ResourceContainer\ResourceContainer.csproj">
+      <Project>{b6869a90-7c50-4b31-a3be-1eb333107274}</Project>
+      <Name>ResourceContainer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\DependencyInjection\StructContainer\StructContainer.csproj">
+      <Project>{3630fd4b-5770-4261-8f27-d9b208cd4f0f}</Project>
+      <Name>StructContainer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Structure\StructConverterContracts\StructConverterContracts.csproj">
+      <Project>{8850582a-a002-4ce2-b45d-df55aedbdfe0}</Project>
+      <Name>StructConverterContracts</Name>
     </ProjectReference>
     <ProjectReference Include="..\InfinityFictionEditor.Core\InfinityFictionEditor.Core.csproj">
       <Project>{13fff767-0863-435a-8e35-06d63cad13f6}</Project>

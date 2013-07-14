@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Windows.Forms;
 using CodeFiction.InfinityFiction.Core.Container;
+using CodeFiction.InfinityFiction.Core.ResourceContainer;
+using CodeFiction.InfinityFiction.Core.StructContainer;
+
 using InfinityFiction.UI.InfinityFictionEditor.Core;
 using InfinityFiction.UI.InfinityFictionEditor.Core.Foundation;
 using MvpVmFramework.Core.Foundation;
@@ -19,6 +22,8 @@ namespace InfinityFiction.UI.InfinityFictionEditor
             Application.SetCompatibleTextRenderingDefault(false);
 
             Bootstrapper registerInstaller = Bootstrapper.Create()
+                .RegisterInstaller(new ResourceBuilderInstaller())
+                .RegisterInstaller(new StructInstaller())
                 .RegisterInstaller(new InfinityFictionEditorCoreInstaller())
                 .RegisterInstaller(new InfinityFictionEditorInstaller());
 

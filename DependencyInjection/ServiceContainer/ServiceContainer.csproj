@@ -64,6 +64,16 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\ServiceContracts\ServiceContracts.csproj">
+      <Project>{1df78df6-4c75-4083-a0c6-a56a637ec33e}</Project>
+      <Name>ServiceContracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core\Services\Services.csproj">
+      <Project>{5c96f98a-1c10-40ed-8bd2-500a842a7659}</Project>
+      <Name>Services</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

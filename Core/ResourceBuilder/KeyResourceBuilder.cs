@@ -1,31 +1,37 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
-using System.Reflection;
+using System.Linq;
 
 using CodeFiction.DarkMatterFramework.Libraries.IOLibrary;
-using CodeFiction.InfinityFiction.Core.Resources.DataTypes;
+using CodeFiction.InfinityFiction.Core.CommonTypes;
+using CodeFiction.InfinityFiction.Core.ResourceBuilderContracts;
+using CodeFiction.InfinityFiction.Core.Resources.Dlg;
 using CodeFiction.InfinityFiction.Core.Resources.Key;
-using CodeFiction.InfinityFiction.Core.Utilities;
 using CodeFiction.InfinityFiction.Structure.StructConverterContracts;
 using CodeFiction.InfinityFiction.Structure.Structures.Key;
 
 namespace CodeFiction.InfinityFiction.Core.ResourceBuilder
 {
-    public class KeyResourceBuilder
+    public class KeyResourceBuilder : IKeyResourceBuilder
     {
+        private Dictionary<int, string> _extensionMap;
         private readonly IGenericStructConverter _genericStructConverter;
+        private readonly IResourceConverter _resourceConverter;
 
-        public KeyResourceBuilder(IGenericStructConverter genericStructConverter)
+        public KeyResourceBuilder(IGenericStructConverter genericStructConverter, IResourceConverter resourceConverter)
         {
             _genericStructConverter = genericStructConverter;
+            _resourceConverter = resourceConverter;
         }
 
-        public KeyResource GetKeyResource()
+        public KeyResource GetKeyResource(GameEnum gameEnum, string keyFilePath)
         {
             var keyResource = new KeyResource();
+            MapExtensions(keyResource, gameEnum);
+            _extensionMap = keyResource.ExtensionMap;
 
-            string savefile = Path.Combine(@"G:\Games\BGOrg\BGII - SoA", "CHITIN.KEY");
-            byte[] content = IoHelper.ReadBinaryFile(savefile);
+            byte[] content = IoHelper.ReadBinaryFile(keyFilePath);
 
             var header = _genericStructConverter.ConvertToStruct<Header>(content, 0);
 
@@ -34,62 +40,155 @@ namespace CodeFiction.InfinityFiction.Core.ResourceBuilder
             uint biffEntriesOffset = header.BiffEntriesOffset;
             uint resourceEntriesOffset = header.ResourceEntriesOffset;
 
-            var biffEntryResources = new BiffEntry[biffEntriesCount];
-            var resourceEntries = new ResourceEntry[resourceEntriesCount];
-            keyResource.BiffEntries = new BiffEntryResource[biffEntriesCount];
-            keyResource.ResourceEntries = new ResourceEntryResource[resourceEntriesOffset];
-
-            for (int i = 0; i < biffEntriesCount; i++)
-            {
-                byte[] biffEntryContent = BinaryHelper.GetBytes(content, (int)biffEntriesOffset, 12);
-
-                var biffEntry = _genericStructConverter.ConvertToStruct<BiffEntry>(biffEntryContent, 0);
-
-                biffEntryResources[i] = biffEntry;
-
-                biffEntriesOffset += 12;
-            }
-
-            for (int i = 0; i < resourceEntriesCount; i++)
-            {
-                byte[] resourceEntryContent = BinaryHelper.GetBytes(content, (int)resourceEntriesOffset, 14);
-
-                var resourceEntry = _genericStructConverter.ConvertToStruct<ResourceEntry>(resourceEntryContent, 0);
-
-                resourceEntries[i] = resourceEntry;
-
-                resourceEntriesOffset += 14;
-            }
-
             keyResource.Header = new HeaderResource();
+            keyResource.BiffEntries = new BiffEntryResource[biffEntriesCount];
+            keyResource.ResourceEntries = new ResourceEntryResource[resourceEntriesCount];
 
-            FieldInfo[] fieldInfos = header.GetType().GetFields();
-
-            foreach (FieldInfo fieldInfo in fieldInfos)
+            uint sizeOfBiffEntry;
+            const uint SizeOfResourceEntry = 14;
+            unsafe
             {
-                Delegate getter = DelegateHelper.CreateGetter(fieldInfo);
-                object value = getter.DynamicInvoke(header);
-
-                keyResource.Header.Properties.Add(new SimpleDataType { Name = fieldInfo.Name, Value = value });
+                sizeOfBiffEntry = (uint)sizeof(BiffEntry);
             }
 
-            FieldInfo[] fields = typeof(BiffEntry).GetFields();
-
-            for (int i = 0; i < biffEntryResources.Length; i++)
-            {
-                BiffEntry biffEntry = biffEntryResources[i];
-                keyResource.BiffEntries[i] = new BiffEntryResource();
-
-                foreach (FieldInfo fieldInfo in fields)
-                {
-                    Delegate getter = DelegateHelper.CreateGetter(fieldInfo);
-                    object value = getter.DynamicInvoke(biffEntry);
-
-                    keyResource.BiffEntries[i].Properties.Add(new SimpleDataType { Name = fieldInfo.Name, Value = value });
-                }
-            }
+            _resourceConverter.Convert(header, keyResource.Header);
+            _resourceConverter.Convert<BiffEntry, BiffEntryResource>(content, keyResource.BiffEntries, biffEntriesOffset, sizeOfBiffEntry);
+            _resourceConverter.Convert<ResourceEntry, ResourceEntryResource>(content, keyResource.ResourceEntries, resourceEntriesOffset, SizeOfResourceEntry, OnResourceConverted);
 
             return keyResource;
+        }
+
+        private void OnResourceConverted(ResourceEntryResource resourceEntryResource)
+        {
+            int resourceType = resourceEntryResource.Properties.Where(type => type.Name == "ResourceType").Select(type => Convert.ToInt32(type.Value)).First();
+            if (_extensionMap.ContainsKey(resourceType))
+            {
+                resourceEntryResource.Extension = _extensionMap[resourceType];
+            }
+        }
+
+        public void MapExtensions(KeyResource keyResource, GameEnum gameEnum)
+        {
+            keyResource.ExtensionMap = new Dictionary<int, string>();
+
+            if (gameEnum == GameEnum.NewerwinterNights)
+            {
+                keyResource.ExtensionMap.Add(0x001, "BMP");
+                keyResource.ExtensionMap.Add(0x003, "TGA");
+                keyResource.ExtensionMap.Add(0x004, "WAV");
+                keyResource.ExtensionMap.Add(0x006, "PLT");
+                keyResource.ExtensionMap.Add(0x007, "INI");
+                keyResource.ExtensionMap.Add(0x00A, "TXT");
+                keyResource.ExtensionMap.Add(0x7D2, "MDL"); // Aurora model - not supported
+                keyResource.ExtensionMap.Add(0x7D9, "NSS");
+                keyResource.ExtensionMap.Add(0x7DA, "NCS");
+                keyResource.ExtensionMap.Add(0x7DC, "ARE");
+                keyResource.ExtensionMap.Add(0x7DD, "SET");
+                keyResource.ExtensionMap.Add(0x7DE, "IFO");
+                keyResource.ExtensionMap.Add(0x7DF, "BIC");
+                keyResource.ExtensionMap.Add(0x7E0, "WOK");
+                keyResource.ExtensionMap.Add(0x7E1, "2DA");
+                keyResource.ExtensionMap.Add(0x7E6, "TXI");
+                keyResource.ExtensionMap.Add(0x7E7, "GIT");
+                keyResource.ExtensionMap.Add(0x7E9, "UTI");
+                keyResource.ExtensionMap.Add(0x7EB, "UTC");
+                keyResource.ExtensionMap.Add(0x7ED, "DLG");
+                keyResource.ExtensionMap.Add(0x7EE, "ITP");
+                keyResource.ExtensionMap.Add(0x7F0, "UTT");
+                keyResource.ExtensionMap.Add(0x7F1, "DDS"); // Compressed texture file - not supported
+                keyResource.ExtensionMap.Add(0x7F3, "UTS");
+                keyResource.ExtensionMap.Add(0x7F4, "LTR"); // Letter-combo probability info for name generation - not supported
+                keyResource.ExtensionMap.Add(0x7F5, "GFF");
+                keyResource.ExtensionMap.Add(0x7F6, "FAC");
+                keyResource.ExtensionMap.Add(0x7F8, "UTE");
+                keyResource.ExtensionMap.Add(0x7FA, "UTD");
+                keyResource.ExtensionMap.Add(0x7FC, "UTP");
+                keyResource.ExtensionMap.Add(0x7FD, "DFT");
+                keyResource.ExtensionMap.Add(0x7FE, "GIC");
+                keyResource.ExtensionMap.Add(0x7FF, "GUI");
+                keyResource.ExtensionMap.Add(0x803, "UTM");
+                keyResource.ExtensionMap.Add(0x804, "DWK");
+                keyResource.ExtensionMap.Add(0x805, "PWK");
+                keyResource.ExtensionMap.Add(0x808, "JRL");
+                keyResource.ExtensionMap.Add(0x80A, "UTW");
+                keyResource.ExtensionMap.Add(0x80C, "SSF");
+                keyResource.ExtensionMap.Add(0x810, "NDB");
+                keyResource.ExtensionMap.Add(0x811, "PTM");
+                keyResource.ExtensionMap.Add(0x812, "PTT");
+            }
+            else if (gameEnum == GameEnum.Kotor || gameEnum == GameEnum.Kotor2)
+            {
+                keyResource.ExtensionMap.Add(0x000, "INV");
+                keyResource.ExtensionMap.Add(0x003, "TGA");
+                keyResource.ExtensionMap.Add(0x004, "WAV");
+                keyResource.ExtensionMap.Add(0x7D2, "MDL"); // Aurora model - not supported
+                keyResource.ExtensionMap.Add(0x7D9, "NSS");
+                keyResource.ExtensionMap.Add(0x7DA, "NCS");
+                keyResource.ExtensionMap.Add(0x7DC, "ARE");
+                keyResource.ExtensionMap.Add(0x7DE, "IFO");
+                keyResource.ExtensionMap.Add(0x7DF, "BIC");
+                keyResource.ExtensionMap.Add(0x7E0, "BWM"); // ?????
+                keyResource.ExtensionMap.Add(0x7E1, "2DA");
+                keyResource.ExtensionMap.Add(0x7E6, "TXI");
+                keyResource.ExtensionMap.Add(0x7E7, "GIT");
+                keyResource.ExtensionMap.Add(0x7E8, "BTI");
+                keyResource.ExtensionMap.Add(0x7E9, "UTI");
+                keyResource.ExtensionMap.Add(0x7EA, "BTC");
+                keyResource.ExtensionMap.Add(0x7EB, "UTC");
+                keyResource.ExtensionMap.Add(0x7ED, "DLG");
+                keyResource.ExtensionMap.Add(0x7EE, "ITP");
+                keyResource.ExtensionMap.Add(0x7F0, "UTT");
+                keyResource.ExtensionMap.Add(0x7F3, "UTS");
+                keyResource.ExtensionMap.Add(0x7F4, "LTR"); // Letter-combo probability info for name generation - not supported
+                keyResource.ExtensionMap.Add(0x7F6, "FAC");
+                keyResource.ExtensionMap.Add(0x7F8, "UTE");
+                keyResource.ExtensionMap.Add(0x7FA, "UTD");
+                keyResource.ExtensionMap.Add(0x7FC, "UTP");
+                keyResource.ExtensionMap.Add(0x7FF, "GUI");
+                keyResource.ExtensionMap.Add(0x803, "UTM");
+                keyResource.ExtensionMap.Add(0x804, "BWM"); // ??????
+                keyResource.ExtensionMap.Add(0x805, "BWM"); // ??????
+                keyResource.ExtensionMap.Add(0x808, "JRL");
+                keyResource.ExtensionMap.Add(0x809, "MOD"); // MOD 1.0 - name might be incorrect
+                keyResource.ExtensionMap.Add(0x80A, "UTW");
+                keyResource.ExtensionMap.Add(0x80C, "SSF");
+                keyResource.ExtensionMap.Add(0xBBB, "PTH");
+                keyResource.ExtensionMap.Add(0xBBC, "LIP"); // ??? binary format
+            }
+            else
+            {
+                keyResource.ExtensionMap.Add(0x001, "BMP");
+                keyResource.ExtensionMap.Add(0x002, "MVE");
+                keyResource.ExtensionMap.Add(0x004, "WAV");
+                keyResource.ExtensionMap.Add(0x005, "WFX");
+                keyResource.ExtensionMap.Add(0x006, "PLT");
+                keyResource.ExtensionMap.Add(0x3e8, "BAM");
+                keyResource.ExtensionMap.Add(0x3e9, "WED");
+                keyResource.ExtensionMap.Add(0x3ea, "CHU");
+                keyResource.ExtensionMap.Add(0x3eb, "TIS");
+                keyResource.ExtensionMap.Add(0x3ec, "MOS");
+                keyResource.ExtensionMap.Add(0x3ed, "ITM");
+                keyResource.ExtensionMap.Add(0x3ee, "SPL");
+                keyResource.ExtensionMap.Add(0x3ef, "BCS");
+                keyResource.ExtensionMap.Add(0x3f0, "IDS");
+                keyResource.ExtensionMap.Add(0x3f1, "CRE");
+                keyResource.ExtensionMap.Add(0x3f2, "ARE");
+                keyResource.ExtensionMap.Add(0x3f3, "DLG");
+                keyResource.ExtensionMap.Add(0x3f4, "2DA");
+                keyResource.ExtensionMap.Add(0x3f5, "GAM");
+                keyResource.ExtensionMap.Add(0x3f6, "STO");
+                keyResource.ExtensionMap.Add(0x3f7, "WMP");
+                keyResource.ExtensionMap.Add(0x3f8, "EFF");
+                keyResource.ExtensionMap.Add(0x3f9, "BS");
+                keyResource.ExtensionMap.Add(0x3fa, "CHR");
+                keyResource.ExtensionMap.Add(0x3fb, "VVC");
+                keyResource.ExtensionMap.Add(0x3fc, "VEF"); // ????????
+                keyResource.ExtensionMap.Add(0x3fd, "PRO");
+                keyResource.ExtensionMap.Add(0x3fe, "BIO");
+                keyResource.ExtensionMap.Add(0x44c, "BAH"); // ???????
+                keyResource.ExtensionMap.Add(0x802, "INI");
+                keyResource.ExtensionMap.Add(0x803, "SRC");
+            }
         }
     }
 }

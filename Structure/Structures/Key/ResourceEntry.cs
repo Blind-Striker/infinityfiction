@@ -13,9 +13,9 @@ namespace CodeFiction.InfinityFiction.Structure.Structures.Key
         public string ResourceName;
         
         [FieldOffset(0x0008)]
-        public ushort BIFFileNameLength;
+        public ushort ResourceType;
 
         [FieldOffset(0x000a)] 
-        public uint BIFFileNameStartOffset;
+        public uint ResourceLocator;
     }
 }

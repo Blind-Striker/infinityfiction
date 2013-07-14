@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="Are\AreService.cs" />
     <Compile Include="InfinityFictionConfigService.cs" />
+    <Compile Include="KeyResourceService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -60,6 +61,10 @@
     <ProjectReference Include="..\CommonTypes\CommonTypes.csproj">
       <Project>{95e826ab-e4bf-484f-b763-43180f0ebb6b}</Project>
       <Name>CommonTypes</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ResourceBuilderContracts\ResourceBuilderContracts.csproj">
+      <Project>{8e652c75-f015-4b7f-b7bc-93cdc8f07bee}</Project>
+      <Name>ResourceBuilderContracts</Name>
     </ProjectReference>
     <ProjectReference Include="..\Resources\Resources.csproj">
       <Project>{81D21E71-0196-4767-BE6A-149247459E23}</Project>

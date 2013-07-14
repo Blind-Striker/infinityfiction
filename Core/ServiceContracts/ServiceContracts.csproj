@@ -50,7 +50,18 @@
   <ItemGroup>
     <Compile Include="IAreService.cs" />
     <Compile Include="IInfinityFictionConfigService.cs" />
+    <Compile Include="IKeyResourceService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CommonTypes\CommonTypes.csproj">
+      <Project>{95e826ab-e4bf-484f-b763-43180f0ebb6b}</Project>
+      <Name>CommonTypes</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Resources\Resources.csproj">
+      <Project>{81d21e71-0196-4767-be6a-149247459e23}</Project>
+      <Name>Resources</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
