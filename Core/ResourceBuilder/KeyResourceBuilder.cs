@@ -60,10 +60,12 @@ namespace CodeFiction.InfinityFiction.Core.ResourceBuilder
 
         private void OnResourceConverted(ResourceEntryResource resourceEntryResource)
         {
+            string fileName = resourceEntryResource.Properties.Where(type => type.Name == "ResourceName").Select(type => type.Value.ToString().Trim()).First();
             int resourceType = resourceEntryResource.Properties.Where(type => type.Name == "ResourceType").Select(type => Convert.ToInt32(type.Value)).First();
             if (_extensionMap.ContainsKey(resourceType))
             {
                 resourceEntryResource.Extension = _extensionMap[resourceType];
+                resourceEntryResource.FileName = String.Format("{0}.{1}", fileName, resourceEntryResource.Extension);
             }
         }
 

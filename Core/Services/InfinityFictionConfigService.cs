@@ -27,8 +27,8 @@ namespace CodeFiction.InfinityFiction.Core.Services
         private const string OverrideFolder = "Override";
         private readonly GameConfig[] _games;
         private GameEnum _gameEnum;
-        private List<string> _extraDirs;
-        private List<ResourceFile> _resourceFiles;
+        private readonly List<string> _extraDirs;
+        private readonly List<ResourceFile> _resourceFiles;
 
         private KeyResource _keyResource;
 
