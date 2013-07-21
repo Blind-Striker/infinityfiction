@@ -52,6 +52,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sandbox", "Sandbox", "{91F6
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResourceBuilderSandbox", "Tests\Sandbox\ResourceBuilderSandbox\ResourceBuilderSandbox.csproj", "{02B65AD0-1C06-45C0-A631-0C7036A1E77C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServicesSandbox", "Tests\Sandbox\ServicesSandbox\ServicesSandbox.csproj", "{BE37B4B9-CAFA-40D1-A97C-565F7629DF5C}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = BaldursGateEditor.vsmdi
@@ -225,6 +227,16 @@ Global
 		{02B65AD0-1C06-45C0-A631-0C7036A1E77C}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{02B65AD0-1C06-45C0-A631-0C7036A1E77C}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{02B65AD0-1C06-45C0-A631-0C7036A1E77C}.Release|x86.ActiveCfg = Release|Any CPU
+		{BE37B4B9-CAFA-40D1-A97C-565F7629DF5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE37B4B9-CAFA-40D1-A97C-565F7629DF5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE37B4B9-CAFA-40D1-A97C-565F7629DF5C}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{BE37B4B9-CAFA-40D1-A97C-565F7629DF5C}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{BE37B4B9-CAFA-40D1-A97C-565F7629DF5C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{BE37B4B9-CAFA-40D1-A97C-565F7629DF5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE37B4B9-CAFA-40D1-A97C-565F7629DF5C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE37B4B9-CAFA-40D1-A97C-565F7629DF5C}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{BE37B4B9-CAFA-40D1-A97C-565F7629DF5C}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{BE37B4B9-CAFA-40D1-A97C-565F7629DF5C}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -247,5 +259,6 @@ Global
 		{DD114B56-8097-412A-8FC5-8F5A64D4ADDB} = {40648F55-6FAE-4AB7-8BA1-330EA2AE2644}
 		{13FFF767-0863-435A-8E35-06D63CAD13F6} = {40648F55-6FAE-4AB7-8BA1-330EA2AE2644}
 		{02B65AD0-1C06-45C0-A631-0C7036A1E77C} = {91F6E7F0-2CDD-474C-AEF8-485A71415B88}
+		{BE37B4B9-CAFA-40D1-A97C-565F7629DF5C} = {91F6E7F0-2CDD-474C-AEF8-485A71415B88}
 	EndGlobalSection
 EndGlobal

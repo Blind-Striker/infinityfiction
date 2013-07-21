@@ -96,6 +96,10 @@
       <Project>{8e652c75-f015-4b7f-b7bc-93cdc8f07bee}</Project>
       <Name>ResourceBuilderContracts</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Core\ServiceContracts\ServiceContracts.csproj">
+      <Project>{1df78df6-4c75-4083-a0c6-a56a637ec33e}</Project>
+      <Name>ServiceContracts</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\DependencyInjection\Container\Container.csproj">
       <Project>{b7efde8f-ff0c-4091-b870-32d21dac853b}</Project>
       <Name>Container</Name>
@@ -103,6 +107,10 @@
     <ProjectReference Include="..\..\DependencyInjection\ResourceContainer\ResourceContainer.csproj">
       <Project>{b6869a90-7c50-4b31-a3be-1eb333107274}</Project>
       <Name>ResourceContainer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\DependencyInjection\ServiceContainer\ServiceContainer.csproj">
+      <Project>{106f53f1-bbe8-4108-ab59-c55897a33e41}</Project>
+      <Name>ServiceContainer</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\DependencyInjection\StructContainer\StructContainer.csproj">
       <Project>{3630fd4b-5770-4261-8f27-d9b208cd4f0f}</Project>

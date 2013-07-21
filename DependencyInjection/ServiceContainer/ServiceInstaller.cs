@@ -11,7 +11,9 @@ namespace CodeFiction.InfinityFiction.Core.ServiceContainer
     {
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
-            container.Register(Component.For<IInfinityFictionConfigService>().ImplementedBy<InfinityFictionConfigService>().LifestyleSingleton());
+            container.Register(
+                Component.For<IInfinityFictionConfigService>().ImplementedBy<InfinityFictionConfigService>().LifestyleSingleton(),
+                Component.For<IKeyResourceService>().ImplementedBy<KeyResourceService>().LifestyleSingleton());
         }
     }
 }

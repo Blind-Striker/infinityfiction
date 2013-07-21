@@ -12,5 +12,9 @@ namespace CodeFiction.InfinityFiction.Core.CommonTypes
         public string File { get; set; }
 
         public string FullPath { get; set; }
+
+        public string Extension { get; set; }
+
+        public bool ResourceEntry { get; set; }
     }
 }

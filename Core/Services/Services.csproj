@@ -39,6 +39,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary">
+      <HintPath>..\..\SharedLibs\CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />

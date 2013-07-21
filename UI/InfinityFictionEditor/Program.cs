@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using CodeFiction.InfinityFiction.Core.Container;
 using CodeFiction.InfinityFiction.Core.ResourceContainer;
+using CodeFiction.InfinityFiction.Core.ServiceContainer;
 using CodeFiction.InfinityFiction.Core.StructContainer;
 
 using InfinityFiction.UI.InfinityFictionEditor.Core;
@@ -22,6 +23,7 @@ namespace InfinityFiction.UI.InfinityFictionEditor
             Application.SetCompatibleTextRenderingDefault(false);
 
             Bootstrapper registerInstaller = Bootstrapper.Create()
+                .RegisterInstaller(new ServiceInstaller())
                 .RegisterInstaller(new ResourceBuilderInstaller())
                 .RegisterInstaller(new StructInstaller())
                 .RegisterInstaller(new InfinityFictionEditorCoreInstaller())

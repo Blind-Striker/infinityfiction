@@ -10,5 +10,7 @@ namespace CodeFiction.InfinityFiction.Core.Resources.Key
         public string Extension { get; set; }
 
         public string FileName { get; set; }
+
+        public bool HasOverride { get; set; }
     }
 }
