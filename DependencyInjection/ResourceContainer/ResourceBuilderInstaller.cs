@@ -19,10 +19,8 @@ namespace CodeFiction.InfinityFiction.Core.ResourceContainer
             container.Register(
                 Component.For<IDelegateHelper>().ImplementedBy<DelegateHelper>(),
                 Component.For<IResourceConverter>().ImplementedBy<ResourceConverter>(),
-
                 Component.For<IKeyResourceBuilder>().ImplementedBy<KeyResourceBuilder>(),
-                Component.For<IDlgResourceBuilder>().ImplementedBy<DlgResourceBuilder>()
-                );
+                Component.For<IDlgResourceBuilder>().ImplementedBy<DlgResourceBuilder>());
         }
     }
 }

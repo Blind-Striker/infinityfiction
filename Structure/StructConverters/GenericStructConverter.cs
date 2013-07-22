@@ -14,7 +14,7 @@ namespace CodeFiction.InfinityFiction.Structure.StructConverters
                 IntPtr unmanagedPointer = Marshal.AllocHGlobal(content.Length);
                 Marshal.Copy(content, offset, unmanagedPointer, content.Length);
 
-                T header = (T)Marshal.PtrToStructure(unmanagedPointer, typeof(T));
+                var header = (T)Marshal.PtrToStructure(unmanagedPointer, typeof(T));
 
                 Marshal.FreeHGlobal(unmanagedPointer);
 
@@ -22,7 +22,7 @@ namespace CodeFiction.InfinityFiction.Structure.StructConverters
             }
             catch (Exception ex)
             {
-                throw new ConvertException(String.Format("An error occured while reading {0}.", typeof(T).FullName), ex);
+                throw new ConvertException(string.Format("An error occured while reading {0}.", typeof(T).FullName), ex);
             }
         }
     }

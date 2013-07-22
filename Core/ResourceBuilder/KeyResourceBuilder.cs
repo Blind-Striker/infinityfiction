@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 
 using CodeFiction.DarkMatterFramework.Libraries.IOLibrary;
@@ -15,9 +14,9 @@ namespace CodeFiction.InfinityFiction.Core.ResourceBuilder
 {
     public class KeyResourceBuilder : IKeyResourceBuilder
     {
-        private Dictionary<int, string> _extensionMap;
         private readonly IGenericStructConverter _genericStructConverter;
         private readonly IResourceConverter _resourceConverter;
+        private Dictionary<int, string> _extensionMap;
 
         public KeyResourceBuilder(IGenericStructConverter genericStructConverter, IResourceConverter resourceConverter)
         {
@@ -56,17 +55,6 @@ namespace CodeFiction.InfinityFiction.Core.ResourceBuilder
             _resourceConverter.Convert<ResourceEntry, ResourceEntryResource>(content, keyResource.ResourceEntries, resourceEntriesOffset, SizeOfResourceEntry, OnResourceConverted);
 
             return keyResource;
-        }
-
-        private void OnResourceConverted(ResourceEntryResource resourceEntryResource)
-        {
-            string fileName = resourceEntryResource.Properties.Where(type => type.Name == "ResourceName").Select(type => type.Value.ToString().Trim()).First();
-            int resourceType = resourceEntryResource.Properties.Where(type => type.Name == "ResourceType").Select(type => Convert.ToInt32(type.Value)).First();
-            if (_extensionMap.ContainsKey(resourceType))
-            {
-                resourceEntryResource.Extension = _extensionMap[resourceType];
-                resourceEntryResource.FileName = String.Format("{0}.{1}", fileName, resourceEntryResource.Extension);
-            }
         }
 
         public void MapExtensions(KeyResource keyResource, GameEnum gameEnum)
@@ -190,6 +178,17 @@ namespace CodeFiction.InfinityFiction.Core.ResourceBuilder
                 keyResource.ExtensionMap.Add(0x44c, "BAH"); // ???????
                 keyResource.ExtensionMap.Add(0x802, "INI");
                 keyResource.ExtensionMap.Add(0x803, "SRC");
+            }
+        }
+
+        private void OnResourceConverted(ResourceEntryResource resourceEntryResource)
+        {
+            string fileName = resourceEntryResource.Properties.Where(type => type.Name == "ResourceName").Select(type => type.Value.ToString().Trim()).First();
+            int resourceType = resourceEntryResource.Properties.Where(type => type.Name == "ResourceType").Select(type => Convert.ToInt32(type.Value)).First();
+            if (_extensionMap.ContainsKey(resourceType))
+            {
+                resourceEntryResource.Extension = _extensionMap[resourceType];
+                resourceEntryResource.FileName = string.Format("{0}.{1}", fileName, resourceEntryResource.Extension);
             }
         }
     }

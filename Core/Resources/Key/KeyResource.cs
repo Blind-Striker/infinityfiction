@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 
 using CodeFiction.InfinityFiction.Core.Resources.Dlg;
-using CodeFiction.InfinityFiction.Structure.Structures.Key;
 
 namespace CodeFiction.InfinityFiction.Core.Resources.Key
 {

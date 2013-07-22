@@ -15,17 +15,14 @@ namespace CodeFiction.InfinityFiction.Structure.StructConverters.Exceptions
         {
         }
 
-
         public ConvertException(string exceptionMessage)
             : base(exceptionMessage)
         {
         }
 
-
         public ConvertException()
         {
         }
-
 
         public ConvertException(SerializationInfo serializationInfo, StreamingContext context)
             : base(serializationInfo, context)

@@ -11,13 +11,13 @@ using MvpVmFramework.Core.Foundation;
 
 namespace InfinityFiction.UI.InfinityFictionEditor
 {
-    static class Program
+    internal static class Program
     {
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        private static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
@@ -29,8 +29,8 @@ namespace InfinityFiction.UI.InfinityFictionEditor
                 .RegisterInstaller(new InfinityFictionEditorCoreInstaller())
                 .RegisterInstaller(new InfinityFictionEditorInstaller());
 
-            IPresenterFactory presenterFactory = registerInstaller.WindsorContainer.Resolve<IPresenterFactory>();
-            IMainPresenter mainPresenter = presenterFactory.CreatePresenter<IMainPresenter>();
+            var presenterFactory = registerInstaller.WindsorContainer.Resolve<IPresenterFactory>();
+            var mainPresenter = presenterFactory.CreatePresenter<IMainPresenter>();
 
             Application.Run(mainPresenter.View as Form);
         }

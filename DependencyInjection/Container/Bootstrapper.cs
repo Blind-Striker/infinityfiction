@@ -17,7 +17,13 @@ namespace CodeFiction.InfinityFiction.Core.Container
             _container = new WindsorContainer();
         }
 
-        public IWindsorContainer WindsorContainer { get { return _container; } }
+        public IWindsorContainer WindsorContainer
+        {
+            get
+            {
+                return _container;
+            }
+        }
 
         public static Bootstrapper Create()
         {
