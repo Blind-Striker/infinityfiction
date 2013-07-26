@@ -41,8 +41,10 @@
     <Reference Include="MvpVmFramework.Core">
       <HintPath>..\..\SharedLibs\MvpVmFramework.Core.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -62,13 +64,18 @@
     </Compile>
     <Compile Include="Foundation\IMainPresenter.cs" />
     <Compile Include="InfinityFictionEditorCoreInstaller.cs" />
+    <Compile Include="Models\TreeViewItem.cs" />
     <Compile Include="Presenters\MainPresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Foundation\IMainView.cs" />
+    <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="WinFormControls\DataTreeView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WinFormControls\Design\DropDownTypeEditor.cs" />
+    <Compile Include="WinFormControls\Design\FieldTypeEditor.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ViewModels\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
