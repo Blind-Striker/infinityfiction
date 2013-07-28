@@ -3,7 +3,7 @@ using CodeFiction.InfinityFiction.Core.ResourceBuilderContracts;
 using CodeFiction.InfinityFiction.Core.Resources.Key;
 using CodeFiction.InfinityFiction.Core.ServiceContracts;
 
-namespace CodeFiction.InfinityFiction.Core.Services
+namespace CodeFiction.InfinityFiction.Core.Services.Key
 {
     public class KeyResourceService : IKeyResourceService
     {

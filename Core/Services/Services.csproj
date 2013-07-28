@@ -53,7 +53,7 @@
   <ItemGroup>
     <Compile Include="Are\AreService.cs" />
     <Compile Include="InfinityFictionConfigService.cs" />
-    <Compile Include="KeyResourceService.cs" />
+    <Compile Include="Key\KeyResourceService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

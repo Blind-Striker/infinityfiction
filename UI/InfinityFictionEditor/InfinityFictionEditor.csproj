@@ -43,6 +43,7 @@
     <Reference Include="MvpVmFramework.Core">
       <HintPath>..\..\SharedLibs\MvpVmFramework.Core.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />

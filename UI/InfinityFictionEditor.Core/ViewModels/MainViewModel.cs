@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,8 +15,9 @@ namespace InfinityFiction.UI.InfinityFictionEditor.Core.ViewModels
 {
     public class MainViewModel : BaseViewModel
     {
+        private object _selectedTreeViewItemId;
         private ObservableCollection<TreeViewItem> _treeViewItems;
-        private ICommand _treeItemSelected;
+        private ICommand _onTreeItemSelected;
         //private int _currentTreeViewItemSelectedIndex;
 
         public ObservableCollection<TreeViewItem> TreeViewItems
@@ -28,13 +30,15 @@ namespace InfinityFiction.UI.InfinityFictionEditor.Core.ViewModels
             }
         }
 
-        public ICommand TreeItemSelected
+        public object SelectedTreeViewItem { get; set; }
+
+        public ICommand OnTreeItemSelected
         {
-            get { return _treeItemSelected; }
+            get { return _onTreeItemSelected; }
             set
             {
-                _treeItemSelected = value;
-                RaisePropertyChanged("TreeItemSelected");
+                _onTreeItemSelected = value;
+                RaisePropertyChanged("OnTreeItemSelected");
             }
         }
 

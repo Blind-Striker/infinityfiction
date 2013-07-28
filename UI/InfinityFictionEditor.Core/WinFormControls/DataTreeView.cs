@@ -16,6 +16,7 @@
 *********************************************************************/
 
 using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -61,11 +62,11 @@ namespace InfinityFiction.UI.InfinityFictionEditor.Core.WinFormControls
 
 		private bool selectionChanging;
 
-	    private bool isDataSourceInitEventHooked;
+		private bool isDataSourceInitEventHooked;
 
-	    private bool isDataSourceInitialized;
+		private bool isDataSourceInitialized;
 
-	    #endregion
+		#endregion
 
 		#region Constructors
 
@@ -188,6 +189,8 @@ namespace InfinityFiction.UI.InfinityFictionEditor.Core.WinFormControls
 					this.position = value;
 				}
 			}
+
+			public object Item { get; set; }
 
 			#endregion
 		}
@@ -364,6 +367,8 @@ namespace InfinityFiction.UI.InfinityFictionEditor.Core.WinFormControls
 		/// Get value current selected item.
 		/// </summary>
 		[
+		DefaultValue(""),
+		Editor(typeof(FieldTypeEditor), typeof(UITypeEditor)),
 		Category("Data"),
 		Description("Get value current selected item.")
 		]
@@ -571,41 +576,41 @@ namespace InfinityFiction.UI.InfinityFictionEditor.Core.WinFormControls
 
 		private void WireDataSource()
 		{
-            if (this.dataSource is IComponent)
-            {
-                ((IComponent)this.dataSource).Disposed += new EventHandler(this.DataSourceDisposed);
-            }
-            ISupportInitializeNotification initializeNotification = this.dataSource as ISupportInitializeNotification;
-            if (initializeNotification != null && !initializeNotification.IsInitialized)
-            {
-                initializeNotification.Initialized += new EventHandler(this.DataSourceInitialized);
-                this.isDataSourceInitEventHooked = true;
-                this.isDataSourceInitialized = false;
-            }
-            else
-                this.isDataSourceInitialized = true;
+			if (this.dataSource is IComponent)
+			{
+				((IComponent)this.dataSource).Disposed += new EventHandler(this.DataSourceDisposed);
+			}
+			ISupportInitializeNotification initializeNotification = this.dataSource as ISupportInitializeNotification;
+			if (initializeNotification != null && !initializeNotification.IsInitialized)
+			{
+				initializeNotification.Initialized += new EventHandler(this.DataSourceInitialized);
+				this.isDataSourceInitEventHooked = true;
+				this.isDataSourceInitialized = false;
+			}
+			else
+				this.isDataSourceInitialized = true;
 		}
 
-        private void UnwireDataSource()
-        {
-            if (this.dataSource is IComponent)
-                ((IComponent)this.dataSource).Disposed -= new EventHandler(this.DataSourceDisposed);
-            ISupportInitializeNotification initializeNotification = this.dataSource as ISupportInitializeNotification;
-            if (initializeNotification == null || !this.isDataSourceInitEventHooked)
-                return;
-            initializeNotification.Initialized -= new EventHandler(this.DataSourceInitialized);
-            this.isDataSourceInitEventHooked = false;
-        }
+		private void UnwireDataSource()
+		{
+			if (this.dataSource is IComponent)
+				((IComponent)this.dataSource).Disposed -= new EventHandler(this.DataSourceDisposed);
+			ISupportInitializeNotification initializeNotification = this.dataSource as ISupportInitializeNotification;
+			if (initializeNotification == null || !this.isDataSourceInitEventHooked)
+				return;
+			initializeNotification.Initialized -= new EventHandler(this.DataSourceInitialized);
+			this.isDataSourceInitEventHooked = false;
+		}
 
-        private void DataSourceDisposed(object sender, EventArgs e)
-        {
-            ResetData();
-        }
+		private void DataSourceDisposed(object sender, EventArgs e)
+		{
+			ResetData();
+		}
 
-        private void DataSourceInitialized(object sender, EventArgs e)
-        {
-            ResetData();
-        }
+		private void DataSourceInitialized(object sender, EventArgs e)
+		{
+			ResetData();
+		}
 
 
 		private void ResetData()
@@ -614,14 +619,14 @@ namespace InfinityFiction.UI.InfinityFictionEditor.Core.WinFormControls
 
 			this.Clear();
 
-            this.UnwireDataSource();
+			this.UnwireDataSource();
 
-            this.WireDataSource();
+			this.WireDataSource();
 
 			if (this.isDataSourceInitialized && this.PrepareDataSource())
 			{
-                this.listManager.PositionChanged += new EventHandler(listManager_PositionChanged);
-                ((IBindingList)this.listManager.List).ListChanged += new ListChangedEventHandler(DataTreeView_ListChanged);
+				this.listManager.PositionChanged += new EventHandler(listManager_PositionChanged);
+				((IBindingList)this.listManager.List).ListChanged += new ListChangedEventHandler(DataTreeView_ListChanged);
 				if (this.PrepareDescriptors())
 				{
 					ArrayList unsortedNodes = new ArrayList();
@@ -725,6 +730,7 @@ namespace InfinityFiction.UI.InfinityFictionEditor.Core.WinFormControls
 			node.ID = this.idProperty.GetValue(this.listManager.List[position]);
 			node.Text = (string)this.nameProperty.GetValue(this.listManager.List[position]);
 			node.ParentID = this.parentIdProperty.GetValue(this.listManager.List[position]);
+			node.Item = this.listManager.List[position];
 		}
 
 

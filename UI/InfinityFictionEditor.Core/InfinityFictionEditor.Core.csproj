@@ -69,13 +69,20 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Foundation\IMainView.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="WinFormControls\CommandBindings\TreeViewBinding.cs" />
+    <Compile Include="WinFormControls\CommandFactories\TreeViewCommandBindingFactory.cs" />
     <Compile Include="WinFormControls\DataTreeView.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="WinFormControls\Design\DropDownTypeEditor.cs" />
     <Compile Include="WinFormControls\Design\FieldTypeEditor.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\ServiceContracts\ServiceContracts.csproj">
+      <Project>{1df78df6-4c75-4083-a0c6-a56a637ec33e}</Project>
+      <Name>ServiceContracts</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>

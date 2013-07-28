@@ -3,6 +3,8 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Waf.Applications;
 
+using CodeFiction.InfinityFiction.Core.ServiceContracts;
+
 using InfinityFiction.UI.InfinityFictionEditor.Core.Foundation;
 using InfinityFiction.UI.InfinityFictionEditor.Core.Models;
 using InfinityFiction.UI.InfinityFictionEditor.Core.ViewModels;
@@ -13,42 +15,43 @@ namespace InfinityFiction.UI.InfinityFictionEditor.Core.Presenters
 {
     internal class MainPresenter : BasePresenter<IMainView, IMainPresenter>, IMainPresenter
     {
+        private readonly IKeyResourceService _keyResourceService;
+        private readonly IInfinityFictionConfigService _infinityFictionConfigService;
+
         private readonly MainViewModel _mainViewModel;
 
-        //public TreeViewItem SelectedSaveListItem
-        //{
-        //    get
-        //    {
-        //        if (_mainViewModel.TreeViewItems == null || _mainViewModel.TreeViewItems.Count == 0)
-        //        {
-        //            return null;
-        //        }
-
-        //        return _mainViewModel.TreeViewItems[_mainViewModel.CurrentTreeViewItemSelectedIndex];
-        //    }
-        //}
-
-        public MainPresenter(IMainView view) 
+        public MainPresenter(IMainView view, IKeyResourceService keyResourceService, IInfinityFictionConfigService infinityFictionConfigService) 
             : base(view)
         {
-            _mainViewModel = new MainViewModel();
-
-            _mainViewModel.TreeViewItems = new ObservableCollection<TreeViewItem>();
-            _mainViewModel.TreeViewItems.Add(new TreeViewItem { Id = "1", Name = "ARE", ParentId = "" });
-            _mainViewModel.TreeViewItems.Add(new TreeViewItem { Id = "2", Name = "ASDETE.ARE", ParentId = "1" });
-            _mainViewModel.TreeViewItems.Add(new TreeViewItem { Id = "3", Name = "SDSAD.ARE", ParentId = "1" });
-            _mainViewModel.TreeViewItems.Add(new TreeViewItem { Id = "4", Name = "CHR", ParentId = "" });
-            _mainViewModel.TreeViewItems.Add(new TreeViewItem { Id = "5", Name = "DENIZ.CHR", ParentId = "4" });
-
-            _mainViewModel.TreeItemSelected = new DelegateCommand(TreeItemSelected, CanTreeItemSelected);
-
+            _keyResourceService = keyResourceService;
+            _infinityFictionConfigService = infinityFictionConfigService;
+            _mainViewModel = new MainViewModel
+                {
+                    OnTreeItemSelected = new DelegateCommand(TreeItemSelected, CanTreeItemSelected)
+                };
             _mainViewModel.PropertyChanged += MainViewModelPropertyChanged;
+
+            //_mainViewModel.TreeViewItems = new ObservableCollection<TreeViewItem>();
+            //_mainViewModel.TreeViewItems.Add(new TreeViewItem { Id = "1", Name = "ARE", ParentId = "" });
+            //_mainViewModel.TreeViewItems.Add(new TreeViewItem { Id = "2", Name = "ASDETE.ARE", ParentId = "1" });
+            //_mainViewModel.TreeViewItems.Add(new TreeViewItem { Id = "3", Name = "SDSAD.ARE", ParentId = "1" });
+            //_mainViewModel.TreeViewItems.Add(new TreeViewItem { Id = "4", Name = "CHR", ParentId = "" });
+            //_mainViewModel.TreeViewItems.Add(new TreeViewItem { Id = "5", Name = "DENIZ.CHR", ParentId = "4" });
 
             View.DataContext = _mainViewModel;
         }
 
+        public TreeViewItem SelectedTreeViewItem
+        {
+            get
+            {
+                return _mainViewModel.SelectedTreeViewItem as TreeViewItem;
+            }
+        }
+
         private void TreeItemSelected()
         {
+
         }
 
         private bool CanTreeItemSelected()

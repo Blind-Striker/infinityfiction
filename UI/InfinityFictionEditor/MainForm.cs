@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using InfinityFiction.UI.InfinityFictionEditor.Core;
 using InfinityFiction.UI.InfinityFictionEditor.Core.Foundation;
 using InfinityFiction.UI.InfinityFictionEditor.Core.ViewModels;
+using InfinityFiction.UI.InfinityFictionEditor.Core.WinFormControls;
 
 namespace InfinityFiction.UI.InfinityFictionEditor
 {
@@ -25,13 +26,13 @@ namespace InfinityFiction.UI.InfinityFictionEditor
             InitializeComponent();
         }
 
-        protected override void OnLoad(System.EventArgs e)
+        protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
 
             MainViewModel mainViewModel = DataContext as MainViewModel;
 
-            //CommandAdapter.AddCommandBinding(treeView1, mainViewModel.TreeItemSelected);
+            CommandAdapter.AddCommandBinding(treeResources, mainViewModel.OnTreeItemSelected, () => mainViewModel.SelectedTreeViewItem = ((DataTreeView.DataTreeViewNode)treeResources.SelectedNode).Item);
         }
     }
 }
