@@ -15,15 +15,13 @@ namespace InfinityFiction.UI.InfinityFictionEditor.Core.Presenters
 {
     internal class MainPresenter : BasePresenter<IMainView, IMainPresenter>, IMainPresenter
     {
-        private readonly IKeyResourceService _keyResourceService;
         private readonly IInfinityFictionConfigService _infinityFictionConfigService;
 
         private readonly MainViewModel _mainViewModel;
 
-        public MainPresenter(IMainView view, IKeyResourceService keyResourceService, IInfinityFictionConfigService infinityFictionConfigService) 
+        public MainPresenter(IMainView view, IInfinityFictionConfigService infinityFictionConfigService) 
             : base(view)
         {
-            _keyResourceService = keyResourceService;
             _infinityFictionConfigService = infinityFictionConfigService;
             _mainViewModel = new MainViewModel
                 {
