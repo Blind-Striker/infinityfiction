@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Waf.Presentation.WinForms;
 using System.Windows.Forms;
 using System.Windows.Input;
@@ -35,7 +30,7 @@ namespace InfinityFiction.UI.InfinityFictionEditor.Core.WinFormControls.CommandB
             _commandParameterCallback = null;
         }
 
-        void TreeViewAfterSelect(object sender, TreeViewEventArgs e)
+        private void TreeViewAfterSelect(object sender, TreeViewEventArgs e)
         {
             Command.Execute(_commandParameterCallback());
         }

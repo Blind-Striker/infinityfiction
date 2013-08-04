@@ -18,11 +18,14 @@ namespace InfinityFiction.UI.InfinityFictionEditor.Core.ViewModels
         private object _selectedTreeViewItemId;
         private ObservableCollection<TreeViewItem> _treeViewItems;
         private ICommand _onTreeItemSelected;
-        //private int _currentTreeViewItemSelectedIndex;
+        private ICommand _selectGamePath;
 
         public ObservableCollection<TreeViewItem> TreeViewItems
         {
-            get { return _treeViewItems; }
+            get
+            {
+                return _treeViewItems;
+            }
             set
             {
                 _treeViewItems = value;
@@ -42,14 +45,17 @@ namespace InfinityFiction.UI.InfinityFictionEditor.Core.ViewModels
             }
         }
 
-        //public int CurrentTreeViewItemSelectedIndex
-        //{
-        //    get { return _currentTreeViewItemSelectedIndex; }
-        //    set
-        //    {
-        //        _currentTreeViewItemSelectedIndex = value;
-        //        RaisePropertyChanged("CurrentTreeViewItemSelectedIndex");
-        //    }
-        //}
+        public ICommand SelectGamePath
+        {
+            get { return _selectGamePath; }
+            set
+            {
+                if (_selectGamePath != value)
+                {
+                    _selectGamePath = value;
+                    RaisePropertyChanged("SelectGamePath");
+                }
+            }
+        }
     }
 }

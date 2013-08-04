@@ -1,4 +1,5 @@
-﻿using System.Waf.Presentation.WinForms;
+﻿using System.Configuration;
+using System.Waf.Presentation.WinForms;
 
 using Castle.Facilities.TypedFactory;
 using Castle.MicroKernel.Registration;
@@ -21,8 +22,11 @@ namespace InfinityFiction.UI.InfinityFictionEditor.Core
 
             container.AddFacility<TypedFactoryFacility>();
 
-            container.Register(Component.For<IPresenterFactory>().AsFactory().LifestyleTransient(),
-                Component.For<IMainPresenter>().ImplementedBy<MainPresenter>().LifestyleTransient());
+            container.Register(
+                Component.For<IPresenterFactory>().AsFactory().LifestyleTransient(),
+                Component.For<IMainPresenter>().ImplementedBy<MainPresenter>().LifestyleTransient(),
+                Component.For<ISelectGamePathPresenter>().ImplementedBy<SelectGamePathPresenter>().LifestyleTransient(),
+                Component.For<ApplicationSettingsBase>().ImplementedBy<Settings>().LifestyleTransient());
         }
     }
 }
