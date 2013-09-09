@@ -11,6 +11,10 @@ namespace CodeFiction.InfinityFiction.Core.ResourceBuilder
     {
         public Delegate CreateGetter(FieldInfo field)
         {
+            if (field == null)
+            {
+                throw new ArgumentNullException("field");
+            }
             Type fieldType = field.FieldType;
             Type memberType = field.ReflectedType;
             string methodName = field.ReflectedType.FullName + ".get_" + field.Name;
@@ -33,6 +37,10 @@ namespace CodeFiction.InfinityFiction.Core.ResourceBuilder
 
         public Action<TType, TFieldType> CreateSetter<TType, TFieldType>(FieldInfo field)
         {
+            if (field == null)
+            {
+                throw new ArgumentNullException("field");
+            }
             string methodName = field.ReflectedType.FullName + ".set_" + field.Name;
             var setterMethod = new DynamicMethod(methodName, null, new[] { typeof(TType), typeof(TFieldType) }, true);
             ILGenerator gen = setterMethod.GetILGenerator();

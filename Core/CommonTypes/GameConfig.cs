@@ -17,34 +17,22 @@
 
         public GameEnum GameEnum
         {
-            get
-            {
-                return _gameEnum;
-            }
+            get { return _gameEnum; }
         }
 
         public string Name
         {
-            get
-            {
-                return _name;
-            }
+            get { return _name; }
         }
 
         public string IniFile
         {
-            get
-            {
-                return _inifile;
-            }
+            get { return _inifile; }
         }
 
         public string[] ExtraDirs
         {
-            get
-            {
-                return _extraDirs;
-            }
+            get { return _extraDirs; }
         }
 
         public override string ToString()
