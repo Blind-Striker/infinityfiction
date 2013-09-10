@@ -1,15 +1,12 @@
 ﻿using System.Configuration;
 using System.Waf.Presentation.WinForms;
-
 using Castle.Facilities.TypedFactory;
 using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
-
 using InfinityFiction.UI.InfinityFictionEditor.Core.Foundation;
 using InfinityFiction.UI.InfinityFictionEditor.Core.Presenters;
 using InfinityFiction.UI.InfinityFictionEditor.Core.WinFormControls.CommandFactories;
-
 using MvpVmFramework.Core.Foundation;
 
 namespace InfinityFiction.UI.InfinityFictionEditor.Core

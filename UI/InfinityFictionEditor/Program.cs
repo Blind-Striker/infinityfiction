@@ -4,7 +4,6 @@ using CodeFiction.InfinityFiction.Core.Container;
 using CodeFiction.InfinityFiction.Core.ResourceContainer;
 using CodeFiction.InfinityFiction.Core.ServiceContainer;
 using CodeFiction.InfinityFiction.Core.StructContainer;
-
 using InfinityFiction.UI.InfinityFictionEditor.Core;
 using InfinityFiction.UI.InfinityFictionEditor.Core.Foundation;
 using MvpVmFramework.Core.Foundation;

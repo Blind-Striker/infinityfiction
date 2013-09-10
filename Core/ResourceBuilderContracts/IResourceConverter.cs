@@ -1,5 +1,4 @@
 using System;
-
 using CodeFiction.InfinityFiction.Core.Resources;
 
 namespace CodeFiction.InfinityFiction.Core.ResourceBuilderContracts

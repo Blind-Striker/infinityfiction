@@ -1,7 +1,6 @@
 ﻿using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
-
 using InfinityFiction.UI.InfinityFictionEditor.Core.Foundation;
 
 namespace InfinityFiction.UI.InfinityFictionEditor

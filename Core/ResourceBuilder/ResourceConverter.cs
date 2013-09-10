@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Reflection;
-
 using CodeFiction.DarkMatterFramework.Libraries.IOLibrary;
 using CodeFiction.InfinityFiction.Core.ResourceBuilderContracts;
 using CodeFiction.InfinityFiction.Core.Resources;
