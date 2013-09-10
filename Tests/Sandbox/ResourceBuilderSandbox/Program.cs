@@ -1,14 +1,9 @@
 ﻿using System.IO;
-
-using CodeFiction.InfinityFiction.Core.CommonTypes;
 using CodeFiction.InfinityFiction.Core.Container;
 using CodeFiction.InfinityFiction.Core.ResourceBuilderContracts;
 using CodeFiction.InfinityFiction.Core.ResourceContainer;
 using CodeFiction.InfinityFiction.Core.Resources.Dlg;
-using CodeFiction.InfinityFiction.Core.Resources.Key;
 using CodeFiction.InfinityFiction.Core.StructContainer;
-
-using IWshRuntimeLibrary;
 
 namespace ResourceBuilderSandbox
 {

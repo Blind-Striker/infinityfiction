@@ -1,7 +1,6 @@
 ﻿using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
-
 using CodeFiction.InfinityFiction.Core.ServiceContracts;
 using CodeFiction.InfinityFiction.Core.Services;
 using CodeFiction.InfinityFiction.Core.Services.Key;

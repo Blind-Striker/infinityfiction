@@ -1,10 +1,8 @@
 ﻿using System.Configuration;
 using System.Waf.Applications;
 using System.Waf.Applications.Services;
-
 using InfinityFiction.UI.InfinityFictionEditor.Core.Foundation;
 using InfinityFiction.UI.InfinityFictionEditor.Core.ViewModels;
-
 using MvpVmFramework.Core.Foundation;
 
 namespace InfinityFiction.UI.InfinityFictionEditor.Core.Presenters
