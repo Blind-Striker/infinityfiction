@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using CodeFiction.InfinityFiction.Core.CommonTypes;
+﻿using System.IO;
 using CodeFiction.InfinityFiction.Core.Container;
 using CodeFiction.InfinityFiction.Core.ResourceContainer;
 using CodeFiction.InfinityFiction.Core.ServiceContainer;

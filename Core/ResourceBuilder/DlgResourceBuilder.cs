@@ -23,7 +23,7 @@ namespace CodeFiction.InfinityFiction.Core.ResourceBuilder
             DlgResource dlgResource = new DlgResource();
             byte[] content = IoHelper.ReadBinaryFile(dlgfilePath);
 
-            var header = _genericStructConverter.ConvertToStruct<Header>(content, 0);
+            //var header = _genericStructConverter.ConvertToStruct<Header>(content, 0); //not used.
             dlgResource.Path = dlgfilePath;
             dlgResource.Content = content;
 

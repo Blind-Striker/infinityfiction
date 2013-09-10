@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-
 using CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.IniManager;
 using CodeFiction.InfinityFiction.Core.CommonTypes;
 using CodeFiction.InfinityFiction.Core.ResourceBuilderContracts;

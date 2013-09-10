@@ -38,6 +38,10 @@ namespace CodeFiction.InfinityFiction.Core.ResourceBuilder
             where TStruct : struct 
             where TResource : BaseModel, new()
         {
+            if (resources == null)
+            {
+                throw new ArgumentNullException("content");
+            }
             for (int i = 0; i < resources.Length; i++)
             {
                 byte[] biffEntryContent = BinaryHelper.GetBytes(content, offset, sizeofStruct);
