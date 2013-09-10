@@ -44,7 +44,7 @@ namespace InfinityFiction.UI.InfinityFictionEditor
             var mainViewModel = DataContext as MainViewModel;
 
             CommandAdapter.AddCommandBinding(treeResources, mainViewModel.OnTreeItemSelected, () => mainViewModel.SelectedTreeViewItem = ((DataTreeView.DataTreeViewNode)treeResources.SelectedNode).Item);
-            CommandAdapter.AddCommandBinding(mainMenuStrip, mainViewModel.SelectGamePath);
+            CommandAdapter.AddCommandBinding(selectGameToolStripMenuItem, mainViewModel.SelectGamePath);
         }
     }
 }

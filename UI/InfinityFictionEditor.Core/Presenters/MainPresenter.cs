@@ -31,16 +31,14 @@ namespace InfinityFiction.UI.InfinityFictionEditor.Core.Presenters
             _infinityFictionConfigService = infinityFictionConfigService;
             _mainViewModel = new MainViewModel
                 {
-                    OnTreeItemSelected = new DelegateCommand(TreeItemSelected, CanTreeItemSelected)
+                    OnTreeItemSelected = new DelegateCommand(TreeItemSelected, CanTreeItemSelected),
+                    SelectGamePath = new DelegateCommand(ShowSelectGamePathView, CanShowSelectGamePathView)
                 };
             _mainViewModel.PropertyChanged += MainViewModelPropertyChanged;
 
             View.DataContext = _mainViewModel;
 
-            if (_settings["ChitinKeyPath"].ToString().IsNullOrEmpty())
-            {
-                ShowSelectGamePathView();
-            }
+            CheckShowSelectGamePathView();
 
 
             // _mainViewModel.TreeViewItems = new ObservableCollection<TreeViewItem>();
@@ -74,6 +72,19 @@ namespace InfinityFiction.UI.InfinityFictionEditor.Core.Presenters
             var selectGamePathPresenter = _presenterFactory.CreatePresenter<ISelectGamePathPresenter>();
 
             selectGamePathPresenter.View.ShowDialog(View);
+        }
+
+        private bool CanShowSelectGamePathView()
+        {
+            return true;
+        }
+
+        private void CheckShowSelectGamePathView()
+        {
+            if (_settings["ChitinKeyPath"].ToString().IsNullOrEmpty())
+            {
+                ShowSelectGamePathView();
+            }
         }
 
         private void MainViewModelPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
