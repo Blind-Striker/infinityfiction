@@ -41,3 +41,7 @@ Browsing the Infinity Engine file types and edit with high performance,
 Providing a configurable, extendable and moduler framework for developers,
 Service Oriented Architecture,
 In the end providing developers a SaaS model API.
+
+## License
+
+See the LICENSE file for license rights and limitations.
