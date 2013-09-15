@@ -10,16 +10,27 @@ And we are also designing an user interface that will help users for browse and 
 Infinity Fiction supports these games;
 
 Baldur's Gate
+
 Baldur's Gate : Tales of the Sword Coast (Expension Pack)
+
 Baldur's Gate II Shadow of Amn
+
 Baldur's Gate II : Throne of Bhaal (Expension Pack)
+
 Baldur's Gate Enhanced Edition
+
 Baldur's Gate II Enhanced Edition
+
 Planescape Torment
+
 Icewind Dale
+
 Icewind Dale : Heart of Winter (Expension Pack)
+
 Icewind Date : Trials of the Luremaster (Expension Pack)
+
 Icewind Dale II
+
 Neverwinter Nights (Limited Support)
 
 
