@@ -7,9 +7,9 @@ using CodeFiction.InfinityFiction.Core.StructContainer;
 
 namespace ServicesSandbox
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             Bootstrapper bootstrapper = Bootstrapper.Create()
                 .RegisterInstaller(new ResourceBuilderInstaller())
@@ -18,7 +18,7 @@ namespace ServicesSandbox
 
             var infinityFictionConfigService = bootstrapper.WindsorContainer.Resolve<IInfinityFictionConfigService>();
 
-            string chittinKeyPath = Path.Combine(@"G:\Games\BGOrg\BGII - SoA", "CHITIN.KEY");
+            string chittinKeyPath = Path.Combine(@"C:\Program Files (x86)\Baldur's Gate Enhanced Edition\Data\00766", "chitin.key");
 
             infinityFictionConfigService.InitializeConfiguration(chittinKeyPath);
         }

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+
 using CodeFiction.DarkMatterFramework.Libraries.ConfigLibrary.IniManager;
 using CodeFiction.InfinityFiction.Core.CommonTypes;
 using CodeFiction.InfinityFiction.Core.ResourceBuilderContracts;
@@ -11,30 +12,31 @@ namespace CodeFiction.InfinityFiction.Core.Services
 {
     public class InfinityFictionConfigService : IInfinityFictionConfigService
     {
-        private readonly IKeyResourceBuilder _keyResourceBuilder;
+        private const string DialogFilename = "dialog.tlk";
+        private const string OverrideFolder = "Override";
 
-        private string _rootPath;
+        private readonly IKeyResourceBuilder _keyResourceBuilder;
         private readonly string[] _bgdirs =
             {
                 "Characters", "MPSave", "Music", "Portraits", "Save", "Screenshots",
                 "Scripts", "ScrnShot", "Sounds", "Temp", "TempSave"
             };
 
-        private string _keyFilePath;
-        private string _dialogFilePath;
-        private const string DialogFilename = "dialog.tlk";
-        private const string OverrideFolder = "Override";
         private readonly GameConfig[] _games;
-        private GameEnum _gameEnum;
         private readonly List<string> _extraDirs;
         private readonly List<ResourceFile> _resourceFiles;
         private readonly List<string> _biffDirs;
+
+        private string _rootPath;
+        private string _keyFilePath;
+        private string _dialogFilePath;
+        private GameEnum _gameEnum;
         private KeyResource _keyResource;
 
         public InfinityFictionConfigService(IKeyResourceBuilder keyResourceBuilder)
         {
             _keyResourceBuilder = keyResourceBuilder;
-            _extraDirs= new List<string>();
+            _extraDirs = new List<string>();
             _resourceFiles = new List<ResourceFile>();
             _biffDirs = new List<string>();
             _games = new GameConfig[16];
@@ -80,33 +82,33 @@ namespace CodeFiction.InfinityFiction.Core.Services
             _games[1] = new GameConfig(GameEnum.BaldursGate, "Baldur's Gate", "baldur.ini", _bgdirs);
             _games[2] = new GameConfig(GameEnum.BaldursGateTotsc, "Baldur's Gate - Tales of the Sword Coast", "baldur.ini", _bgdirs);
             _games[3] = new GameConfig(GameEnum.BaldursGateExtented, "Baldur's Gate Extended Edition", "Baldur.ini", _bgdirs);
-            _games[4] = new GameConfig(GameEnum.PlanescapeTorment, "Planescape: Torment", "torment.ini", new[] {"Music", "Save", "Temp"});
+            _games[4] = new GameConfig(GameEnum.PlanescapeTorment, "Planescape: Torment", "torment.ini", new[] { "Music", "Save", "Temp" });
             _games[5] = new GameConfig(GameEnum.IceWindDale, "Icewind Dale", "icewind.ini", _bgdirs);
             _games[6] = new GameConfig(GameEnum.IceWindDaleHeartofWinter, "Icewind Dale - Heart of Winter", "icewind.ini", _bgdirs);
             _games[7] = new GameConfig(GameEnum.IceWindDaleTrailsOfRuleMaster, "Icewind Dale - Trials of the Luremaster", "icewind.ini", _bgdirs);
             _games[8] = new GameConfig(GameEnum.BaldursGate2, "Baldur's Gate 2 - Shadows of Amn", "baldur.ini", _bgdirs);
             _games[9] = new GameConfig(GameEnum.BaldursGateTob, "Baldur's Gate 2 - Throne of Bhaal", "baldur.ini", _bgdirs);
             _games[10] = new GameConfig(GameEnum.IceWindDale2, "Icewind Dale 2", "icewind2.ini", _bgdirs);
-            _games[11] = new GameConfig(GameEnum.NewerwinterNights, "Neverwinter Nights", "nwn.ini",
-                                        new[]
-                                            {
-                                                "Ambient", "DMVault", "Hak", "LocalVault", "Modules", "Music", "NWM",
-                                                "Saves", "ServerVault", "Source", "TexturePacks"
-                                            });
-            _games[12] = new GameConfig(GameEnum.Kotor, "Star Wars: Knights of the Old Republic", "swkotor.ini",
-                                        new[]
-                                            {
-                                                "Lips", "Modules", "Rims", "Saves", "StreamMusic", "StreamSounds",
-                                                "TexturePacks"
-                                            });
+            _games[11] = new GameConfig(
+                GameEnum.NewerwinterNights, 
+                "Neverwinter Nights", 
+                "nwn.ini", 
+                new[] { "Ambient", "DMVault", "Hak", "LocalVault", "Modules", "Music", "NWM", "Saves", "ServerVault", "Source", "TexturePacks" });
+
+            _games[12] = new GameConfig(
+                GameEnum.Kotor, 
+                "Star Wars: Knights of the Old Republic", 
+                "swkotor.ini", 
+                new[] { "Lips", "Modules", "Rims", "Saves", "StreamMusic", "StreamSounds", "TexturePacks" });
+
             _games[13] = new GameConfig(GameEnum.BaldursGateTutu, "BG1Tutu", "baldur.ini", _bgdirs);
-            _games[14] = new GameConfig(GameEnum.BaldursGateDemo, "Baldur's Gate - Non-Interactive Demo", "chitin.ini", new[] {"Music"});
-            _games[15] = new GameConfig(GameEnum.Kotor2, "Star Wars: Knights of the Old Republic 2", "swkotor2.ini",
-                                        new[]
-                                            {
-                                                "Lips", "Modules", "Rims", "Saves", "StreamMusic",
-                                                "StreamSounds", "TexturePacks"
-                                            });
+            _games[14] = new GameConfig(GameEnum.BaldursGateDemo, "Baldur's Gate - Non-Interactive Demo", "chitin.ini", new[] { "Music" });
+            
+            _games[15] = new GameConfig(
+                GameEnum.Kotor2, 
+                "Star Wars: Knights of the Old Republic 2", 
+                "swkotor2.ini", 
+                new[] { "Lips", "Modules", "Rims", "Saves", "StreamMusic", "StreamSounds", "TexturePacks" });
         }
 
         private void FindGameType()
@@ -169,7 +171,7 @@ namespace CodeFiction.InfinityFiction.Core.Services
 
             foreach (var resourceEntryResource in _keyResource.ResourceEntries)
             {
-                ResourceFile resourceFile = new ResourceFile();
+                var resourceFile = new ResourceFile();
                 resourceFile.Extension = resourceEntryResource.Extension;
                 resourceFile.Folder = resourceEntryResource.Extension;
                 resourceFile.File = resourceEntryResource.FileName;
@@ -181,7 +183,7 @@ namespace CodeFiction.InfinityFiction.Core.Services
 
             if (currentExtraDirs == null)
             {
-                //TODO: throw Exception
+                // TODO: throw Exception
             }
 
             foreach (var extraDir in currentExtraDirs)
@@ -284,10 +286,12 @@ namespace CodeFiction.InfinityFiction.Core.Services
                                 ? GameEnum.IceWindDaleTrailsOfRuleMaster
                                 : GameEnum.IceWindDaleHeartofWinter;
             }
+
             if (_gameEnum == GameEnum.BaldursGate2 && ResourceExists("SARADUSH.MVE"))
             {
                 _gameEnum = GameEnum.BaldursGateTob;
             }
+
             if (_gameEnum == GameEnum.BaldursGate && ResourceExists("DURLAG.MVE"))
             {
                 _gameEnum = GameEnum.BaldursGateTotsc;
@@ -301,7 +305,7 @@ namespace CodeFiction.InfinityFiction.Core.Services
                 return;
             }
 
-            IniFileReader reader = new IniFileReader();
+            var reader = new IniFileReader();
 
             string iniPath = Path.Combine(_rootPath, "baldur.ini");
             IniFile iniFile = reader.GetIniFile(iniPath);
