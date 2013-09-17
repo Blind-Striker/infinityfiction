@@ -1,4 +1,6 @@
-﻿using System.IO;
+﻿using System;
+using System.Diagnostics;
+using System.IO;
 using CodeFiction.InfinityFiction.Core.Container;
 using CodeFiction.InfinityFiction.Core.ResourceContainer;
 using CodeFiction.InfinityFiction.Core.ServiceContainer;
@@ -20,7 +22,13 @@ namespace ServicesSandbox
 
             string chittinKeyPath = Path.Combine(@"G:\Games\BGOrg\BGII - SoA", "CHITIN.KEY");
 
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
             infinityFictionConfigService.InitializeConfiguration(chittinKeyPath);
+            stopwatch.Stop();
+            TimeSpan timeSpan = stopwatch.Elapsed;
+            Console.WriteLine(timeSpan.ToString());
+            Console.ReadLine();
         }
     }
 }

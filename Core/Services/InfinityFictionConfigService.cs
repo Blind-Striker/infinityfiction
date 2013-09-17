@@ -195,7 +195,7 @@ namespace CodeFiction.InfinityFiction.Core.Services
             }
 
             string overrideFullPath = Path.Combine(_rootPath, OverrideFolder);
-
+            List<ResourceFile> searchResourceFiles = _resourceFiles.Where(file => string.IsNullOrEmpty(file.File)).ToList();
             if (Directory.Exists(overrideFullPath))
             {
                 string[] overrideFiles = Directory.GetFiles(overrideFullPath);
@@ -205,7 +205,7 @@ namespace CodeFiction.InfinityFiction.Core.Services
                     string fileName = Path.GetFileName(overrideFile);
                     string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(overrideFile);
                     string extension = Path.GetExtension(overrideFile);
-                    ResourceFile resourceFile = _resourceFiles.FirstOrDefault(file => file.File == fileNameWithoutExtension);
+                    ResourceFile resourceFile = searchResourceFiles.FirstOrDefault(file => file.File == fileNameWithoutExtension);
 
                     if (resourceFile == null)
                     {

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Reflection;
 using System.Reflection.Emit;
@@ -9,6 +10,8 @@ namespace CodeFiction.InfinityFiction.Core.ResourceBuilder
 {
     public class DelegateHelper : IDelegateHelper
     {
+        private static readonly Dictionary<string, Delegate> DelegatesDictionary = new Dictionary<string, Delegate>();
+
         public Delegate CreateGetter(FieldInfo field)
         {
             if (field == null)
@@ -18,6 +21,12 @@ namespace CodeFiction.InfinityFiction.Core.ResourceBuilder
             Type fieldType = field.FieldType;
             Type memberType = field.ReflectedType;
             string methodName = field.ReflectedType.FullName + ".get_" + field.Name;
+
+            if (DelegatesDictionary.ContainsKey(methodName))
+            {
+                return DelegatesDictionary[methodName];
+            }
+
             var setterMethod = new DynamicMethod(methodName, fieldType, new[] { memberType }, true);
             ILGenerator gen = setterMethod.GetILGenerator();
             if (field.IsStatic)
@@ -32,8 +41,12 @@ namespace CodeFiction.InfinityFiction.Core.ResourceBuilder
 
             gen.Emit(OpCodes.Ret);
             Type funcType = Expression.GetFuncType(memberType, fieldType);
-            return setterMethod.CreateDelegate(funcType);
+            Delegate @delegate = setterMethod.CreateDelegate(funcType);
+            DelegatesDictionary.Add(methodName, @delegate);
+
+            return @delegate;
         }
+
 
         public Action<TType, TFieldType> CreateSetter<TType, TFieldType>(FieldInfo field)
         {
@@ -42,6 +55,12 @@ namespace CodeFiction.InfinityFiction.Core.ResourceBuilder
                 throw new ArgumentNullException("field");
             }
             string methodName = field.ReflectedType.FullName + ".set_" + field.Name;
+
+            if (DelegatesDictionary.ContainsKey(methodName))
+            {
+                return (Action<TType, TFieldType>)DelegatesDictionary[methodName];
+            }
+
             var setterMethod = new DynamicMethod(methodName, null, new[] { typeof(TType), typeof(TFieldType) }, true);
             ILGenerator gen = setterMethod.GetILGenerator();
             if (field.IsStatic)
@@ -57,7 +76,9 @@ namespace CodeFiction.InfinityFiction.Core.ResourceBuilder
             }
 
             gen.Emit(OpCodes.Ret);
-            return (Action<TType, TFieldType>)setterMethod.CreateDelegate(typeof(Action<TType, TFieldType>));
+            var action = setterMethod.CreateDelegate(typeof(Action<TType, TFieldType>));
+            DelegatesDictionary.Add(methodName, action);
+            return (Action<TType, TFieldType>)action;
         }
     }
 }

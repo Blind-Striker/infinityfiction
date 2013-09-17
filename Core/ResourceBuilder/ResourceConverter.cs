@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 
 using CodeFiction.DarkMatterFramework.Libraries.IOLibrary;
@@ -15,6 +17,8 @@ namespace CodeFiction.InfinityFiction.Core.ResourceBuilder
 
         private readonly IDelegateHelper _delegateHelper;
 
+        private static readonly Dictionary<Type, List<FieldInfo>> FileDictionary = new Dictionary<Type, List<FieldInfo>>();
+
         public ResourceConverter(IGenericStructConverter genericStructConverter, IDelegateHelper delegateHelper)
         {
             _genericStructConverter = genericStructConverter;
@@ -24,6 +28,7 @@ namespace CodeFiction.InfinityFiction.Core.ResourceBuilder
         public void Convert<TStruct, TResource>(TStruct @struct, TResource resource) where TResource : BaseModel
         {
             FieldInfo[] fieldInfos = typeof(TStruct).GetFields();
+            // List<FieldInfo> fieldInfos = GetCachedProperties(typeof(TStruct));
 
             foreach (FieldInfo fieldInfo in fieldInfos)
             {
@@ -60,5 +65,17 @@ namespace CodeFiction.InfinityFiction.Core.ResourceBuilder
                 offset += sizeofStruct;
             }
         }
+
+        //private static List<FieldInfo> GetCachedProperties(Type type)
+        //{
+        //    List<FieldInfo> fields;
+        //    if (FileDictionary.TryGetValue(type, out fields) == false)
+        //    {
+        //        fields = type.GetFields().ToList();
+        //        FileDictionary.Add(type, fields);
+        //    }
+
+        //    return fields;
+        //}
     }
 }
