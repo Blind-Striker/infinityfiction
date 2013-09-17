@@ -4,7 +4,6 @@ using System.Waf.Presentation.WinForms.Services;
 using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
-
 using InfinityFiction.UI.InfinityFictionEditor.Core.Foundation;
 
 using MvpVmFramework.Core.Foundation;

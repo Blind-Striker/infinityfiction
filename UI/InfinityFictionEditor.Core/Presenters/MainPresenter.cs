@@ -1,15 +1,10 @@
 ﻿using System;
-using System.Collections.ObjectModel;
-using System.Collections.Specialized;
 using System.Configuration;
 using System.Waf.Applications;
-
 using CodeFiction.InfinityFiction.Core.ServiceContracts;
-
 using InfinityFiction.UI.InfinityFictionEditor.Core.Foundation;
 using InfinityFiction.UI.InfinityFictionEditor.Core.Models;
 using InfinityFiction.UI.InfinityFictionEditor.Core.ViewModels;
-
 using MvpVmFramework.Core.Foundation;
 
 namespace InfinityFiction.UI.InfinityFictionEditor.Core.Presenters
