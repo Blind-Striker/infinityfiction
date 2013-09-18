@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
@@ -27,6 +28,7 @@ namespace CodeFiction.InfinityFiction.Core.Services
         private readonly List<ResourceFile> _resourceFiles;
         private readonly List<string> _biffDirs;
 
+        private string _bgeeHomePath;
         private string _rootPath;
         private string _keyFilePath;
         private string _dialogFilePath;
@@ -40,6 +42,10 @@ namespace CodeFiction.InfinityFiction.Core.Services
             _resourceFiles = new List<ResourceFile>();
             _biffDirs = new List<string>();
             _games = new GameConfig[16];
+
+            string homePath = Environment.ExpandEnvironmentVariables("%HOMEDRIVE%%HOMEPATH%");
+            _bgeeHomePath = Path.Combine(homePath, @"Documents\Baldur's Gate - Enhanced Edition");
+
             BuildGames();
         }
 
@@ -192,7 +198,17 @@ namespace CodeFiction.InfinityFiction.Core.Services
 
             foreach (var extraDir in currentExtraDirs)
             {
-                string fullPath = Path.Combine(_rootPath, extraDir);
+                string fullPath;
+                if (extraDir.StartsWith("$HOME$"))
+                {   
+                    string extraDriveHome = extraDir.Replace("$HOME$", string.Empty);
+                    fullPath = Path.Combine(_bgeeHomePath, extraDriveHome);
+                }
+                else
+                {
+                    fullPath = Path.Combine(_rootPath, extraDir);
+                }
+
                 if (Directory.Exists(fullPath))
                 {
                     _extraDirs.Add(fullPath);
