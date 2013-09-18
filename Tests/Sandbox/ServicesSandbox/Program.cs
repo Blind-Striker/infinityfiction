@@ -23,11 +23,17 @@ namespace ServicesSandbox
             string chittinKeyPath = Path.Combine(@"C:\Program Files (x86)\Baldur's Gate Enhanced Edition\Data\00766", "chitin.key");
 
             Stopwatch stopwatch = new Stopwatch();
-            stopwatch.Start();
-            infinityFictionConfigService.InitializeConfiguration(chittinKeyPath);
-            stopwatch.Stop();
-            TimeSpan timeSpan = stopwatch.Elapsed;
-            Console.WriteLine(timeSpan.ToString());
+
+            for (int i = 0; i < 7; i++)
+            {
+                stopwatch.Start();
+                infinityFictionConfigService.InitializeConfiguration(chittinKeyPath);
+                stopwatch.Stop();
+                TimeSpan timeSpan = stopwatch.Elapsed;
+                Console.WriteLine(timeSpan.ToString());
+                stopwatch.Reset();
+            }
+
             Console.ReadLine();
         }
     }

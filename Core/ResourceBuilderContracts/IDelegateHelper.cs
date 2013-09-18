@@ -8,5 +8,8 @@ namespace CodeFiction.InfinityFiction.Core.ResourceBuilderContracts
         Delegate CreateGetter(FieldInfo field);
 
         Action<TType, TFieldType> CreateSetter<TType, TFieldType>(FieldInfo field);
+
+        Delegate DynamicNew<T>()
+            where T : class, new();
     }
 }
