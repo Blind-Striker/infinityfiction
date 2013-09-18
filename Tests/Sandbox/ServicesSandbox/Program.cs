@@ -1,8 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
+
 using CodeFiction.InfinityFiction.Core.Container;
 using CodeFiction.InfinityFiction.Core.ResourceContainer;
+using CodeFiction.InfinityFiction.Core.Resources.Key;
 using CodeFiction.InfinityFiction.Core.ServiceContainer;
 using CodeFiction.InfinityFiction.Core.ServiceContracts;
 using CodeFiction.InfinityFiction.Core.StructContainer;
@@ -13,6 +17,8 @@ namespace ServicesSandbox
     {
         private static void Main(string[] args)
         {
+            // string expandEnvironmentVariables = Environment.ExpandEnvironmentVariables("%HOMEDRIVE%%HOMEPATH%");
+
             Bootstrapper bootstrapper = Bootstrapper.Create()
                 .RegisterInstaller(new ResourceBuilderInstaller())
                 .RegisterInstaller(new StructInstaller())
@@ -20,9 +26,12 @@ namespace ServicesSandbox
 
             var infinityFictionConfigService = bootstrapper.WindsorContainer.Resolve<IInfinityFictionConfigService>();
 
-            string chittinKeyPath = Path.Combine(@"C:\Program Files (x86)\Baldur's Gate Enhanced Edition\Data\00766", "chitin.key");
+            string chittinKeyPath = Path.Combine(@"C:\Program Files (x86)\Baldur's Gate Enhanced Edition\Data\data", "chitin.key");
 
             Stopwatch stopwatch = new Stopwatch();
+
+            //infinityFictionConfigService.InitializeConfiguration(chittinKeyPath);
+            //KeyResource keyResource = infinityFictionConfigService.KeyResource;
 
             for (int i = 0; i < 7; i++)
             {

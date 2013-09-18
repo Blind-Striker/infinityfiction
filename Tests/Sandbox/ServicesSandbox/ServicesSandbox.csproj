@@ -63,6 +63,10 @@
       <Project>{95E826AB-E4BF-484F-B763-43180F0EBB6B}</Project>
       <Name>CommonTypes</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\Core\Resources\Resources.csproj">
+      <Project>{81d21e71-0196-4767-be6a-149247459e23}</Project>
+      <Name>Resources</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\Core\ServiceContracts\ServiceContracts.csproj">
       <Project>{1df78df6-4c75-4083-a0c6-a56a637ec33e}</Project>
       <Name>ServiceContracts</Name>

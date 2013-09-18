@@ -12,8 +12,6 @@ namespace CodeFiction.InfinityFiction.Core.ResourceBuilder
 {
     public class ResourceConverter : IResourceConverter
     {
-        private static readonly Dictionary<Type, List<FieldInfo>> FileDictionary = new Dictionary<Type, List<FieldInfo>>();
-
         private readonly IGenericStructConverter _genericStructConverter;
 
         private readonly IDelegateHelper _delegateHelper;

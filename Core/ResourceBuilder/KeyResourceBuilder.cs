@@ -174,6 +174,7 @@ namespace CodeFiction.InfinityFiction.Core.ResourceBuilder
                 keyResource.ExtensionMap.Add(0x3fc, "VEF"); // ????????
                 keyResource.ExtensionMap.Add(0x3fd, "PRO");
                 keyResource.ExtensionMap.Add(0x3fe, "BIO");
+                keyResource.ExtensionMap.Add(0x404, "PVR");
                 keyResource.ExtensionMap.Add(0x44c, "BAH"); // ???????
                 keyResource.ExtensionMap.Add(0x802, "INI");
                 keyResource.ExtensionMap.Add(0x803, "SRC");
