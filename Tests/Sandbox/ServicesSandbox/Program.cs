@@ -30,18 +30,15 @@ namespace ServicesSandbox
 
             Stopwatch stopwatch = new Stopwatch();
 
-            //infinityFictionConfigService.InitializeConfiguration(chittinKeyPath);
-            //KeyResource keyResource = infinityFictionConfigService.KeyResource;
-
-            for (int i = 0; i < 7; i++)
-            {
+            //for (int i = 0; i < 7; i++)
+            //{
                 stopwatch.Start();
                 infinityFictionConfigService.InitializeConfiguration(chittinKeyPath);
                 stopwatch.Stop();
                 TimeSpan timeSpan = stopwatch.Elapsed;
                 Console.WriteLine(timeSpan.ToString());
-                stopwatch.Reset();
-            }
+                // stopwatch.Reset();
+            //}
 
             Console.ReadLine();
         }

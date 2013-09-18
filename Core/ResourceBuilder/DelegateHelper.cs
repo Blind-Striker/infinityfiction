@@ -10,12 +10,8 @@ namespace CodeFiction.InfinityFiction.Core.ResourceBuilder
 {
     public class DelegateHelper : IDelegateHelper
     {
-        private const BindingFlags Bflags = BindingFlags.Instance
-                                    | BindingFlags.Public
-                                    | BindingFlags.NonPublic
-                                    | BindingFlags.ExactBinding;
-
         private static readonly Dictionary<string, Delegate> DelegatesDictionary = new Dictionary<string, Delegate>();
+        private static readonly Dictionary<string, Delegate> ConstructorsDictionary = new Dictionary<string, Delegate>();
 
         public Delegate CreateGetter(FieldInfo field)
         {
@@ -25,11 +21,12 @@ namespace CodeFiction.InfinityFiction.Core.ResourceBuilder
             }
             Type fieldType = field.FieldType;
             Type memberType = field.ReflectedType;
-            string methodName = field.ReflectedType.FullName + ".get_" + field.Name;
+            string methodName = string.Format("{0}{1}{2}", memberType.FullName, ".get_", field.Name);
 
-            if (DelegatesDictionary.ContainsKey(methodName))
+            Delegate @delegate;
+            if (DelegatesDictionary.TryGetValue(methodName, out @delegate))
             {
-                return DelegatesDictionary[methodName];
+                return @delegate;
             }
 
             var setterMethod = new DynamicMethod(methodName, fieldType, new[] { memberType }, true);
@@ -46,7 +43,7 @@ namespace CodeFiction.InfinityFiction.Core.ResourceBuilder
 
             gen.Emit(OpCodes.Ret);
             Type funcType = Expression.GetFuncType(memberType, fieldType);
-            Delegate @delegate = setterMethod.CreateDelegate(funcType);
+            @delegate = setterMethod.CreateDelegate(funcType);
             DelegatesDictionary.Add(methodName, @delegate);
 
             return @delegate;
@@ -59,11 +56,12 @@ namespace CodeFiction.InfinityFiction.Core.ResourceBuilder
                 throw new ArgumentNullException("field");
             }
 
-            string methodName = field.ReflectedType.FullName + ".set_" + field.Name;
+            string methodName = string.Format("{0}{1}{2}", field.ReflectedType.FullName, ".set_", field.Name);
 
-            if (DelegatesDictionary.ContainsKey(methodName))
+            Delegate action;
+            if (DelegatesDictionary.TryGetValue(methodName, out action))
             {
-                return (Action<TType, TFieldType>)DelegatesDictionary[methodName];
+                return (Action<TType, TFieldType>)action;
             }
 
             var setterMethod = new DynamicMethod(methodName, null, new[] { typeof(TType), typeof(TFieldType) }, true);
@@ -81,7 +79,7 @@ namespace CodeFiction.InfinityFiction.Core.ResourceBuilder
             }
 
             gen.Emit(OpCodes.Ret);
-            var action = setterMethod.CreateDelegate(typeof(Action<TType, TFieldType>));
+            action = setterMethod.CreateDelegate(typeof(Action<TType, TFieldType>));
             DelegatesDictionary.Add(methodName, action);
             return (Action<TType, TFieldType>)action;
         }
@@ -90,23 +88,23 @@ namespace CodeFiction.InfinityFiction.Core.ResourceBuilder
             where T : class, new()
         {
             Type type = typeof(T);
+            ConstructorInfo ctor = type.GetConstructor(new Type[0]);
+            string methodName = string.Format("{0}{1}", type.Name, ".ctor");
 
-            string methodName = type.FullName + ".Ctor";
-
-            if (DelegatesDictionary.ContainsKey(methodName))
+            Delegate @delegate;
+            if (ConstructorsDictionary.TryGetValue(methodName, out @delegate))
             {
-                return DelegatesDictionary[methodName];
+                return @delegate;
             }
 
-            var dm = new DynamicMethod(methodName, type, null, type.Module);
+            DynamicMethod dm = new DynamicMethod(methodName, type, new Type[0], type.Module);
 
-            ILGenerator il = dm.GetILGenerator();
+            ILGenerator lgen = dm.GetILGenerator();
+            lgen.Emit(OpCodes.Newobj, ctor);
+            lgen.Emit(OpCodes.Ret);
 
-            il.Emit(OpCodes.Newobj, type.GetConstructor(Bflags, null, Type.EmptyTypes, null));
-            il.Emit(OpCodes.Ret);
-
-            Delegate @delegate = dm.CreateDelegate(typeof(Func<T>));
-            DelegatesDictionary.Add(methodName, @delegate);
+            @delegate = dm.CreateDelegate(typeof(Func<T>));
+            ConstructorsDictionary.Add(methodName, @delegate);
             return @delegate;
         }
     }

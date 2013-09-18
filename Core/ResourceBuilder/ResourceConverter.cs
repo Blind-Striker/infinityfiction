@@ -30,8 +30,9 @@ namespace CodeFiction.InfinityFiction.Core.ResourceBuilder
             {
                 Delegate getter = _delegateHelper.CreateGetter(fieldInfo);
                 object value = getter.DynamicInvoke(@struct);
+                string fieldName = fieldInfo.Name;
 
-                resource.Properties.Add(new SimpleDataType { Name = fieldInfo.Name, Value = value, Type = fieldInfo.FieldType });
+                resource.Properties.Add(fieldName, new SimpleDataType { Name = fieldName, Value = value, Type = fieldInfo.FieldType });
             }
         }
 
@@ -55,14 +56,18 @@ namespace CodeFiction.InfinityFiction.Core.ResourceBuilder
 
                 var biffEntry = _genericStructConverter.ConvertToStruct<TStruct>(biffEntryContent, 0);
 
-                resources[i] = new TResource();
-              
-                Convert(biffEntry, resources[i]);
+                // TResource resource = new TResource();
+
+                 TResource resource = (TResource)_delegateHelper.DynamicNew<TResource>().DynamicInvoke();
+
+                Convert(biffEntry, resource);
 
                 if (onResourceConverted != null)
                 {
-                    onResourceConverted(resources[i]);
+                    onResourceConverted(resource);
                 }
+
+                resources[i] = resource;
 
                 offset += sizeofStruct;
             }

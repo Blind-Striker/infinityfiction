@@ -7,9 +7,9 @@ namespace CodeFiction.InfinityFiction.Core.Resources
     {
         protected BaseModel()
         {
-            Properties = new List<BaseDataType>();    
+            Properties = new Dictionary<string, BaseDataType>(); 
         }
 
-        public List<BaseDataType> Properties { get; set; }
+        public Dictionary<string ,BaseDataType> Properties { get; set; }
     }
 }

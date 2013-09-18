@@ -81,7 +81,11 @@ namespace CodeFiction.InfinityFiction.Core.Services
             _games[0] = new GameConfig(GameEnum.Unknown, "Unknown game", "baldur.ini", _bgdirs);
             _games[1] = new GameConfig(GameEnum.BaldursGate, "Baldur's Gate", "baldur.ini", _bgdirs);
             _games[2] = new GameConfig(GameEnum.BaldursGateTotsc, "Baldur's Gate - Tales of the Sword Coast", "baldur.ini", _bgdirs);
-            _games[3] = new GameConfig(GameEnum.BaldursGateExtented, "Baldur's Gate Extended Edition", "Baldur.ini", _bgdirs);
+            _games[3] = new GameConfig(
+                GameEnum.BaldursGateExtented, 
+                "Baldur's Gate Extended Edition", 
+                null, 
+                new[] { "Movies", "Music", "Scripts", "Sounds", "$HOME$Characters", "$HOME$MPSave", "$HOME$Portraits", "$HOME$Save", "$HOME$ScrnShot", "$HOME$Temp", "$HOME$TempSave" });
             _games[4] = new GameConfig(GameEnum.PlanescapeTorment, "Planescape: Torment", "torment.ini", new[] { "Music", "Save", "Temp" });
             _games[5] = new GameConfig(GameEnum.IceWindDale, "Icewind Dale", "icewind.ini", _bgdirs);
             _games[6] = new GameConfig(GameEnum.IceWindDaleHeartofWinter, "Icewind Dale - Heart of Winter", "icewind.ini", _bgdirs);
