@@ -28,7 +28,7 @@ namespace CodeFiction.InfinityFiction.Core.Services
         private readonly List<ResourceFile> _resourceFiles;
         private readonly List<string> _biffDirs;
 
-        private string _bgeeHomePath;
+        private readonly string _bgeeHomePath;
         private string _rootPath;
         private string _keyFilePath;
         private string _dialogFilePath;
@@ -257,7 +257,7 @@ namespace CodeFiction.InfinityFiction.Core.Services
             string[] filePaths = Directory.GetFiles(directory);
             string[] directoryPaths = Directory.GetDirectories(directory);
 
-            List<string> filesAndDirectories = new List<string>();
+            var filesAndDirectories = new List<string>();
             filesAndDirectories.AddRange(filePaths);
             filesAndDirectories.AddRange(directoryPaths);
 
@@ -271,7 +271,7 @@ namespace CodeFiction.InfinityFiction.Core.Services
                     continue;
                 }
 
-                ResourceFile resourceFile = new ResourceFile();
+                var resourceFile = new ResourceFile();
                 string fileName = Path.GetFileNameWithoutExtension(file);
                 string extension = Path.GetExtension(file);
 
@@ -319,14 +319,16 @@ namespace CodeFiction.InfinityFiction.Core.Services
 
         private void SetBiffDirectories()
         {
-            if (_gameEnum == GameEnum.BaldursGateExtented)
+            GameConfig game = _games.FirstOrDefault(config => config.GameEnum == _gameEnum);
+
+            if (game == null || game.IniFile.IsNullOrEmpty())
             {
                 return;
             }
 
             var reader = new IniFileReader();
 
-            string iniPath = Path.Combine(_rootPath, "baldur.ini");
+            string iniPath = Path.Combine(_rootPath, game.IniFile);
             IniFile iniFile = reader.GetIniFile(iniPath);
 
             foreach (var iniCategory in iniFile.IniCategories)
