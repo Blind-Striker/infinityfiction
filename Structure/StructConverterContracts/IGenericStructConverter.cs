@@ -1,4 +1,6 @@
-﻿namespace CodeFiction.InfinityFiction.Structure.StructConverterContracts
+﻿using System;
+
+namespace CodeFiction.InfinityFiction.Structure.StructConverterContracts
 {
     public interface IGenericStructConverter
     {

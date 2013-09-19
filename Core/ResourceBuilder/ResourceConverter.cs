@@ -26,6 +26,11 @@ namespace CodeFiction.InfinityFiction.Core.ResourceBuilder
         {
             FieldInfo[] fieldInfos = typeof(TStruct).GetFields();
 
+            Convert(@struct, resource, fieldInfos);
+        }
+
+        public void Convert<TStruct, TResource>(TStruct @struct, TResource resource, FieldInfo[] fieldInfos) where TResource : BaseModel
+        {
             foreach (FieldInfo fieldInfo in fieldInfos)
             {
                 Delegate getter = _delegateHelper.CreateGetter(fieldInfo);
@@ -36,8 +41,43 @@ namespace CodeFiction.InfinityFiction.Core.ResourceBuilder
             }
         }
 
+        //public void Convert<TStruct, TResource>(byte[] content, TResource[] resources, uint offset, uint sizeofStruct, Action<TResource> onResourceConverted = null)
+        //    where TStruct : struct
+        //    where TResource : BaseModel, new()
+        //{
+        //    if (content == null)
+        //    {
+        //        throw new ArgumentNullException("content");
+        //    }
+
+        //    if (resources == null)
+        //    {
+        //        throw new ArgumentNullException("resources");
+        //    }
+
+        //    for (int i = 0; i < resources.Length; i++)
+        //    {
+        //        byte[] biffEntryContent = BinaryHelper.GetBytes(content, offset, sizeofStruct);
+
+        //        var biffEntry = _genericStructConverter.ConvertToStruct<TStruct>(biffEntryContent, 0);
+
+        //        var resource = new TResource();
+
+        //        Convert(biffEntry, resource);
+
+        //        if (onResourceConverted != null)
+        //        {
+        //            onResourceConverted(resource);
+        //        }
+
+        //        resources[i] = resource;
+
+        //        offset += sizeofStruct;
+        //    }
+        //}
+
         public void Convert<TStruct, TResource>(byte[] content, TResource[] resources, uint offset, uint sizeofStruct, Action<TResource> onResourceConverted = null)
-            where TStruct : struct 
+            where TStruct : struct
             where TResource : BaseModel, new()
         {
             if (content == null)
@@ -50,17 +90,26 @@ namespace CodeFiction.InfinityFiction.Core.ResourceBuilder
                 throw new ArgumentNullException("resources");
             }
 
+            var entries = new TStruct[resources.Length];
+
             for (int i = 0; i < resources.Length; i++)
             {
-                byte[] biffEntryContent = BinaryHelper.GetBytes(content, offset, sizeofStruct);
+                byte[] entryContent = BinaryHelper.GetBytes(content, offset, sizeofStruct);
 
-                var biffEntry = _genericStructConverter.ConvertToStruct<TStruct>(biffEntryContent, 0);
+                var entry = _genericStructConverter.ConvertToStruct<TStruct>(entryContent, 0);
+                entries[i] = entry;
 
-                // TResource resource = new TResource();
+                offset += sizeofStruct;
+            }
 
-                 TResource resource = (TResource)_delegateHelper.DynamicNew<TResource>().DynamicInvoke();
+            FieldInfo[] fieldInfos = typeof(TStruct).GetFields();
 
-                Convert(biffEntry, resource);
+            for (int i = 0; i < entries.Length; i++)
+            {
+                var entry = entries[i];
+                var resource = new TResource();
+
+                Convert(entry, resource, fieldInfos);
 
                 if (onResourceConverted != null)
                 {
@@ -68,8 +117,6 @@ namespace CodeFiction.InfinityFiction.Core.ResourceBuilder
                 }
 
                 resources[i] = resource;
-
-                offset += sizeofStruct;
             }
         }
     }
