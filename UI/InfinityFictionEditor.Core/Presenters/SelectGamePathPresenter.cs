@@ -1,4 +1,6 @@
-﻿using System.Configuration;
+﻿using System;
+using System.Configuration;
+using System.IO;
 using System.Waf.Applications;
 using System.Waf.Applications.Services;
 using InfinityFiction.UI.InfinityFictionEditor.Core.Foundation;
@@ -47,7 +49,7 @@ namespace InfinityFiction.UI.InfinityFictionEditor.Core.Presenters
 
         private bool CanSelect()
         {
-            return !string.IsNullOrEmpty(_gamePathViewModel.GamePath);
+           return !_gamePathViewModel.GamePath.IsNullOrEmpty() && File.Exists(_gamePathViewModel.GamePath);
         }
 
         private void Cancel()
@@ -57,9 +59,9 @@ namespace InfinityFiction.UI.InfinityFictionEditor.Core.Presenters
 
         private void Browse()
         {
-            string selectedPath = _dialogService.ShowFolderDialog(View);
+            string selectedPath = _dialogService.ShowFileDialog(View, "Infinity Keyfile (*.key)|*.key|All files (*.*)|*.*");
 
-            if (!string.IsNullOrEmpty(selectedPath))
+            if (!selectedPath.IsNullOrEmpty())
             {
                 _gamePathViewModel.GamePath = selectedPath;
             }

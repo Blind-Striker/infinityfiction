@@ -14,11 +14,11 @@ namespace CodeFiction.InfinityFiction.Structure.StructConverters
                 IntPtr unmanagedPointer = Marshal.AllocHGlobal(content.Length);
                 Marshal.Copy(content, offset, unmanagedPointer, content.Length);
 
-                var header = (T)Marshal.PtrToStructure(unmanagedPointer, typeof(T));
+                var entity = (T)Marshal.PtrToStructure(unmanagedPointer, typeof(T));
 
                 Marshal.FreeHGlobal(unmanagedPointer);
 
-                return header;
+                return entity;
             }
             catch (Exception ex)
             {

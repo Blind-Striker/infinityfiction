@@ -22,8 +22,7 @@ namespace InfinityFiction.UI.InfinityFictionEditor.Core
             container.Register(
                 Component.For<IPresenterFactory>().AsFactory().LifestyleTransient(),
                 Component.For<IMainPresenter>().ImplementedBy<MainPresenter>().LifestyleTransient(),
-                Component.For<ISelectGamePathPresenter>().ImplementedBy<SelectGamePathPresenter>().LifestyleTransient(),
-                Component.For<ApplicationSettingsBase>().ImplementedBy<Settings>().LifestyleTransient());
+                Component.For<ISelectGamePathPresenter>().ImplementedBy<SelectGamePathPresenter>().LifestyleTransient());
         }
     }
 }

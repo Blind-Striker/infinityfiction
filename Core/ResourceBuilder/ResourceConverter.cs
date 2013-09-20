@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Reflection.Emit;
+
 using CodeFiction.DarkMatterFramework.Libraries.IOLibrary;
 using CodeFiction.InfinityFiction.Core.ResourceBuilderContracts;
 using CodeFiction.InfinityFiction.Core.Resources;
@@ -41,41 +43,6 @@ namespace CodeFiction.InfinityFiction.Core.ResourceBuilder
             }
         }
 
-        //public void Convert<TStruct, TResource>(byte[] content, TResource[] resources, uint offset, uint sizeofStruct, Action<TResource> onResourceConverted = null)
-        //    where TStruct : struct
-        //    where TResource : BaseModel, new()
-        //{
-        //    if (content == null)
-        //    {
-        //        throw new ArgumentNullException("content");
-        //    }
-
-        //    if (resources == null)
-        //    {
-        //        throw new ArgumentNullException("resources");
-        //    }
-
-        //    for (int i = 0; i < resources.Length; i++)
-        //    {
-        //        byte[] biffEntryContent = BinaryHelper.GetBytes(content, offset, sizeofStruct);
-
-        //        var biffEntry = _genericStructConverter.ConvertToStruct<TStruct>(biffEntryContent, 0);
-
-        //        var resource = new TResource();
-
-        //        Convert(biffEntry, resource);
-
-        //        if (onResourceConverted != null)
-        //        {
-        //            onResourceConverted(resource);
-        //        }
-
-        //        resources[i] = resource;
-
-        //        offset += sizeofStruct;
-        //    }
-        //}
-
         public void Convert<TStruct, TResource>(byte[] content, TResource[] resources, uint offset, uint sizeofStruct, Action<TResource> onResourceConverted = null)
             where TStruct : struct
             where TResource : BaseModel, new()
@@ -103,11 +70,13 @@ namespace CodeFiction.InfinityFiction.Core.ResourceBuilder
             }
 
             FieldInfo[] fieldInfos = typeof(TStruct).GetFields();
+            // Delegate dynamicNew = _delegateHelper.DynamicNew<TResource>();
 
             for (int i = 0; i < entries.Length; i++)
             {
                 var entry = entries[i];
                 var resource = new TResource();
+                //var resource = (TResource)dynamicNew.DynamicInvoke();
 
                 Convert(entry, resource, fieldInfos);
 

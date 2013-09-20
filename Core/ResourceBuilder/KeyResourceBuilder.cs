@@ -183,9 +183,6 @@ namespace CodeFiction.InfinityFiction.Core.ResourceBuilder
 
         private void OnResourceConverted(ResourceEntryResource resourceEntryResource)
         {
-            // string fileName = resourceEntryResource.Properties.Where(type => type.Name == "ResourceName").Select(type => type.Value.ToString().Trim()).First();
-            // int resourceType = resourceEntryResource.Properties.Where(type => type.Name == "ResourceType").Select(type => Convert.ToInt32(type.Value)).First();
-
             string fileName = resourceEntryResource.Properties["ResourceName"].Value.ToString().Trim();
             int resourceType = Convert.ToInt32(resourceEntryResource.Properties["ResourceType"].Value);
 
@@ -194,6 +191,12 @@ namespace CodeFiction.InfinityFiction.Core.ResourceBuilder
             {
                 resourceEntryResource.Extension = extension;
                 resourceEntryResource.FileName = string.Format("{0}.{1}", fileName, resourceEntryResource.Extension);
+            }
+            else
+            {
+                string unknownMark = string.Format("({0}h)", resourceType.ToString("X3"));
+                resourceEntryResource.Extension = string.Format("Unknown {0}", unknownMark);
+                resourceEntryResource.FileName = string.Format("{0}.Unknown {1}", fileName, unknownMark);
             }
         }
     }

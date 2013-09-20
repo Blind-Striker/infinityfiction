@@ -23,9 +23,9 @@ namespace CodeFiction.InfinityFiction.Core.Services
                 "Scripts", "ScrnShot", "Sounds", "Temp", "TempSave"
             };
 
-        private readonly GameConfig[] _games;
+        private readonly Dictionary<GameEnum, GameConfig> _games;
         private readonly List<string> _extraDirs;
-        private readonly List<ResourceFile> _resourceFiles;
+        private readonly IList<ResourceFile> _resourceFiles;
         private readonly List<string> _biffDirs;
 
         private readonly string _bgeeHomePath;
@@ -41,7 +41,7 @@ namespace CodeFiction.InfinityFiction.Core.Services
             _extraDirs = new List<string>();
             _resourceFiles = new List<ResourceFile>();
             _biffDirs = new List<string>();
-            _games = new GameConfig[16];
+            _games = new Dictionary<GameEnum, GameConfig>(16);
 
             string homePath = Environment.ExpandEnvironmentVariables("%HOMEDRIVE%%HOMEPATH%");
             _bgeeHomePath = Path.Combine(homePath, @"Documents\Baldur's Gate - Enhanced Edition");
@@ -57,7 +57,7 @@ namespace CodeFiction.InfinityFiction.Core.Services
             }
         }
 
-        public List<ResourceFile> ResourceFiles
+        public IList<ResourceFile> ResourceFiles
         {
             get
             {
@@ -84,41 +84,41 @@ namespace CodeFiction.InfinityFiction.Core.Services
 
         private void BuildGames()
         {
-            _games[0] = new GameConfig(GameEnum.Unknown, "Unknown game", "baldur.ini", _bgdirs);
-            _games[1] = new GameConfig(GameEnum.BaldursGate, "Baldur's Gate", "baldur.ini", _bgdirs);
-            _games[2] = new GameConfig(GameEnum.BaldursGateTotsc, "Baldur's Gate - Tales of the Sword Coast", "baldur.ini", _bgdirs);
-            _games[3] = new GameConfig(
+            _games.Add(GameEnum.Unknown, new GameConfig(GameEnum.Unknown, "Unknown game", "baldur.ini", _bgdirs));
+            _games.Add(GameEnum.BaldursGate, new GameConfig(GameEnum.BaldursGate, "Baldur's Gate", "baldur.ini", _bgdirs));
+            _games.Add(GameEnum.BaldursGateTotsc, new GameConfig(GameEnum.BaldursGateTotsc, "Baldur's Gate - Tales of the Sword Coast", "baldur.ini", _bgdirs));
+            _games.Add(GameEnum.BaldursGateExtented, new GameConfig(
                 GameEnum.BaldursGateExtented, 
                 "Baldur's Gate Extended Edition", 
                 null, 
-                new[] { "Movies", "Music", "Scripts", "Sounds", "$HOME$Characters", "$HOME$MPSave", "$HOME$Portraits", "$HOME$Save", "$HOME$ScrnShot", "$HOME$Temp", "$HOME$TempSave" });
-            _games[4] = new GameConfig(GameEnum.PlanescapeTorment, "Planescape: Torment", "torment.ini", new[] { "Music", "Save", "Temp" });
-            _games[5] = new GameConfig(GameEnum.IceWindDale, "Icewind Dale", "icewind.ini", _bgdirs);
-            _games[6] = new GameConfig(GameEnum.IceWindDaleHeartofWinter, "Icewind Dale - Heart of Winter", "icewind.ini", _bgdirs);
-            _games[7] = new GameConfig(GameEnum.IceWindDaleTrailsOfRuleMaster, "Icewind Dale - Trials of the Luremaster", "icewind.ini", _bgdirs);
-            _games[8] = new GameConfig(GameEnum.BaldursGate2, "Baldur's Gate 2 - Shadows of Amn", "baldur.ini", _bgdirs);
-            _games[9] = new GameConfig(GameEnum.BaldursGateTob, "Baldur's Gate 2 - Throne of Bhaal", "baldur.ini", _bgdirs);
-            _games[10] = new GameConfig(GameEnum.IceWindDale2, "Icewind Dale 2", "icewind2.ini", _bgdirs);
-            _games[11] = new GameConfig(
+                new[] { "Movies", "Music", "Scripts", "Sounds", "$HOME$Characters", "$HOME$MPSave", "$HOME$Portraits", "$HOME$Save", "$HOME$ScrnShot", "$HOME$Temp", "$HOME$TempSave" }));
+            _games.Add(GameEnum.PlanescapeTorment, new GameConfig(GameEnum.PlanescapeTorment, "Planescape: Torment", "torment.ini", new[] { "Music", "Save", "Temp" }));
+            _games.Add(GameEnum.IceWindDale, new GameConfig(GameEnum.IceWindDale, "Icewind Dale", "icewind.ini", _bgdirs));
+            _games.Add(GameEnum.IceWindDaleHeartofWinter, new GameConfig(GameEnum.IceWindDaleHeartofWinter, "Icewind Dale - Heart of Winter", "icewind.ini", _bgdirs));
+            _games.Add(GameEnum.IceWindDaleTrailsOfRuleMaster, new GameConfig(GameEnum.IceWindDaleTrailsOfRuleMaster, "Icewind Dale - Trials of the Luremaster", "icewind.ini", _bgdirs));
+            _games.Add(GameEnum.BaldursGate2, new GameConfig(GameEnum.BaldursGate2, "Baldur's Gate 2 - Shadows of Amn", "baldur.ini", _bgdirs));
+            _games.Add(GameEnum.BaldursGateTob, new GameConfig(GameEnum.BaldursGateTob, "Baldur's Gate 2 - Throne of Bhaal", "baldur.ini", _bgdirs));
+            _games.Add(GameEnum.IceWindDale2, new GameConfig(GameEnum.IceWindDale2, "Icewind Dale 2", "icewind2.ini", _bgdirs));
+            _games.Add(GameEnum.NewerwinterNights, new GameConfig(
                 GameEnum.NewerwinterNights, 
                 "Neverwinter Nights", 
                 "nwn.ini", 
-                new[] { "Ambient", "DMVault", "Hak", "LocalVault", "Modules", "Music", "NWM", "Saves", "ServerVault", "Source", "TexturePacks" });
+                new[] { "Ambient", "DMVault", "Hak", "LocalVault", "Modules", "Music", "NWM", "Saves", "ServerVault", "Source", "TexturePacks" }));
 
-            _games[12] = new GameConfig(
+            _games.Add(GameEnum.Kotor, new GameConfig(
                 GameEnum.Kotor, 
                 "Star Wars: Knights of the Old Republic", 
                 "swkotor.ini", 
-                new[] { "Lips", "Modules", "Rims", "Saves", "StreamMusic", "StreamSounds", "TexturePacks" });
+                new[] { "Lips", "Modules", "Rims", "Saves", "StreamMusic", "StreamSounds", "TexturePacks" }));
 
-            _games[13] = new GameConfig(GameEnum.BaldursGateTutu, "BG1Tutu", "baldur.ini", _bgdirs);
-            _games[14] = new GameConfig(GameEnum.BaldursGateDemo, "Baldur's Gate - Non-Interactive Demo", "chitin.ini", new[] { "Music" });
-            
-            _games[15] = new GameConfig(
+            _games.Add(GameEnum.BaldursGateTutu, new GameConfig(GameEnum.BaldursGateTutu, "BG1Tutu", "baldur.ini", _bgdirs));
+            _games.Add(GameEnum.BaldursGateDemo, new GameConfig(GameEnum.BaldursGateDemo, "Baldur's Gate - Non-Interactive Demo", "chitin.ini", new[] { "Music" }));
+
+            _games.Add(GameEnum.Kotor2, new GameConfig(
                 GameEnum.Kotor2, 
                 "Star Wars: Knights of the Old Republic 2", 
                 "swkotor2.ini", 
-                new[] { "Lips", "Modules", "Rims", "Saves", "StreamMusic", "StreamSounds", "TexturePacks" });
+                new[] { "Lips", "Modules", "Rims", "Saves", "StreamMusic", "StreamSounds", "TexturePacks" }));
         }
 
         private void FindGameType()
@@ -177,6 +177,14 @@ namespace CodeFiction.InfinityFiction.Core.Services
 
         private void LoadResources()
         {
+            GameConfig game = _games[_gameEnum];
+            _dialogFilePath = Path.Combine(_rootPath, DialogFilename);
+            bool dialogfileExists = File.Exists(_dialogFilePath);
+            if (!dialogfileExists)
+            {
+                _dialogFilePath = Path.Combine(_rootPath, "lang", "en_US", DialogFilename);
+            }
+
             _keyResource = _keyResourceBuilder.GetKeyResource(_gameEnum, _keyFilePath);
 
             foreach (var resourceEntryResource in _keyResource.ResourceEntries)
@@ -189,30 +197,19 @@ namespace CodeFiction.InfinityFiction.Core.Services
                 _resourceFiles.Add(resourceFile);
             }
 
-            string[] currentExtraDirs = _games.Where(config => config.GameEnum == _gameEnum).Select(config => config.ExtraDirs).FirstOrDefault();
+            List<string> currentExtraDirs = game.ExtraDirs.Select(GetFullPath).ToList();
 
-            if (currentExtraDirs == null)
+            if (currentExtraDirs.IsNullOrEmpty())
             {
                 // TODO: throw Exception
             }
 
             foreach (var extraDir in currentExtraDirs)
             {
-                string fullPath;
-                if (extraDir.StartsWith("$HOME$"))
-                {   
-                    string extraDriveHome = extraDir.Replace("$HOME$", string.Empty);
-                    fullPath = Path.Combine(_bgeeHomePath, extraDriveHome);
-                }
-                else
+                if (Directory.Exists(extraDir))
                 {
-                    fullPath = Path.Combine(_rootPath, extraDir);
-                }
-
-                if (Directory.Exists(fullPath))
-                {
-                    _extraDirs.Add(fullPath);
-                    LoadResourceFiles(fullPath);
+                    _extraDirs.Add(extraDir);
+                    LoadResourceFiles(extraDir, currentExtraDirs);
                 }
             }
 
@@ -252,7 +249,22 @@ namespace CodeFiction.InfinityFiction.Core.Services
             }
         }
 
-        private void LoadResourceFiles(string directory)
+        private string GetFullPath(string extraDir)
+        {
+            string fullPath;
+            if (extraDir.StartsWith("$HOME$"))
+            {
+                string extraDriveHome = extraDir.Replace("$HOME$", string.Empty);
+                fullPath = Path.Combine(_bgeeHomePath, extraDriveHome);
+            }
+            else
+            {
+                fullPath = Path.Combine(_rootPath, extraDir);
+            }
+            return fullPath;
+        }
+
+        private void LoadResourceFiles(string directory, ICollection<string> extraDirectories)
         {
             string[] filePaths = Directory.GetFiles(directory);
             string[] directoryPaths = Directory.GetDirectories(directory);
@@ -261,13 +273,15 @@ namespace CodeFiction.InfinityFiction.Core.Services
             filesAndDirectories.AddRange(filePaths);
             filesAndDirectories.AddRange(directoryPaths);
 
+            string parentFolder = GetParentOfExtraSubDirectory(extraDirectories, directory);
+
             foreach (var file in filesAndDirectories)
             {
                 FileAttributes attr = File.GetAttributes(file);
 
                 if ((attr & FileAttributes.Directory) == FileAttributes.Directory)
                 {
-                    LoadResourceFiles(file);
+                    LoadResourceFiles(file, extraDirectories);
                     continue;
                 }
 
@@ -280,6 +294,7 @@ namespace CodeFiction.InfinityFiction.Core.Services
                     // TODO : throw Exception
                 }
 
+                resourceFile.ParentFolder = parentFolder;
                 resourceFile.File = fileName;
                 resourceFile.FullPath = file;
                 resourceFile.Folder = directory.Split(Path.DirectorySeparatorChar).Last();
@@ -319,7 +334,7 @@ namespace CodeFiction.InfinityFiction.Core.Services
 
         private void SetBiffDirectories()
         {
-            GameConfig game = _games.FirstOrDefault(config => config.GameEnum == _gameEnum);
+            GameConfig game = _games[_gameEnum];
 
             if (game == null || game.IniFile.IsNullOrEmpty())
             {
@@ -344,10 +359,36 @@ namespace CodeFiction.InfinityFiction.Core.Services
                         if (Directory.Exists(directory) && !_biffDirs.Contains(directory))
                         {
                             _biffDirs.Add(directory);
-                        }
+                        }   
                     }
                 }
             }
+        }
+
+        private static string GetParentOfExtraSubDirectory(ICollection<string> extraDirectoriesPaths, string currentDirectoryPath)
+        {
+            if (extraDirectoriesPaths.Any(s => s == currentDirectoryPath))
+            {
+                return null;
+            }
+
+            foreach (var extraDirectoryPath in extraDirectoriesPaths)
+            {
+                DirectoryInfo extraDirectory = new DirectoryInfo(extraDirectoryPath);
+                DirectoryInfo currentDirectory = new DirectoryInfo(currentDirectoryPath);
+
+                while (currentDirectory.Parent != null)
+                {
+                    if (currentDirectory.Parent.FullName == extraDirectory.FullName)
+                    {
+                        return extraDirectory.FullName.Split(Path.DirectorySeparatorChar).Last();
+                    }
+                    
+                    currentDirectory = currentDirectory.Parent;
+                }
+            }
+
+            return null;
         }
     }
 }
