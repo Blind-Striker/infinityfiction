@@ -45,3 +45,9 @@ In the end providing developers a SaaS model API.
 ## License
 
 See the LICENSE file for license rights and limitations.
+
+##Powered By
+
+[![alt text](https://raw.github.com/Blind-Striker/infinityfiction/master/PoweredByLogos/devbundle_sm.png ".Net Developer Bundle by Red Gate")](http://www.red-gate.com/products/dotnet-development/dotnet-developer-bundle/)
+[![alt text](https://raw.github.com/Blind-Striker/infinityfiction/master/PoweredByLogos/logo_resharper_small.gif "ReSharper by JetBrains")](http://www.jetbrains.com/resharper/)
+[![alt text](https://raw.github.com/Blind-Striker/infinityfiction/master/PoweredByLogos/logo_dotcover_small.gif "dotCover by JetBrains")](http://www.jetbrains.com/dotcover/)
