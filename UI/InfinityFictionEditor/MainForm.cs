@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+
+using Castle.Core.Internal;
 
 using InfinityFiction.UI.InfinityFictionEditor.Core;
 using InfinityFiction.UI.InfinityFictionEditor.Core.Foundation;
@@ -43,15 +37,20 @@ namespace InfinityFiction.UI.InfinityFictionEditor
 
             var mainViewModel = DataContext as MainViewModel;
 
-            mainViewModel.TreeViewItems.CollectionChanged += TreeViewItems_CollectionChanged;
+            if (mainViewModel == null)
+            {
+                return;
+            }
 
-            CommandAdapter.AddCommandBinding(treeResources, mainViewModel.OnTreeItemSelected, () => mainViewModel.SelectedTreeViewItem = ((DataTreeView.DataTreeViewNode)treeResources.SelectedNode).Item);
+            var treeViewBinder = new TreeViewBinder();
+
+            if (!mainViewModel.TreeViewItems.IsNullOrEmpty())
+            {
+                treeViewBinder.Bind(treeResources, mainViewModel.TreeViewItems);
+            }
+
+            CommandAdapter.AddCommandBinding(treeResources, mainViewModel.OnTreeItemSelected, () => mainViewModel.SelectedTreeViewItem = treeResources.SelectedNode.Tag);
             CommandAdapter.AddCommandBinding(selectGameToolStripMenuItem, mainViewModel.SelectGamePath);
-        }
-
-        void TreeViewItems_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
-        {
-
         }
     }
 }

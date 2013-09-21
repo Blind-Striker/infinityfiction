@@ -17,7 +17,7 @@ namespace InfinityFiction.UI.InfinityFictionEditor.Core.Presenters
 {
     internal class MainPresenter : BasePresenter<IMainView, IMainPresenter>, IMainPresenter
     {
-        private readonly ApplicationSettingsBase _settings;
+        private readonly IAppSettings _settings;
         private readonly IPresenterFactory _presenterFactory;
         private readonly IInfinityFictionConfigService _infinityFictionConfigService;
         private readonly MainViewModel _mainViewModel;
@@ -26,7 +26,7 @@ namespace InfinityFiction.UI.InfinityFictionEditor.Core.Presenters
 
         public MainPresenter(
             IMainView view,
-            ApplicationSettingsBase settings,
+            IAppSettings settings,
             IPresenterFactory presenterFactory,
             IInfinityFictionConfigService infinityFictionConfigService)
             : base(view)
@@ -56,11 +56,11 @@ namespace InfinityFiction.UI.InfinityFictionEditor.Core.Presenters
             // _mainViewModel.TreeViewItems.Add(new TreeViewItem { Id = "5", Name = "DENIZ.CHR", ParentId = "4" });
         }
 
-        public TreeViewItem SelectedTreeViewItem
+        public ResourceFile SelectedResourceFile
         {
             get
             {
-                return _mainViewModel.SelectedTreeViewItem as TreeViewItem;
+                return _mainViewModel.SelectedTreeViewItem as ResourceFile;
             }
         }
 
@@ -90,7 +90,7 @@ namespace InfinityFiction.UI.InfinityFictionEditor.Core.Presenters
 
         private void CheckShowSelectGamePathView()
         {
-            if (_settings["ChitinKeyPath"].ToString().IsNullOrEmpty())
+            if (_settings["ChitinKeyPath"] == null)
             {
                 ShowSelectGamePathView();
             }
@@ -103,9 +103,10 @@ namespace InfinityFiction.UI.InfinityFictionEditor.Core.Presenters
 
         private void InitializeKeyResource()
         {
-            if (!_settings["ChitinKeyPath"].ToString().IsNullOrEmpty())
+            object chitinKeyPath = _settings["ChitinKeyPath"];
+            if (chitinKeyPath != null)
             {
-                _infinityFictionConfigService.InitializeConfiguration(_settings["ChitinKeyPath"].ToString());
+                _infinityFictionConfigService.InitializeConfiguration(chitinKeyPath.ToString());
                 _keyResource = _infinityFictionConfigService.KeyResource;
                 _resourceFiles = _infinityFictionConfigService.ResourceFiles;
                 PopulateResourceTree();
@@ -116,18 +117,26 @@ namespace InfinityFiction.UI.InfinityFictionEditor.Core.Presenters
         {
             _mainViewModel.TreeViewItems = new ObservableCollection<TreeViewItem>();
             List<ResourceFile> resourceFiles = _resourceFiles.Where(file => file.ParentFolder == null).ToList();
-            List<string> resourceFolders = resourceFiles.Select(file => file.Folder).Distinct().OrderByDescending(s => s).ToList();
+            List<string> resourceFolders = resourceFiles.Select(file => file.Folder).OrderBy(s => s).Distinct().ToList();
 
             foreach (var resourceFolder in resourceFolders)
             {
-                List<ResourceFile> files = resourceFiles.Where(file => file.Folder == resourceFolder).OrderByDescending(file => file.File).ToList();
+                List<ResourceFile> files = resourceFiles.Where(file => file.Folder == resourceFolder).OrderBy(file => file.File).ToList();
 
-                _mainViewModel.TreeViewItems.Add(new TreeViewItem() { Id = resourceFolder, Name = string.Format("{0} - {1}", resourceFolder, files.Count), ParentId = string.Empty });
+                TreeViewItem parentTreeItem = new TreeViewItem()
+                                            {
+                                                Id = resourceFolder,
+                                                Name = string.Format("{0} - {1}", resourceFolder, files.Count),
+                                                ParentId = string.Empty,
+                                                Item = null
+                                            };
 
                 foreach (var resourceFile in files)
                 {
-                    _mainViewModel.TreeViewItems.Add(new TreeViewItem() { Id = resourceFile.File, Name = resourceFile.File, ParentId = resourceFolder });
+                    parentTreeItem.TreeViewItems.Add(new TreeViewItem() { Id = resourceFile.File, Name = resourceFile.File, ParentId = resourceFolder, Item = resourceFile});
                 }
+
+                _mainViewModel.TreeViewItems.Add(parentTreeItem);
             }
         }
     }

@@ -32,11 +32,11 @@ namespace InfinityFiction.UI.InfinityFictionEditor
         {
             this.components = new System.ComponentModel.Container();
             this.dataContext = new System.Windows.Forms.BindingSource(this.components);
-            this.treeResources = new InfinityFiction.UI.InfinityFictionEditor.Core.WinFormControls.DataTreeView();
             this.mainMenuStrip = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.selectGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.treeResources = new System.Windows.Forms.TreeView();
             ((System.ComponentModel.ISupportInitialize)(this.dataContext)).BeginInit();
             this.mainMenuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -44,24 +44,6 @@ namespace InfinityFiction.UI.InfinityFictionEditor
             // dataContext
             // 
             this.dataContext.DataSource = typeof(InfinityFiction.UI.InfinityFictionEditor.Core.ViewModels.MainViewModel);
-            // 
-            // treeResources
-            // 
-            this.treeResources.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.treeResources.DataMember = "TreeViewItems";
-            this.treeResources.DataSource = this.dataContext;
-            this.treeResources.FullRowSelect = true;
-            this.treeResources.HideSelection = false;
-            this.treeResources.HotTracking = true;
-            this.treeResources.IDColumn = "Id";
-            this.treeResources.Location = new System.Drawing.Point(12, 27);
-            this.treeResources.Name = "treeResources";
-            this.treeResources.NameColumn = "Name";
-            this.treeResources.ParentIDColumn = "ParentId";
-            this.treeResources.Size = new System.Drawing.Size(229, 558);
-            this.treeResources.TabIndex = 0;
-            this.treeResources.ValueColumn = "Id";
             // 
             // mainMenuStrip
             // 
@@ -82,17 +64,24 @@ namespace InfinityFiction.UI.InfinityFictionEditor
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
             // 
+            // selectGameToolStripMenuItem
+            // 
+            this.selectGameToolStripMenuItem.Name = "selectGameToolStripMenuItem";
+            this.selectGameToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.selectGameToolStripMenuItem.Text = "Select Game";
+            // 
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
             this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
             this.editToolStripMenuItem.Text = "Edit";
             // 
-            // selectGameToolStripMenuItem
+            // treeResources
             // 
-            this.selectGameToolStripMenuItem.Name = "selectGameToolStripMenuItem";
-            this.selectGameToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.selectGameToolStripMenuItem.Text = "Select Game";
+            this.treeResources.Location = new System.Drawing.Point(12, 27);
+            this.treeResources.Name = "treeResources";
+            this.treeResources.Size = new System.Drawing.Size(207, 558);
+            this.treeResources.TabIndex = 2;
             // 
             // MainForm
             // 
@@ -115,10 +104,10 @@ namespace InfinityFiction.UI.InfinityFictionEditor
         #endregion
 
         private System.Windows.Forms.BindingSource dataContext;
-        private DataTreeView treeResources;
         private System.Windows.Forms.MenuStrip mainMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem selectGameToolStripMenuItem;
+        private System.Windows.Forms.TreeView treeResources;
     }
 }

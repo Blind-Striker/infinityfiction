@@ -12,6 +12,8 @@ namespace InfinityFiction.UI.InfinityFictionEditor.Core.ViewModels
         private ICommand _onTreeItemSelected;
         private ICommand _selectGamePath;
 
+        private object _selectedTreeViewItem;
+
         public ObservableCollection<TreeViewItem> TreeViewItems
         {
             get
@@ -25,7 +27,17 @@ namespace InfinityFiction.UI.InfinityFictionEditor.Core.ViewModels
             }
         }
 
-        public object SelectedTreeViewItem { get; set; }
+        public object SelectedTreeViewItem
+        {
+            get
+            {
+                return _selectedTreeViewItem;
+            }
+            set
+            {
+                _selectedTreeViewItem = value;
+            }
+        }
 
         public ICommand OnTreeItemSelected
         {

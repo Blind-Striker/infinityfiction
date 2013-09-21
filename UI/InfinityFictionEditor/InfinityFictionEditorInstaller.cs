@@ -18,8 +18,6 @@ namespace InfinityFiction.UI.InfinityFictionEditor
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
             container.Register(
-                Component.For<ApplicationSettingsBase>().ImplementedBy<Settings>().LifestyleTransient(),
-
                 Component.For<IMainView>().ImplementedBy<MainForm>().LifestyleTransient(),
                 Component.For<ISelectGamePathView>().ImplementedBy<SelectGamePathForm>().LifestyleTransient(),
 

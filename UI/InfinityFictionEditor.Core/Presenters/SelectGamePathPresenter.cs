@@ -17,9 +17,9 @@ namespace InfinityFiction.UI.InfinityFictionEditor.Core.Presenters
 
         private readonly IMessageService _messageService;
 
-        private readonly ApplicationSettingsBase _settings;
+        private readonly IAppSettings _settings;
 
-        public SelectGamePathPresenter(ISelectGamePathView view, IDialogService dialogService, IMessageService messageService, ApplicationSettingsBase settings)
+        public SelectGamePathPresenter(ISelectGamePathView view, IDialogService dialogService, IMessageService messageService, IAppSettings settings)
             : base(view)
         {
             _dialogService = dialogService;
@@ -28,7 +28,11 @@ namespace InfinityFiction.UI.InfinityFictionEditor.Core.Presenters
 
             _gamePathViewModel = new SelectGamePathViewModel();
 
-            _gamePathViewModel.GamePath = _settings["ChitinKeyPath"].ToString();
+            object settingValue = _settings["ChitinKeyPath"];
+
+            _gamePathViewModel.GamePath = settingValue != null
+                ? settingValue.ToString()
+                : string.Empty;
 
             _gamePathViewModel.Select = new DelegateCommand(Select, CanSelect);
             _gamePathViewModel.Cancel = new DelegateCommand(Cancel);

@@ -46,6 +46,10 @@
     <Reference Include="MvpVmFramework.Core">
       <HintPath>..\..\SharedLibs\MvpVmFramework.Core.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Newtonsoft.Json.5.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -76,6 +80,9 @@
     <Compile Include="Presenters\SelectGamePathPresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Foundation\IMainView.cs" />
+    <Compile Include="Foundation\IAppSettings.cs" />
+    <Compile Include="Settings\InfinitySettings.cs" />
+    <Compile Include="Settings\IsolatedStorageAppSettings.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\SelectGamePathViewModel.cs" />
     <Compile Include="WinFormControls\CommandBindings\TreeViewBinding.cs" />
@@ -85,6 +92,7 @@
     </Compile>
     <Compile Include="WinFormControls\Design\DropDownTypeEditor.cs" />
     <Compile Include="WinFormControls\Design\FieldTypeEditor.cs" />
+    <Compile Include="WinFormControls\TreeViewBinder.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Core\CommonTypes\CommonTypes.csproj">
