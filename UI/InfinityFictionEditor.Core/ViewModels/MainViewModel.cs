@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Windows.Input;
 using InfinityFiction.UI.InfinityFictionEditor.Core.Models;
 using MvpVmFramework.Core.Foundation;
@@ -11,7 +12,6 @@ namespace InfinityFiction.UI.InfinityFictionEditor.Core.ViewModels
         private ObservableCollection<TreeViewItem> _treeViewItems;
         private ICommand _onTreeItemSelected;
         private ICommand _selectGamePath;
-
         private object _selectedTreeViewItem;
 
         public ObservableCollection<TreeViewItem> TreeViewItems

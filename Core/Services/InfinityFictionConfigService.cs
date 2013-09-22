@@ -24,9 +24,9 @@ namespace CodeFiction.InfinityFiction.Core.Services
             };
 
         private readonly Dictionary<GameEnum, GameConfig> _games;
-        private readonly List<string> _extraDirs;
-        private readonly IList<ResourceFile> _resourceFiles;
-        private readonly List<string> _biffDirs;
+        private List<string> _extraDirs;
+        private IList<ResourceFile> _resourceFiles;
+        private List<string> _biffDirs;
 
         private readonly string _bgeeHomePath;
         private string _rootPath;
@@ -38,9 +38,6 @@ namespace CodeFiction.InfinityFiction.Core.Services
         public InfinityFictionConfigService(IKeyResourceBuilder keyResourceBuilder)
         {
             _keyResourceBuilder = keyResourceBuilder;
-            _extraDirs = new List<string>();
-            _resourceFiles = new List<ResourceFile>();
-            _biffDirs = new List<string>();
             _games = new Dictionary<GameEnum, GameConfig>(16);
 
             string homePath = Environment.ExpandEnvironmentVariables("%HOMEDRIVE%%HOMEPATH%");
@@ -67,7 +64,11 @@ namespace CodeFiction.InfinityFiction.Core.Services
 
         public void InitializeConfiguration(string keyFilePath)
         {
+            _extraDirs = new List<string>();
+            _resourceFiles = new List<ResourceFile>();
+            _biffDirs = new List<string>();
             _keyFilePath = Path.GetFullPath(keyFilePath);
+
             bool exists = File.Exists(keyFilePath);
             if (!exists)
             {
@@ -192,6 +193,7 @@ namespace CodeFiction.InfinityFiction.Core.Services
                 var resourceFile = new ResourceFile();
                 resourceFile.Extension = resourceEntryResource.Extension;
                 resourceFile.Folder = resourceEntryResource.Extension;
+                resourceFile.RootFolder = resourceEntryResource.Extension;
                 resourceFile.File = resourceEntryResource.FileName;
                 resourceFile.ResourceEntry = true;
                 _resourceFiles.Add(resourceFile);
@@ -225,12 +227,15 @@ namespace CodeFiction.InfinityFiction.Core.Services
                     string extension = Path.GetExtension(overrideFile);
                     ResourceFile resourceFile = _resourceFiles.FirstOrDefault(file => file.File == fileNameWithoutExtension);
 
+                    string overrideFolder = OverrideFolder.Split(Path.DirectorySeparatorChar).Last();
+
                     if (resourceFile == null)
                     {
                         resourceFile = new ResourceFile();
-                        resourceFile.File = fileNameWithoutExtension;
+                        resourceFile.File = fileName;
                         resourceFile.FullPath = Path.Combine(OverrideFolder, overrideFile);
-                        resourceFile.Folder = OverrideFolder.Split(Path.DirectorySeparatorChar).Last();
+                        resourceFile.RootFolder = overrideFolder;
+                        resourceFile.Folder = overrideFolder;
                         resourceFile.Extension = string.IsNullOrEmpty(extension)
                              ? string.Empty
                              : extension.ToUpper().Replace(".", string.Empty);
@@ -286,7 +291,7 @@ namespace CodeFiction.InfinityFiction.Core.Services
                 }
 
                 var resourceFile = new ResourceFile();
-                string fileName = Path.GetFileNameWithoutExtension(file);
+                string fileName = Path.GetFileName(file);
                 string extension = Path.GetExtension(file);
 
                 if (string.IsNullOrEmpty(fileName))
@@ -294,8 +299,8 @@ namespace CodeFiction.InfinityFiction.Core.Services
                     // TODO : throw Exception
                 }
 
-                resourceFile.ParentFolder = parentFolder;
-                resourceFile.File = fileName;
+                resourceFile.RootFolder = parentFolder;
+                resourceFile.File = fileName.ToUpper();
                 resourceFile.FullPath = file;
                 resourceFile.Folder = directory.Split(Path.DirectorySeparatorChar).Last();
                 resourceFile.Extension = string.IsNullOrEmpty(extension)
@@ -369,7 +374,7 @@ namespace CodeFiction.InfinityFiction.Core.Services
         {
             if (extraDirectoriesPaths.Any(s => s == currentDirectoryPath))
             {
-                return null;
+                return currentDirectoryPath.Split(Path.DirectorySeparatorChar).Last();
             }
 
             foreach (var extraDirectoryPath in extraDirectoriesPaths)

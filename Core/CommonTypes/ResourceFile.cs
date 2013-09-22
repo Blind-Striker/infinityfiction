@@ -2,7 +2,7 @@
 {
     public class ResourceFile
     {
-        public string ParentFolder { get; set; }
+        public string RootFolder { get; set; }
 
         public string Folder { get; set; }
 

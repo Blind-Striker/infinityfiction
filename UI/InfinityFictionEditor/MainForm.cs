@@ -42,15 +42,36 @@ namespace InfinityFiction.UI.InfinityFictionEditor
                 return;
             }
 
+            Presenter.OnTreeViewItemsFilled += OnTreeViewItemsFilled;
+
+            FillTreeView();
+
+            CommandAdapter.AddCommandBinding(treeResources, mainViewModel.OnTreeItemSelected, () => mainViewModel.SelectedTreeViewItem = treeResources.SelectedNode.Tag);
+            CommandAdapter.AddCommandBinding(selectGameToolStripMenuItem, mainViewModel.SelectGamePath);
+        }
+
+        private void OnTreeViewItemsFilled(object sender, EventArgs eventArgs)
+        {
+            FillTreeView();
+        }
+
+        private void FillTreeView()
+        {
+            var mainViewModel = DataContext as MainViewModel;
+
+            if (mainViewModel == null)
+            {
+                return;
+            }
+
+            treeResources.Nodes.Clear();
+
             var treeViewBinder = new TreeViewBinder();
 
             if (!mainViewModel.TreeViewItems.IsNullOrEmpty())
             {
                 treeViewBinder.Bind(treeResources, mainViewModel.TreeViewItems);
             }
-
-            CommandAdapter.AddCommandBinding(treeResources, mainViewModel.OnTreeItemSelected, () => mainViewModel.SelectedTreeViewItem = treeResources.SelectedNode.Tag);
-            CommandAdapter.AddCommandBinding(selectGameToolStripMenuItem, mainViewModel.SelectGamePath);
         }
     }
 }

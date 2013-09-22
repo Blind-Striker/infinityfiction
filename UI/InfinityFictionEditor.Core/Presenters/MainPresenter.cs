@@ -23,6 +23,7 @@ namespace InfinityFiction.UI.InfinityFictionEditor.Core.Presenters
         private readonly MainViewModel _mainViewModel;
         private KeyResource _keyResource;
         private IList<ResourceFile> _resourceFiles;
+        public event EventHandler OnTreeViewItemsFilled;
 
         public MainPresenter(
             IMainView view,
@@ -45,15 +46,16 @@ namespace InfinityFiction.UI.InfinityFictionEditor.Core.Presenters
 
             View.DataContext = _mainViewModel;
 
-            CheckShowSelectGamePathView();
+            _mainViewModel.TreeViewItems = new ObservableCollection<TreeViewItem>();
 
-            InitializeKeyResource();
-
-            // _mainViewModel.TreeViewItems.Add(new TreeViewItem { Id = "1", Name = "ARE", ParentId = "" });
-            // _mainViewModel.TreeViewItems.Add(new TreeViewItem { Id = "2", Name = "ASDETE.ARE", ParentId = "1" });
-            // _mainViewModel.TreeViewItems.Add(new TreeViewItem { Id = "3", Name = "SDSAD.ARE", ParentId = "1" });
-            // _mainViewModel.TreeViewItems.Add(new TreeViewItem { Id = "4", Name = "CHR", ParentId = "" });
-            // _mainViewModel.TreeViewItems.Add(new TreeViewItem { Id = "5", Name = "DENIZ.CHR", ParentId = "4" });
+            if (_settings["ChitinKeyPath"] == null)
+            {
+                ShowSelectGamePathView();
+            }
+            else
+            {
+                InitializeKeyResource();
+            }
         }
 
         public ResourceFile SelectedResourceFile
@@ -74,6 +76,11 @@ namespace InfinityFiction.UI.InfinityFictionEditor.Core.Presenters
             return true;
         }
 
+        private bool CanShowSelectGamePathView()
+        {
+            return true;
+        }
+
         private void ShowSelectGamePathView()
         {
             var selectGamePathPresenter = _presenterFactory.CreatePresenter<ISelectGamePathPresenter>();
@@ -81,24 +88,6 @@ namespace InfinityFiction.UI.InfinityFictionEditor.Core.Presenters
             selectGamePathPresenter.View.ShowDialog(View);
 
             InitializeKeyResource();
-        }
-
-        private bool CanShowSelectGamePathView()
-        {
-            return true;
-        }
-
-        private void CheckShowSelectGamePathView()
-        {
-            if (_settings["ChitinKeyPath"] == null)
-            {
-                ShowSelectGamePathView();
-            }
-        }
-
-        private void MainViewModelPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
-        {
-
         }
 
         private void InitializeKeyResource()
@@ -115,29 +104,62 @@ namespace InfinityFiction.UI.InfinityFictionEditor.Core.Presenters
 
         private void PopulateResourceTree()
         {
-            _mainViewModel.TreeViewItems = new ObservableCollection<TreeViewItem>();
-            List<ResourceFile> resourceFiles = _resourceFiles.Where(file => file.ParentFolder == null).ToList();
-            List<string> resourceFolders = resourceFiles.Select(file => file.Folder).OrderBy(s => s).Distinct().ToList();
+            _mainViewModel.TreeViewItems.Clear();
+            List<string> resourceFolders = _resourceFiles.Select(file => file.RootFolder).OrderBy(s => s).Distinct().ToList();
 
+            // TODO : The bad code here will be corrected later.
             foreach (var resourceFolder in resourceFolders)
-            {
-                List<ResourceFile> files = resourceFiles.Where(file => file.Folder == resourceFolder).OrderBy(file => file.File).ToList();
+            {               
+                List<ResourceFile> files = _resourceFiles.Where(file => file.Folder == resourceFolder).OrderBy(file => file.File).ToList();
+                List<ResourceFile> fileInFileSystem = _resourceFiles.Where(file => file.RootFolder == resourceFolder && file.RootFolder != file.Folder).OrderBy(file => file.File).ToList();
+                List<string> foldersInFileSystem = fileInFileSystem.Select(file => file.Folder).OrderBy(s => s).Distinct().ToList();
 
                 TreeViewItem parentTreeItem = new TreeViewItem()
                                             {
                                                 Id = resourceFolder,
-                                                Name = string.Format("{0} - {1}", resourceFolder, files.Count),
+                                                Name = string.Format("{0} - {1}", resourceFolder, files.Count + foldersInFileSystem.Count),
                                                 ParentId = string.Empty,
                                                 Item = null
                                             };
 
+                foreach (var folder in foldersInFileSystem)
+                {
+                    List<ResourceFile> resourceFilesInFileSystem = fileInFileSystem.Where(file => file.Folder == folder).ToList();
+
+                    TreeViewItem folderTreeItem = new TreeViewItem()
+                    {
+                        Id = folder,
+                        Name = string.Format("{0} - {1}", folder, resourceFilesInFileSystem.Count),
+                        ParentId = string.Empty,
+                        Item = null
+                    };
+
+                    foreach (var resourceFile in resourceFilesInFileSystem)
+                    {
+                        folderTreeItem.TreeViewItems.Add(new TreeViewItem { Id = resourceFile.File, Name = resourceFile.File, ParentId = folder, Item = resourceFile });
+                    }
+
+                    parentTreeItem.TreeViewItems.Add(folderTreeItem);
+                }
+
                 foreach (var resourceFile in files)
                 {
-                    parentTreeItem.TreeViewItems.Add(new TreeViewItem() { Id = resourceFile.File, Name = resourceFile.File, ParentId = resourceFolder, Item = resourceFile});
+                    parentTreeItem.TreeViewItems.Add(new TreeViewItem {Id = resourceFile.File, Name = resourceFile.File, ParentId = resourceFolder, Item = resourceFile});
                 }
 
                 _mainViewModel.TreeViewItems.Add(parentTreeItem);
             }
+
+            if (OnTreeViewItemsFilled != null)
+            {
+                OnTreeViewItemsFilled(this, new EventArgs());
+            }
+        }
+
+
+        private void MainViewModelPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+
         }
     }
 }
