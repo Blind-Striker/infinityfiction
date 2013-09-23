@@ -7,7 +7,9 @@ When the project finally ships the first release, developer will able to build t
 
 And we are also designing an user interface that will help users for browse and edit the Infinity Engine files.
 
-Infinity Fiction supports these games;
+[CodePlex Link](https://infinityfiction.codeplex.com/ "CodePlex Link")
+
+**Infinity Fiction supports these games;**
 
 Baldur's Gate
 
