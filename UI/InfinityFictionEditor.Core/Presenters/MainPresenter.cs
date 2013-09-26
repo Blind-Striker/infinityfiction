@@ -152,7 +152,7 @@ namespace InfinityFiction.UI.InfinityFictionEditor.Core.Presenters
 
             if (OnTreeViewItemsFilled != null)
             {
-                OnTreeViewItemsFilled(this, new EventArgs());
+               OnTreeViewItemsFilled(this, new EventArgs());
             }
         }
 
