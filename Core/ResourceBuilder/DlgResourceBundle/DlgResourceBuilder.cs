@@ -2,9 +2,8 @@
 using CodeFiction.InfinityFiction.Core.ResourceBuilderContracts;
 using CodeFiction.InfinityFiction.Core.Resources.Dlg;
 using CodeFiction.InfinityFiction.Structure.StructConverterContracts;
-using CodeFiction.InfinityFiction.Structure.Structures.Dlg;
 
-namespace CodeFiction.InfinityFiction.Core.ResourceBuilder
+namespace CodeFiction.InfinityFiction.Core.ResourceBuilder.DlgResourceBundle
 {
     public class DlgResourceBuilder : IDlgResourceBuilder
     {
@@ -20,10 +19,10 @@ namespace CodeFiction.InfinityFiction.Core.ResourceBuilder
 
         public DlgResource GetDlgResource(string dlgfilePath)
         {
-            DlgResource dlgResource = new DlgResource();
+            var dlgResource = new DlgResource();
             byte[] content = IoHelper.ReadBinaryFile(dlgfilePath);
 
-            //var header = _genericStructConverter.ConvertToStruct<Header>(content, 0); //not used.
+            // var header = _genericStructConverter.ConvertToStruct<Header>(content, 0); //not used.
             dlgResource.Path = dlgfilePath;
             dlgResource.Content = content;
 

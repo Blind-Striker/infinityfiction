@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
+
 using CodeFiction.DarkMatterFramework.Libraries.IOLibrary;
 using CodeFiction.InfinityFiction.Core.CommonTypes;
 using CodeFiction.InfinityFiction.Core.ResourceBuilderContracts;
@@ -9,7 +9,7 @@ using CodeFiction.InfinityFiction.Core.Resources.Key;
 using CodeFiction.InfinityFiction.Structure.StructConverterContracts;
 using CodeFiction.InfinityFiction.Structure.Structures.Key;
 
-namespace CodeFiction.InfinityFiction.Core.ResourceBuilder
+namespace CodeFiction.InfinityFiction.Core.ResourceBuilder.KeyResourceBundle
 {
     public class KeyResourceBuilder : IKeyResourceBuilder
     {
@@ -23,9 +23,9 @@ namespace CodeFiction.InfinityFiction.Core.ResourceBuilder
             _resourceConverter = resourceConverter;
         }
 
-        public KeyResource GetKeyResource(GameEnum gameEnum, string keyFilePath)
+        public Resources.Key.KeyResource GetKeyResource(GameEnum gameEnum, string keyFilePath)
         {
-            var keyResource = new KeyResource();
+            var keyResource = new Resources.Key.KeyResource();
             MapExtensions(keyResource, gameEnum);
             _extensionMap = keyResource.ExtensionMap;
 
@@ -56,7 +56,7 @@ namespace CodeFiction.InfinityFiction.Core.ResourceBuilder
             return keyResource;
         }
 
-        public void MapExtensions(KeyResource keyResource, GameEnum gameEnum)
+        public void MapExtensions(Resources.Key.KeyResource keyResource, GameEnum gameEnum)
         {
             keyResource.ExtensionMap = new Dictionary<int, string>();
 

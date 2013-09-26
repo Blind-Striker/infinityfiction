@@ -57,6 +57,7 @@
     <Compile Include="Dlg\StateTrigger.cs" />
     <Compile Include="Dlg\TransitionTrigger.cs" />
     <Compile Include="Dlg\TransitionTable.cs" />
+    <Compile Include="Itm\V1.1\Header.cs" />
     <Compile Include="Itm\V1\ExtendedHeader.cs" />
     <Compile Include="Itm\V1\FeatureBlock.cs" />
     <Compile Include="Itm\V1\Header.cs" />
@@ -68,7 +69,6 @@
   <ItemGroup>
     <Folder Include="Are\V1\" />
     <Folder Include="Are\V9.1\" />
-    <Folder Include="Itm\V1.1\" />
     <Folder Include="Itm\V2\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

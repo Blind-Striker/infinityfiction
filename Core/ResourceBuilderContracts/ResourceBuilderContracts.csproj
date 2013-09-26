@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="IDelegateHelper.cs" />
     <Compile Include="IDlgResourceBuilder.cs" />
+    <Compile Include="IItmResourceBuilder.cs" />
     <Compile Include="IKeyResourceBuilder.cs" />
     <Compile Include="IResourceConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using Castle.MicroKernel.Registration;
 using Castle.Windsor;
 
 using CodeFiction.InfinityFiction.Core.Container;
+using CodeFiction.InfinityFiction.Core.ResourceBuilder.ItmResourceBundle;
+using CodeFiction.InfinityFiction.Core.ResourceBuilderContracts;
 
 namespace InfinityFiction.UI.Modules.ItmModule
 {
@@ -14,7 +11,7 @@ namespace InfinityFiction.UI.Modules.ItmModule
     {
         public void OnRegisterDependencies(IWindsorContainer container)
         {
-            
+            container.Register(Component.For<IItmResourceBuilder>().ImplementedBy<ItmResourceBuilder>());
         }
     }
 }

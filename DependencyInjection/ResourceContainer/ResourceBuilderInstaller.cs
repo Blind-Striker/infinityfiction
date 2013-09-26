@@ -2,6 +2,8 @@
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
 using CodeFiction.InfinityFiction.Core.ResourceBuilder;
+using CodeFiction.InfinityFiction.Core.ResourceBuilder.DlgResourceBundle;
+using CodeFiction.InfinityFiction.Core.ResourceBuilder.KeyResourceBundle;
 using CodeFiction.InfinityFiction.Core.ResourceBuilderContracts;
 
 namespace CodeFiction.InfinityFiction.Core.ResourceContainer

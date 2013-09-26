@@ -54,6 +54,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Core\ResourceBuilderContracts\ResourceBuilderContracts.csproj">
+      <Project>{8e652c75-f015-4b7f-b7bc-93cdc8f07bee}</Project>
+      <Name>ResourceBuilderContracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Core\ResourceBuilder\ResourceBuilder.csproj">
+      <Project>{970e73e5-93e3-4334-92d2-ea6cb18f877c}</Project>
+      <Name>ResourceBuilder</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\DependencyInjection\Container\Container.csproj">
       <Project>{b7efde8f-ff0c-4091-b870-32d21dac853b}</Project>
       <Name>Container</Name>
