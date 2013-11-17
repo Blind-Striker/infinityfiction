@@ -40,6 +40,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\Castle.Windsor.3.2.1\lib\net45\Castle.Windsor.dll</HintPath>
     </Reference>
+    <Reference Include="CodeFiction.DarkMatterFramework.CoreExceptions, Version=1.1.33.10235, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\SharedLibs\CodeFiction.DarkMatterFramework.CoreExceptions.dll</HintPath>
+    </Reference>
     <Reference Include="CodeFiction.DarkMatterFramework.Utils.Commons">
       <HintPath>..\..\SharedLibs\CodeFiction.DarkMatterFramework.Utils.Commons.dll</HintPath>
     </Reference>
@@ -60,8 +64,9 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="WpfApplicationFramework">
-      <HintPath>..\..\SharedLibs\WpfApplicationFramework.dll</HintPath>
+    <Reference Include="WpfApplicationFramework, Version=3.0.0.450, Culture=neutral, PublicKeyToken=1d6a5af5fe952afb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\waf.3.0.0\lib\net45\WpfApplicationFramework.dll</HintPath>
     </Reference>
     <Reference Include="WpfApplicationFramework.WinForms">
       <HintPath>..\..\SharedLibs\WpfApplicationFramework.WinForms.dll</HintPath>
@@ -71,11 +76,15 @@
     <Compile Include="BaseForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="CustomTypedFactoryComponentSelector.cs" />
+    <Compile Include="Exceptions\ModuleLoaderException.cs" />
     <Compile Include="Foundation\IMainPresenter.cs" />
     <Compile Include="Foundation\ISelectGamePathPresenter.cs" />
     <Compile Include="Foundation\ISelectGamePathView.cs" />
+    <Compile Include="Foundation\IModuleLoader.cs" />
     <Compile Include="InfinityFictionEditorCoreInstaller.cs" />
     <Compile Include="Models\TreeViewItem.cs" />
+    <Compile Include="ModuleLoader.cs" />
     <Compile Include="Presenters\MainPresenter.cs" />
     <Compile Include="Presenters\SelectGamePathPresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -106,6 +115,10 @@
     <ProjectReference Include="..\..\Core\ServiceContracts\ServiceContracts.csproj">
       <Project>{1df78df6-4c75-4083-a0c6-a56a637ec33e}</Project>
       <Name>ServiceContracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Modules\Module.Core\Module.Core.csproj">
+      <Project>{3e54abe8-2a41-46fb-b4eb-5ad83b10981f}</Project>
+      <Name>Module.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

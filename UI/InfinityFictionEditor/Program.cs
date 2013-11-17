@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Windows.Forms;
-using CodeFiction.InfinityFiction.Core.Container;
+
+using CodeFiction.InfinityFiction.Core.BootstrapperLib;
 using CodeFiction.InfinityFiction.Core.ResourceContainer;
 using CodeFiction.InfinityFiction.Core.ServiceContainer;
 using CodeFiction.InfinityFiction.Core.StructContainer;
 using InfinityFiction.UI.InfinityFictionEditor.Core;
 using InfinityFiction.UI.InfinityFictionEditor.Core.Foundation;
+using InfinityFiction.UI.Modules.ItmModule;
+
 using MvpVmFramework.Core.Foundation;
 
 namespace InfinityFiction.UI.InfinityFictionEditor
@@ -26,7 +29,11 @@ namespace InfinityFiction.UI.InfinityFictionEditor
                 .RegisterInstaller(new ResourceBuilderInstaller())
                 .RegisterInstaller(new StructInstaller())
                 .RegisterInstaller(new InfinityFictionEditorCoreInstaller())
-                .RegisterInstaller(new InfinityFictionEditorInstaller());
+                .RegisterInstaller(new InfinityFictionEditorInstaller())
+
+                .RegisterModule<ItemModule>()
+                
+                .InitializeApplication();
 
             var presenterFactory = registerInstaller.WindsorContainer.Resolve<IPresenterFactory>();
             var mainPresenter = presenterFactory.CreatePresenter<IMainPresenter>();

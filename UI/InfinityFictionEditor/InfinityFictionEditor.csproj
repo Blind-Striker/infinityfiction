@@ -57,8 +57,9 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="WpfApplicationFramework">
-      <HintPath>..\..\SharedLibs\WpfApplicationFramework.dll</HintPath>
+    <Reference Include="WpfApplicationFramework, Version=3.0.0.450, Culture=neutral, PublicKeyToken=1d6a5af5fe952afb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\waf.3.0.0\lib\net45\WpfApplicationFramework.dll</HintPath>
     </Reference>
     <Reference Include="WpfApplicationFramework.WinForms, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -112,9 +113,9 @@
       <Project>{1df78df6-4c75-4083-a0c6-a56a637ec33e}</Project>
       <Name>ServiceContracts</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\DependencyInjection\Container\Container.csproj">
+    <ProjectReference Include="..\..\DependencyInjection\Container\BootstrapperLib.csproj">
       <Project>{b7efde8f-ff0c-4091-b870-32d21dac853b}</Project>
-      <Name>Container</Name>
+      <Name>BootstrapperLib</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\DependencyInjection\ResourceContainer\ResourceContainer.csproj">
       <Project>{b6869a90-7c50-4b31-a3be-1eb333107274}</Project>
@@ -135,6 +136,10 @@
     <ProjectReference Include="..\InfinityFictionEditor.Core\InfinityFictionEditor.Core.csproj">
       <Project>{13fff767-0863-435a-8e35-06d63cad13f6}</Project>
       <Name>InfinityFictionEditor.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Modules\ItmModule\ItmModule.csproj">
+      <Project>{41baef9e-fcdd-4acc-970c-bfa792373a75}</Project>
+      <Name>ItmModule</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

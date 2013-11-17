@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{5D1A6D37-8CB3-4401-8D6D-92F9A0D478AF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Structure", "Structure", "{92EFF8CC-118D-49ED-A71A-073018F8005C}"
@@ -27,7 +29,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonTypes", "Core\CommonT
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DependencyInjection", "DependencyInjection", "{A59843C7-0188-4CAF-8EB7-B73F1EDF4D57}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Container", "DependencyInjection\Container\Container.csproj", "{B7EFDE8F-FF0C-4091-B870-32D21DAC853B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BootstrapperLib", "DependencyInjection\Container\BootstrapperLib.csproj", "{B7EFDE8F-FF0C-4091-B870-32D21DAC853B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StructContainer", "DependencyInjection\StructContainer\StructContainer.csproj", "{3630FD4B-5770-4261-8F27-D9B208CD4F0F}"
 EndProject
@@ -58,10 +60,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{3CD1
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ItmModule", "UI\Modules\ItmModule\ItmModule.csproj", "{41BAEF9E-FCDD-4ACC-970C-BFA792373A75}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Module.Core", "UI\Modules\Module.Core\Module.Core.csproj", "{3E54ABE8-2A41-46FB-B4EB-5AD83B10981F}"
+EndProject
 Global
-	GlobalSection(TestCaseManagementSettings) = postSolution
-		CategoryFile = BaldursGateEditor.vsmdi
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|Mixed Platforms = Debug|Mixed Platforms
@@ -251,6 +252,16 @@ Global
 		{41BAEF9E-FCDD-4ACC-970C-BFA792373A75}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{41BAEF9E-FCDD-4ACC-970C-BFA792373A75}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{41BAEF9E-FCDD-4ACC-970C-BFA792373A75}.Release|x86.ActiveCfg = Release|Any CPU
+		{3E54ABE8-2A41-46FB-B4EB-5AD83B10981F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E54ABE8-2A41-46FB-B4EB-5AD83B10981F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E54ABE8-2A41-46FB-B4EB-5AD83B10981F}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{3E54ABE8-2A41-46FB-B4EB-5AD83B10981F}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{3E54ABE8-2A41-46FB-B4EB-5AD83B10981F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{3E54ABE8-2A41-46FB-B4EB-5AD83B10981F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E54ABE8-2A41-46FB-B4EB-5AD83B10981F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E54ABE8-2A41-46FB-B4EB-5AD83B10981F}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{3E54ABE8-2A41-46FB-B4EB-5AD83B10981F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{3E54ABE8-2A41-46FB-B4EB-5AD83B10981F}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -276,5 +287,9 @@ Global
 		{02B65AD0-1C06-45C0-A631-0C7036A1E77C} = {91F6E7F0-2CDD-474C-AEF8-485A71415B88}
 		{BE37B4B9-CAFA-40D1-A97C-565F7629DF5C} = {91F6E7F0-2CDD-474C-AEF8-485A71415B88}
 		{41BAEF9E-FCDD-4ACC-970C-BFA792373A75} = {3CD1DE77-4A3E-44F9-9EEC-97BCA55E9822}
+		{3E54ABE8-2A41-46FB-B4EB-5AD83B10981F} = {3CD1DE77-4A3E-44F9-9EEC-97BCA55E9822}
+	EndGlobalSection
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = BaldursGateEditor.vsmdi
 	EndGlobalSection
 EndGlobal

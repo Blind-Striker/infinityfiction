@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Configuration;
 using System.Linq;
 using System.Waf.Applications;
+using System.Waf.Applications.Services;
 
 using CodeFiction.InfinityFiction.Core.CommonTypes;
 using CodeFiction.InfinityFiction.Core.Resources.Key;
@@ -20,6 +21,9 @@ namespace InfinityFiction.UI.InfinityFictionEditor.Core.Presenters
         private readonly IAppSettings _settings;
         private readonly IPresenterFactory _presenterFactory;
         private readonly IInfinityFictionConfigService _infinityFictionConfigService;
+        private readonly IModuleLoader _moduleLoader;
+        private readonly IMessageService _messageService;
+
         private readonly MainViewModel _mainViewModel;
         private KeyResource _keyResource;
         private IList<ResourceFile> _resourceFiles;
@@ -29,12 +33,16 @@ namespace InfinityFiction.UI.InfinityFictionEditor.Core.Presenters
             IMainView view,
             IAppSettings settings,
             IPresenterFactory presenterFactory,
-            IInfinityFictionConfigService infinityFictionConfigService)
+            IInfinityFictionConfigService infinityFictionConfigService,
+            IModuleLoader moduleLoader,
+            IMessageService messageService)
             : base(view)
         {
             _settings = settings;
             _presenterFactory = presenterFactory;
             _infinityFictionConfigService = infinityFictionConfigService;
+            _moduleLoader = moduleLoader;
+            _messageService = messageService;
 
             _mainViewModel = new MainViewModel
                              {
@@ -68,7 +76,18 @@ namespace InfinityFiction.UI.InfinityFictionEditor.Core.Presenters
 
         private void TreeItemSelected()
         {
-
+            if (SelectedResourceFile != null)
+            {
+                try
+                {
+                    object view = _moduleLoader.LoadModule(SelectedResourceFile.Extension);
+                    View.LoadModuleView(view);
+                }
+                catch
+                {
+                    _messageService.ShowError(View, string.Format("An Error occured while loading {0} Module", SelectedResourceFile.Extension));
+                }
+            }
         }
 
         private bool CanTreeItemSelected()

@@ -71,9 +71,9 @@
       <Project>{1df78df6-4c75-4083-a0c6-a56a637ec33e}</Project>
       <Name>ServiceContracts</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\DependencyInjection\Container\Container.csproj">
+    <ProjectReference Include="..\..\..\DependencyInjection\Container\BootstrapperLib.csproj">
       <Project>{B7EFDE8F-FF0C-4091-B870-32D21DAC853B}</Project>
-      <Name>Container</Name>
+      <Name>BootstrapperLib</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\DependencyInjection\ResourceContainer\ResourceContainer.csproj">
       <Project>{B6869A90-7C50-4B31-A3BE-1EB333107274}</Project>

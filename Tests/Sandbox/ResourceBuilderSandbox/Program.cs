@@ -1,5 +1,6 @@
 ﻿using System.IO;
-using CodeFiction.InfinityFiction.Core.Container;
+
+using CodeFiction.InfinityFiction.Core.BootstrapperLib;
 using CodeFiction.InfinityFiction.Core.ResourceBuilderContracts;
 using CodeFiction.InfinityFiction.Core.ResourceContainer;
 using CodeFiction.InfinityFiction.Core.Resources.Dlg;

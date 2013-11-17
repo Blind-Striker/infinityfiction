@@ -71,9 +71,9 @@
       <Project>{81d21e71-0196-4767-be6a-149247459e23}</Project>
       <Name>Resources</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\DependencyInjection\Container\Container.csproj">
+    <ProjectReference Include="..\..\..\DependencyInjection\Container\BootstrapperLib.csproj">
       <Project>{b7efde8f-ff0c-4091-b870-32d21dac853b}</Project>
-      <Name>Container</Name>
+      <Name>BootstrapperLib</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\DependencyInjection\ResourceContainer\ResourceContainer.csproj">
       <Project>{b6869a90-7c50-4b31-a3be-1eb333107274}</Project>

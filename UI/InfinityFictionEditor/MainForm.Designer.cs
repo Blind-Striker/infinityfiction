@@ -37,8 +37,13 @@ namespace InfinityFiction.UI.InfinityFictionEditor
             this.selectGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.treeResources = new System.Windows.Forms.TreeView();
+            this.mainContainer = new System.Windows.Forms.SplitContainer();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             ((System.ComponentModel.ISupportInitialize)(this.dataContext)).BeginInit();
             this.mainMenuStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.mainContainer)).BeginInit();
+            this.mainContainer.Panel1.SuspendLayout();
+            this.mainContainer.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataContext
@@ -52,7 +57,7 @@ namespace InfinityFiction.UI.InfinityFictionEditor
             this.editToolStripMenuItem});
             this.mainMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.mainMenuStrip.Name = "mainMenuStrip";
-            this.mainMenuStrip.Size = new System.Drawing.Size(737, 24);
+            this.mainMenuStrip.Size = new System.Drawing.Size(858, 24);
             this.mainMenuStrip.TabIndex = 1;
             this.mainMenuStrip.Text = "menuStrip1";
             // 
@@ -78,17 +83,44 @@ namespace InfinityFiction.UI.InfinityFictionEditor
             // 
             // treeResources
             // 
-            this.treeResources.Location = new System.Drawing.Point(12, 27);
+            this.treeResources.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeResources.Location = new System.Drawing.Point(0, 0);
             this.treeResources.Name = "treeResources";
-            this.treeResources.Size = new System.Drawing.Size(207, 558);
+            this.treeResources.Size = new System.Drawing.Size(202, 599);
             this.treeResources.TabIndex = 2;
+            // 
+            // mainContainer
+            // 
+            this.mainContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainContainer.CausesValidation = false;
+            this.mainContainer.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.mainContainer.Location = new System.Drawing.Point(0, 27);
+            this.mainContainer.Name = "mainContainer";
+            // 
+            // mainContainer.Panel1
+            // 
+            this.mainContainer.Panel1.Controls.Add(this.treeResources);
+            this.mainContainer.Size = new System.Drawing.Size(858, 599);
+            this.mainContainer.SplitterDistance = 202;
+            this.mainContainer.TabIndex = 3;
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Location = new System.Drawing.Point(0, 629);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(858, 22);
+            this.statusStrip1.TabIndex = 4;
+            this.statusStrip1.Text = "statusStrip1";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(737, 597);
-            this.Controls.Add(this.treeResources);
+            this.ClientSize = new System.Drawing.Size(858, 651);
+            this.Controls.Add(this.statusStrip1);
+            this.Controls.Add(this.mainContainer);
             this.Controls.Add(this.mainMenuStrip);
             this.MainMenuStrip = this.mainMenuStrip;
             this.Name = "MainForm";
@@ -96,6 +128,9 @@ namespace InfinityFiction.UI.InfinityFictionEditor
             ((System.ComponentModel.ISupportInitialize)(this.dataContext)).EndInit();
             this.mainMenuStrip.ResumeLayout(false);
             this.mainMenuStrip.PerformLayout();
+            this.mainContainer.Panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.mainContainer)).EndInit();
+            this.mainContainer.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -109,5 +144,7 @@ namespace InfinityFiction.UI.InfinityFictionEditor
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem selectGameToolStripMenuItem;
         private System.Windows.Forms.TreeView treeResources;
+        private System.Windows.Forms.SplitContainer mainContainer;
+        private System.Windows.Forms.StatusStrip statusStrip1;
     }
 }

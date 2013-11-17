@@ -1,7 +1,10 @@
-﻿using Castle.Windsor;
+﻿using System.ComponentModel.Composition;
 
-namespace CodeFiction.InfinityFiction.Core.Container
+using Castle.Windsor;
+
+namespace CodeFiction.InfinityFiction.Core.BootstrapperLib
 {
+    [InheritedExport]
     public interface IInfinityModule
     {
         void OnRegisterDependencies(IWindsorContainer container);

@@ -23,11 +23,15 @@ namespace InfinityFiction.UI.InfinityFictionEditor.Core
             container.AddFacility<TypedFactoryFacility>();
 
             container.Register(
+                Component.For<ITypedFactoryComponentSelector>().ImplementedBy<CustomTypedFactoryComponentSelector>(),
+
                 Component.For<IAppSettings>().ImplementedBy<IsolatedStorageAppSettings>().LifestyleSingleton(),
 
                 Component.For<IPresenterFactory>().AsFactory().LifestyleTransient(),
                 Component.For<IMainPresenter>().ImplementedBy<MainPresenter>().LifestyleTransient(),
-                Component.For<ISelectGamePathPresenter>().ImplementedBy<SelectGamePathPresenter>().LifestyleTransient());
+                Component.For<ISelectGamePathPresenter>().ImplementedBy<SelectGamePathPresenter>().LifestyleTransient(),
+
+                Component.For<IModuleLoader>().ImplementedBy<ModuleLoader>().LifestyleTransient());
         }
     }
 }

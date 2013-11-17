@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using System.Windows.Forms;
 
 using Castle.Core.Internal;
 
@@ -30,6 +32,15 @@ namespace InfinityFiction.UI.InfinityFictionEditor
         }
 
         public IMainPresenter Presenter { get; set; }
+
+        public void LoadModuleView(object view)
+        {
+            mainContainer.Panel2.Controls.Clear();
+
+            Control control = view as Control;
+            control.Dock = DockStyle.Fill;
+            mainContainer.Panel2.Controls.Add(control);
+        }
 
         protected override void OnLoad(EventArgs e)
         {
