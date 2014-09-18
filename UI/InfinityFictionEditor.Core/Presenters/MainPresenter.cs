@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Configuration;
 using System.Linq;
 using System.Waf.Applications;
 using System.Waf.Applications.Services;
@@ -133,8 +132,8 @@ namespace InfinityFiction.UI.InfinityFictionEditor.Core.Presenters
                 List<ResourceFile> fileInFileSystem = _resourceFiles.Where(file => file.RootFolder == resourceFolder && file.RootFolder != file.Folder).OrderBy(file => file.File).ToList();
                 List<string> foldersInFileSystem = fileInFileSystem.Select(file => file.Folder).OrderBy(s => s).Distinct().ToList();
 
-                TreeViewItem parentTreeItem = new TreeViewItem()
-                                            {
+                TreeViewItem parentTreeItem = new TreeViewItem
+                                              {
                                                 Id = resourceFolder,
                                                 Name = string.Format("{0} - {1}", resourceFolder, files.Count + foldersInFileSystem.Count),
                                                 ParentId = string.Empty,
@@ -145,8 +144,8 @@ namespace InfinityFiction.UI.InfinityFictionEditor.Core.Presenters
                 {
                     List<ResourceFile> resourceFilesInFileSystem = fileInFileSystem.Where(file => file.Folder == folder).ToList();
 
-                    TreeViewItem folderTreeItem = new TreeViewItem()
-                    {
+                    TreeViewItem folderTreeItem = new TreeViewItem
+                                                  {
                         Id = folder,
                         Name = string.Format("{0} - {1}", folder, resourceFilesInFileSystem.Count),
                         ParentId = string.Empty,
