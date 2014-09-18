@@ -64,6 +64,7 @@
     <Compile Include="Dlg\TransitionTriggerResource.cs" />
     <Compile Include="Key\BiffEntryResource.cs" />
     <Compile Include="Dlg\HeaderResource.cs" />
+    <Compile Include="Key\FileExtensionMap.cs" />
     <Compile Include="Key\KeyResource.cs" />
     <Compile Include="Key\ResourceEntryResource.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

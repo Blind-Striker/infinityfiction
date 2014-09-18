@@ -31,7 +31,7 @@ namespace ResourceBuilderSandbox
             IKeyResourceBuilder keyResourceBuilder = bootstrapper.WindsorContainer.Resolve<IKeyResourceBuilder>();
             IDlgResourceBuilder dlgResourceBuilder = bootstrapper.WindsorContainer.Resolve<IDlgResourceBuilder>();
             
-            //KeyResource keyResource = keyResourceBuilder.GetKeyResource(GameEnum.BaldursGateTob, chittinKeyPath);
+            //KeyResource keyResource = keyResourceBuilder.BuildKeyResource(GameEnum.BaldursGateTob, chittinKeyPath);
             DlgResource dlgResource = dlgResourceBuilder.GetDlgResource(dialogPath);
         }
     }

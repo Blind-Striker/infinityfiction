@@ -12,6 +12,6 @@ namespace CodeFiction.InfinityFiction.Core.Resources.Key
 
         public ResourceEntryResource[] ResourceEntries { get; set; }
 
-        public Dictionary<int,string> ExtensionMap { get; set; }
+        public string KeyFilePath { get; set; }
     }
 }

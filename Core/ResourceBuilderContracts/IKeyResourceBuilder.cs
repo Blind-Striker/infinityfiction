@@ -5,6 +5,6 @@ namespace CodeFiction.InfinityFiction.Core.ResourceBuilderContracts
 {
     public interface IKeyResourceBuilder
     {
-        KeyResource GetKeyResource(GameEnum gameEnum, string keyFilePath);
+        KeyResource BuildKeyResource(byte[] content);
     }
 }

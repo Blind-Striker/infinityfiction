@@ -16,7 +16,7 @@ namespace CodeFiction.InfinityFiction.Core.Services
         private const string DialogFilename = "dialog.tlk";
         private const string OverrideFolder = "Override";
 
-        private readonly IKeyResourceBuilder _keyResourceBuilder;
+        private readonly IKeyResourceService _keyResourceService;
         private readonly string[] _bgdirs =
             {
                 "Characters", "MPSave", "Music", "Portraits", "Save", "Screenshots",
@@ -35,9 +35,9 @@ namespace CodeFiction.InfinityFiction.Core.Services
         private GameEnum _gameEnum;
         private KeyResource _keyResource;
 
-        public InfinityFictionConfigService(IKeyResourceBuilder keyResourceBuilder)
+        public InfinityFictionConfigService(IKeyResourceService keyResourceService)
         {
-            _keyResourceBuilder = keyResourceBuilder;
+            _keyResourceService = keyResourceService;
             _games = new Dictionary<GameEnum, GameConfig>(16);
 
             string homePath = Environment.ExpandEnvironmentVariables("%HOMEDRIVE%%HOMEPATH%");
@@ -186,7 +186,7 @@ namespace CodeFiction.InfinityFiction.Core.Services
                 _dialogFilePath = Path.Combine(_rootPath, "lang", "en_US", DialogFilename);
             }
 
-            _keyResource = _keyResourceBuilder.GetKeyResource(_gameEnum, _keyFilePath);
+            _keyResource = _keyResourceService.GetKeyResource(_gameEnum, _keyFilePath);
 
             foreach (var resourceEntryResource in _keyResource.ResourceEntries)
             {

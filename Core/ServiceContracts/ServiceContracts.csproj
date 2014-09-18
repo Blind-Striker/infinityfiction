@@ -54,6 +54,7 @@
     <Compile Include="IAreService.cs" />
     <Compile Include="IInfinityFictionConfigService.cs" />
     <Compile Include="IKeyResourceService.cs" />
+    <Compile Include="IResourceFileProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
