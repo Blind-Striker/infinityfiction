@@ -15,5 +15,8 @@ namespace CodeFiction.InfinityFiction.Core.ResourceBuilderContracts
             where TResource : BaseModel, new();
 
         void Convert<TStruct, TResource>(TStruct @struct, TResource resource, FieldInfo[] fieldInfos) where TResource : BaseModel;
+
+        void Convert<TResource>(Type structType, Array structs, TResource[] resources)
+            where TResource : BaseModel, new();
     }
 }

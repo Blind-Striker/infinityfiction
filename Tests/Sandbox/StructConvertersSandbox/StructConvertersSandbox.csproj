@@ -57,6 +57,18 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Core\ResourceBuilderContracts\ResourceBuilderContracts.csproj">
+      <Project>{8E652C75-F015-4B7F-B7BC-93CDC8F07BEE}</Project>
+      <Name>ResourceBuilderContracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Core\ResourceBuilder\ResourceBuilder.csproj">
+      <Project>{970E73E5-93E3-4334-92D2-EA6CB18F877C}</Project>
+      <Name>ResourceBuilder</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Core\Resources\Resources.csproj">
+      <Project>{81D21E71-0196-4767-BE6A-149247459E23}</Project>
+      <Name>Resources</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\Core\ServiceContracts\ServiceContracts.csproj">
       <Project>{1DF78DF6-4C75-4083-A0C6-A56A637EC33E}</Project>
       <Name>ServiceContracts</Name>

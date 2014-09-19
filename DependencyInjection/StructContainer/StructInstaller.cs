@@ -10,7 +10,8 @@ namespace CodeFiction.InfinityFiction.Core.StructContainer
     {
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
-            container.Register(Component.For<IGenericStructConverter>().ImplementedBy<GenericStructConverter>());
+            container.Register(Component.For<IGenericStructConverter>().ImplementedBy<GenericStructConverter>(),
+                Component.For<IStructGenerator>().ImplementedBy<StructGenerator>());
         }
     }
 }

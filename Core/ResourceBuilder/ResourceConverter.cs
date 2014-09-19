@@ -88,5 +88,21 @@ namespace CodeFiction.InfinityFiction.Core.ResourceBuilder
                 resources[i] = resource;
             }
         }
+
+        public void Convert<TResource>(Type structType, Array structs, TResource[] resources)
+            where TResource : BaseModel, new()
+        {
+            FieldInfo[] fieldInfos = structType.GetFields();
+
+            for (int i = 0; i < structs.Length; i++)
+            {
+                var entry = structs.GetValue(i);
+                var resource = new TResource();
+
+                Convert(entry, resource, fieldInfos);
+
+                resources[i] = resource;
+            }
+        }
     }
 }

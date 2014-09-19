@@ -66,6 +66,7 @@
     <Compile Include="Key\KeyStruct.cs" />
     <Compile Include="Key\ResourceEntry.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Templates.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Are\V1\" />
