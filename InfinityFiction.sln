@@ -64,6 +64,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Module.Core", "UI\Modules\M
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StructConverters.Tests", "Tests\StructConverters.Tests\StructConverters.Tests.csproj", "{E9EFE8C8-2537-4669-99AA-FF11D4A33F70}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StructConvertersSandbox", "Tests\Sandbox\StructConvertersSandbox\StructConvertersSandbox.csproj", "{B24A5D01-8866-4F16-AC24-1CFE484BF0E9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -274,6 +276,16 @@ Global
 		{E9EFE8C8-2537-4669-99AA-FF11D4A33F70}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{E9EFE8C8-2537-4669-99AA-FF11D4A33F70}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{E9EFE8C8-2537-4669-99AA-FF11D4A33F70}.Release|x86.ActiveCfg = Release|Any CPU
+		{B24A5D01-8866-4F16-AC24-1CFE484BF0E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B24A5D01-8866-4F16-AC24-1CFE484BF0E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B24A5D01-8866-4F16-AC24-1CFE484BF0E9}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{B24A5D01-8866-4F16-AC24-1CFE484BF0E9}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{B24A5D01-8866-4F16-AC24-1CFE484BF0E9}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B24A5D01-8866-4F16-AC24-1CFE484BF0E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B24A5D01-8866-4F16-AC24-1CFE484BF0E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B24A5D01-8866-4F16-AC24-1CFE484BF0E9}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{B24A5D01-8866-4F16-AC24-1CFE484BF0E9}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{B24A5D01-8866-4F16-AC24-1CFE484BF0E9}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -301,6 +313,7 @@ Global
 		{41BAEF9E-FCDD-4ACC-970C-BFA792373A75} = {3CD1DE77-4A3E-44F9-9EEC-97BCA55E9822}
 		{3E54ABE8-2A41-46FB-B4EB-5AD83B10981F} = {3CD1DE77-4A3E-44F9-9EEC-97BCA55E9822}
 		{E9EFE8C8-2537-4669-99AA-FF11D4A33F70} = {4403D823-CEF9-47BA-9C3E-B4E9E0195DCB}
+		{B24A5D01-8866-4F16-AC24-1CFE484BF0E9} = {91F6E7F0-2CDD-474C-AEF8-485A71415B88}
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = BaldursGateEditor.vsmdi

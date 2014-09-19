@@ -63,6 +63,7 @@
     <Compile Include="Itm\V1\Header.cs" />
     <Compile Include="Key\BiffEntry.cs" />
     <Compile Include="Key\Header.cs" />
+    <Compile Include="Key\KeyStruct.cs" />
     <Compile Include="Key\ResourceEntry.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

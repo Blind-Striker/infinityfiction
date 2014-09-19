@@ -12,6 +12,14 @@ namespace CodeFiction.InfinityFiction.Structure.StructConverters
     {
         public T ConvertToStruct<T>(byte[] content, int startIndex) where T : struct
         {
+            Type structType = typeof(T);
+            object convertToStruct = ConvertToStruct(structType, content, startIndex);
+
+            return (T)convertToStruct;
+        }
+
+        public object ConvertToStruct(Type structType, byte[] content, int startIndex)
+        {
             // TODO : design by contract
             if (content == null || !content.Any())
             {
@@ -28,7 +36,7 @@ namespace CodeFiction.InfinityFiction.Structure.StructConverters
                 IntPtr unmanagedPointer = Marshal.AllocHGlobal(content.Length);
                 Marshal.Copy(content, startIndex, unmanagedPointer, content.Length);
 
-                var entity = (T)Marshal.PtrToStructure(unmanagedPointer, typeof(T));
+                var entity = Marshal.PtrToStructure(unmanagedPointer, structType);
 
                 Marshal.FreeHGlobal(unmanagedPointer);
 
@@ -36,7 +44,7 @@ namespace CodeFiction.InfinityFiction.Structure.StructConverters
             }
             catch (Exception ex)
             {
-                throw new ConvertException(string.Format("An error occured while reading {0}.", typeof(T).FullName), ex);
+                throw new ConvertException(string.Format("An error occured while reading {0}.", structType.FullName), ex);
             }
         }
     }
