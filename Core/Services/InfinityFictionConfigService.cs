@@ -170,7 +170,7 @@ namespace CodeFiction.InfinityFiction.Core.Services
             {
                 _gameEnum = GameEnum.BaldursGateDemo;
             }
-            else if (File.Exists(Path.Combine(_rootPath, "Baldur.exe")) && File.Exists(Path.Combine(_rootPath, "data/OH1000.Bif")))
+            else if (File.Exists(Path.Combine(_rootPath, "Baldur.exe")) && File.Exists(Path.Combine(_rootPath, "data/OBJANIM.BIF")))
             {
                 _gameEnum = GameEnum.BaldursGateExtented;
             }
@@ -257,6 +257,13 @@ namespace CodeFiction.InfinityFiction.Core.Services
         private string GetFullPath(string extraDir)
         {
             string fullPath;
+            if (_gameEnum == GameEnum.BaldursGateExtented&& new[] { "save", "temp", "tempsave" }.Any(s => s.Equals(extraDir, StringComparison.InvariantCultureIgnoreCase)))
+            {
+                string documentsPath = Path.Combine(Environment.ExpandEnvironmentVariables("%userprofile%"), "Documents");
+                string alternatePath = Path.Combine(documentsPath, "Baldur's Gate - Enhanced Edition");
+                fullPath = Path.Combine(alternatePath, extraDir);
+
+            }
             if (extraDir.StartsWith("$HOME$"))
             {
                 string extraDriveHome = extraDir.Replace("$HOME$", string.Empty);

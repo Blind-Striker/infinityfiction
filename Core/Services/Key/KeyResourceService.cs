@@ -174,11 +174,26 @@ namespace CodeFiction.InfinityFiction.Core.Services.Key
                 extensionMap.Add(0x3fc, "VEF"); // ????????
                 extensionMap.Add(0x3fd, "PRO");
                 extensionMap.Add(0x3fe, "BIO");
-                extensionMap.Add(0x404, "PVR");
+                extensionMap.Add(0x400, "FNT");
+                extensionMap.Add(0x402, "GUI");
+                extensionMap.Add(0x403, "SQL");
+                extensionMap.Add(0x404, "PVRZ");
+                extensionMap.Add(0x405, "GLSL");
+                extensionMap.Add(0x406, "TOT");
+                extensionMap.Add(0x407, "TOH");
+                extensionMap.Add(0x408, "MENU");
+                extensionMap.Add(0x409, "LUA");
+                extensionMap.Add(0x40a, "TTF");
                 extensionMap.Add(0x44c, "BAH"); // ???????
                 extensionMap.Add(0x802, "INI");
                 extensionMap.Add(0x803, "SRC");
-            }
+
+  //public static final int TYPE_MENU = 0x408;
+  //      public static final int TYPE_LUA = 0x409;
+
+
+
+    }
 
             return extensionMap;
         }
