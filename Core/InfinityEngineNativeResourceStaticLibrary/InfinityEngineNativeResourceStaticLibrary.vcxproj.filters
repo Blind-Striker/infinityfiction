@@ -24,10 +24,10 @@
     <ClInclude Include="targetver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Structs.h">
+    <ClInclude Include="ChitinKeyManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Imports.h">
+    <ClInclude Include="Structs.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -35,10 +35,7 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="dllmain.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Imports.cpp">
+    <ClCompile Include="ChitinKeyManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -8,7 +8,6 @@ namespace CodeFiction.InfinityFiction.Core.ResourceManager
 {
     public class ChitinKeyManager : IDisposable
     {
-
         const string DllLocation = "InfinityEngineNativeResourceLibrary.dll";
 
         [DllImport(DllLocation, EntryPoint = "ReadKeyFile", CallingConvention = CallingConvention.Cdecl)]

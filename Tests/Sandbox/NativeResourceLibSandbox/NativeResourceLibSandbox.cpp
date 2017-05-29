@@ -2,9 +2,9 @@
 //
 
 #include "stdafx.h"
-#include "../../../Core/InfinityEngineNativeResourceLibrary/ChitinKeyManager.h"
+#include "../../../Core/InfinityEngineNativeResourceStaticLibrary/ChitinKeyManager.h"
 
-using namespace InfinityEngineNativeResourceLibrary;
+using namespace InfinityEngineNativeResourceStaticLibrary;
 
 int main()
 {

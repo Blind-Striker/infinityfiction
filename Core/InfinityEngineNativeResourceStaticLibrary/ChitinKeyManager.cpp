@@ -5,7 +5,7 @@
 
 using namespace std;
 
-namespace InfinityEngineNativeResourceLibrary
+namespace InfinityEngineNativeResourceStaticLibrary
 {
 	ChitinKeyManager::ChitinKeyManager()
 	{
@@ -55,7 +55,7 @@ namespace InfinityEngineNativeResourceLibrary
 			return false;
 		}
 
-		for (int i=0; i < header.BiffEntriesCount;i++)
+		for (int i = 0; i < header.BiffEntriesCount; i++)
 		{
 			if (!keyFileReader.seekg(biffEntries[i].BIFFileNameStartOffset, ios::beg))
 			{

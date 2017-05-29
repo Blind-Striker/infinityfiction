@@ -5,7 +5,7 @@
 struct KeyFile;
 using std::string;
 
-namespace InfinityEngineNativeResourceLibrary
+namespace InfinityEngineNativeResourceStaticLibrary
 {
 	class ChitinKeyManager
 	{

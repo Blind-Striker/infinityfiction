@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-#include "ChitinKeyManager.h"
+#include "../InfinityEngineNativeResourceStaticLibrary/ChitinKeyManager.h"
 
 using namespace std;
 
