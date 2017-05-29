@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+    <PostBuildEvent>xcopy "$(SolutionDir)x64\$(Configuration)\InfinityEngineNativeResourceLibrary.dll" "$(SolutionDir)Tests\Sandbox\ResourceManagerSandbox\bin\$(Configuration)\netcoreapp1.1" /S /Y</PostBuildEvent>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Akka" Version="1.3.0-alpha-2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Core\ResourceManager\ResourceManager.csproj" />
+    <ProjectReference Include="..\..\..\Structure\Resources\Resources.csproj" />
+  </ItemGroup>
+
+</Project>

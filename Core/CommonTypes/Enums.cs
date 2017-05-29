@@ -8,7 +8,7 @@
         BaldursGateDemo = 3,
         BaldursGate2 = 4,
         BaldursGateTob = 5,
-        BaldursGateExtented = 6,
+        BaldursGateEnhancedEdition = 6,
         PlanescapeTorment = 7,
         IceWindDale = 8,
         IceWindDaleHeartofWinter = 9,

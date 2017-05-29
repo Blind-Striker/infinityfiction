@@ -88,8 +88,8 @@ namespace CodeFiction.InfinityFiction.Core.Services
             _games.Add(GameEnum.Unknown, new GameConfig(GameEnum.Unknown, "Unknown game", "baldur.ini", _bgdirs));
             _games.Add(GameEnum.BaldursGate, new GameConfig(GameEnum.BaldursGate, "Baldur's Gate", "baldur.ini", _bgdirs));
             _games.Add(GameEnum.BaldursGateTotsc, new GameConfig(GameEnum.BaldursGateTotsc, "Baldur's Gate - Tales of the Sword Coast", "baldur.ini", _bgdirs));
-            _games.Add(GameEnum.BaldursGateExtented, new GameConfig(
-                GameEnum.BaldursGateExtented, 
+            _games.Add(GameEnum.BaldursGateEnhancedEdition, new GameConfig(
+                GameEnum.BaldursGateEnhancedEdition, 
                 "Baldur's Gate Extended Edition", 
                 null, 
                 new[] { "Movies", "Music", "Scripts", "Sounds", "$HOME$Characters", "$HOME$MPSave", "$HOME$Portraits", "$HOME$Save", "$HOME$ScrnShot", "$HOME$Temp", "$HOME$TempSave" }));
@@ -172,7 +172,7 @@ namespace CodeFiction.InfinityFiction.Core.Services
             }
             else if (File.Exists(Path.Combine(_rootPath, "Baldur.exe")) && File.Exists(Path.Combine(_rootPath, "data/OBJANIM.BIF")))
             {
-                _gameEnum = GameEnum.BaldursGateExtented;
+                _gameEnum = GameEnum.BaldursGateEnhancedEdition;
             }
         }
 
@@ -257,7 +257,7 @@ namespace CodeFiction.InfinityFiction.Core.Services
         private string GetFullPath(string extraDir)
         {
             string fullPath;
-            if (_gameEnum == GameEnum.BaldursGateExtented&& new[] { "save", "temp", "tempsave" }.Any(s => s.Equals(extraDir, StringComparison.InvariantCultureIgnoreCase)))
+            if (_gameEnum == GameEnum.BaldursGateEnhancedEdition&& new[] { "save", "temp", "tempsave" }.Any(s => s.Equals(extraDir, StringComparison.InvariantCultureIgnoreCase)))
             {
                 string documentsPath = Path.Combine(Environment.ExpandEnvironmentVariables("%userprofile%"), "Documents");
                 string alternatePath = Path.Combine(documentsPath, "Baldur's Gate - Enhanced Edition");
